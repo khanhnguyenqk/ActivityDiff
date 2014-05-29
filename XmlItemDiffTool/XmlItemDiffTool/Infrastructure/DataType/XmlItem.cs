@@ -9,13 +9,16 @@ namespace Infrastructure.DataType
 {
     public class XmlItem : NotifyPropertyChangedBase
     {
-        private string id;
+        private string id = String.Empty;
+        /// <summary>
+        /// Not nullable
+        /// </summary>
         public string Id
         {
             get { return id; }
             set
             {
-                if(!value.Equals(id))
+                if(value != null && !value.Equals(id))
                 {
                     id = value;
                     NotifyPropertyChanged();
@@ -23,6 +26,7 @@ namespace Infrastructure.DataType
             }
         }
 
+        private ObservableCollection<XmlItem> children;
 
     }
 }
