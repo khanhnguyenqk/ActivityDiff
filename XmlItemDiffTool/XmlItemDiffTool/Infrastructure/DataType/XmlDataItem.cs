@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Xml;
 using Infrastructure.Attribute;
+using Infrastructure.Helper;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
     public class XmlDataItem : XmlType, IEquatable<XmlDataItem>
     {
-        private ObservarableHashSet<XmlDataItem> children =  new ObservarableHashSet<XmlDataItem>();
+        private ObservableCollection<XmlDataItem> children = new ObservableCollection<XmlDataItem>();
         [NotNullable]
-        public ObservarableHashSet<XmlDataItem> Children
+        public ObservableCollection<XmlDataItem> Children
         {
             get { return children; }
             set
@@ -24,7 +26,23 @@ namespace Infrastructure.DataType
                     NotifyPropertyChanged();
                 }
             }
-        } 
+        }
+
+        public XmlDataItem(XmlNode xmlNode) : base(xmlNode)
+        {
+            if(String.IsNullOrEmpty(xmlNode.InnerText) || !xmlNode.InnerXml.Equals(xmlNode.InnerText))
+            {
+                foreach(XmlNode node in xmlNode.ChildNodes)
+                {
+                    string parentNode, nodeName;
+                    if(!XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
+                    {
+                        XmlDataItem di = new XmlDataItem(node);
+                        children.Add(di);
+                    }
+                }   
+            }
+        }
 
         public bool Equals(XmlDataItem other)
         {

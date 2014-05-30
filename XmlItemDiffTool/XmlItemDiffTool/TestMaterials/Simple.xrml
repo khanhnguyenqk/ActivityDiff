@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1538" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3o4a7Hz8VGEGQnm2x0DWory0VLS8ndcsdoO50xVCHwU9zPgRNRLmux0FB9XI47/cnd/i4R0/+01PELHQrDyDX8CH5GlGyjcQAbGTh2/6K6Pct3qpEiznxe8s/RoE4n64cCb4qTEJ3goH8W94IwpbySSoVOnOtalnsMU5Zz5AGRJlLZFPhhH5Mc2sd4HHryOyK3/jvJje89i9w4qD0hzUxKUn8W/e4M1cXMdycfr6km33x9LxfVaYMdGJID8Ax2AkS/Xk8xC3ZBKUj2Tx9CylUi++L9CSKmoaJh11g/HY3pTBl366h2QzcMrf1cfLXuWFxmIgdjpzdq03r3zVx4gf5n3n+Okx+9Rw3gTq/h/BgPYWeRuOLgBEz5nau4idJ14NUkNGE8fe/1+ETJAoj6T/cnk1E4gTQRppwmUHv3yXzRlBiuVliBlDGReUGNpWK7GezxMNM2jXxnBf78mhUfG0KDuTCfRrIoEivG4nZ8omItDHPkLu5G4q9HIUohxaiySlVsIgmZX3jti6y2msYWmqgqaQ5ibUpw3pTAUQwRhxZjRVxLDEuki3vysD430yz4/jY/UcvaX/53R+YUAdjfUWU+JUrz8Ptc3cyzyBjnmGo17Whd8odve6XbPh6Ya3LhuIG5CqnpqMZnNSUShI5Fr9lnC2OZR/YYKLR+NFFazXOYeDsSFOigkc9q2k1wVNQI+NB">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="Simple" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns0:UserInteractionSequenceActivity Description="This activity will unlock xT UI, run its child activities, and return UI to previous state." DoUnlock="True" x:Name="UserInteractionSequence" ActivityType="User Interaction Sequence" Expanded="True">
+		<ns0:UserInteractionSequenceActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns0:UserInteractionSequenceActivity.Expressions>
+		<ns0:HiddenSequenceActivity ActivityType="HiddenSequenceActivity" Expanded="True" x:Name="hiddenSequence_UserInteractionSequence">
+			<ns0:HiddenSequenceActivity.Expressions>
+				<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+			</ns0:HiddenSequenceActivity.Expressions>
+			<ns0:SendEmailActivity AttachLastImage="True" ActivityType="Send Email" Description="Send Email." x:Name="SendEmail">
+				<ns0:SendEmailActivity.Expressions>
+					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+				</ns0:SendEmailActivity.Expressions>
+				<ns0:SendEmailActivity.MessageContents>
+					<ns0:PropertyReferenceLink FullLinkId="res:SendEmail.MessageContents" />
+				</ns0:SendEmailActivity.MessageContents>
+			</ns0:SendEmailActivity>
+		</ns0:HiddenSequenceActivity>
+	</ns0:UserInteractionSequenceActivity>
+	<ns0:CustomVariableActivity x:Name="Vars" ReadFromFile="False" WriteToFile="False" Expanded="True" Description="Contains user defined variables." FileName="" ActivityType="Variable Container">
+		<ns0:CustomVariableActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}">
+				<ns0:ActivityExpressionProperty Expression="&quot;D:\\Intel\\&quot; " PropertyName="DataRoot" />
+			</x:Array>
+		</ns0:CustomVariableActivity.Expressions>
+		<ns0:CustomVariableActivity.UserInputList>
+			<ns0:UserInputList>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="WithEqual" Name="DataRoot" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="" PropertyType="{x:Type p8:String}" DefaultValue="" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">D:\Intel\Via\</ns1:String>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName1" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="" PropertyType="{x:Type p8:String}" DefaultValue="" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"></ns1:String>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName2" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="0" PropertyType="{x:Type p8:Double}" DefaultValue="0" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:Double xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Double>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+			</ns0:UserInputList>
+		</ns0:CustomVariableActivity.UserInputList>
+	</ns0:CustomVariableActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="SendEmail.MessageContents" Type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+		<string>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\fs24 Email contents\par
+}
+</string>
+	</Resource>
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

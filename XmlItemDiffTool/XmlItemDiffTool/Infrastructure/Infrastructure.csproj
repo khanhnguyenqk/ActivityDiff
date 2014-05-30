@@ -40,14 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attribute\NotNullableAttribute.cs" />
-    <Compile Include="DataType\XmlItemPropertyAbstract.cs" />
-    <Compile Include="DataType\XmlItemTypeProperty.cs" />
+    <Compile Include="DataType\XmlDocumentConstructed.cs" />
+    <Compile Include="DataType\XmlPropertyAbstract.cs" />
+    <Compile Include="DataType\XmlResource.cs" />
+    <Compile Include="DataType\XmlTypeProperty.cs" />
     <Compile Include="DataType\XmlWorkflowItem.cs" />
     <Compile Include="Exception\ItemExistsException.cs" />
+    <Compile Include="Exception\XmlItemParseException.cs" />
+    <Compile Include="Helper\XmlParserHelper.cs" />
     <Compile Include="ObjectModel\NotifyPropertyChangedBase.cs" />
     <Compile Include="ObjectModel\ObservarableHashSet.cs" />
     <Compile Include="DataType\XmlDataItem.cs" />
-    <Compile Include="DataType\XmlItemStringProperty.cs" />
+    <Compile Include="DataType\XmlStringProperty.cs" />
     <Compile Include="DataType\XmlType.cs" />
     <Compile Include="ObjectModel\ObservarableUniqueCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

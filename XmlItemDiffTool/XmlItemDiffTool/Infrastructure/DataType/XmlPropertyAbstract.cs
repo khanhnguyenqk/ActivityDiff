@@ -54,5 +54,10 @@ namespace Infrastructure.DataType
         {
             return !Equals(left, right);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Infrastructure.Attribute;
+using Infrastructure.Helper;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
@@ -55,6 +57,45 @@ namespace Infrastructure.DataType
             }
         }
 
+        public XmlType(XmlNode xmlNode)
+        {
+            TypeName = xmlNode.LocalName;
+            if(xmlNode.Attributes != null)
+            {
+                foreach(XmlAttribute att in xmlNode.Attributes)
+                {
+                    XmlStringProperty p = new XmlStringProperty(att);
+                    StringProperties.Add(p);
+                }
+            }
+            if(!String.IsNullOrEmpty(xmlNode.InnerText) && xmlNode.InnerXml.Equals(xmlNode.InnerText))  
+                // Special case. Don't know if I'm correct or not. So let's throw exception if I'm wrong
+            {
+                if(xmlNode.ChildNodes.Count != 1)
+                {
+                    throw new XmlItemParseException(@"When inner text and inner xml are the same, expect only 1 child node.", 
+                        xmlNode.OuterXml);
+                }
+                StringProperties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText));
+            }
+            else
+            {
+                foreach(XmlNode node in xmlNode.ChildNodes)
+                {
+                    string parentNode, nodeName;
+                    if(XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
+                    {
+                        if(!parentNode.Equals(TypeName))
+                        {
+                            throw new XmlItemParseException(@"Property node has different parent name with its parent.", node.OuterXml);
+                        }
+                        XmlTypeProperty tp = new XmlTypeProperty(node);
+                        TypeProperties.Add(tp);
+                    }
+                }
+            }
+        }
+
         public bool Equals(XmlType other)
         {
             if(ReferenceEquals(null, other)) return false;
@@ -89,6 +130,11 @@ namespace Infrastructure.DataType
         public static bool operator !=(XmlType left, XmlType right)
         {
             return !Equals(left, right);
+        }
+
+        public override string ToString()
+        {
+            return TypeName;
         }
     }
 }

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Infrastructure.Attribute;
+using Infrastructure.Helper;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlWorkflowItem: XmlType, IEquatable<XmlWorkflowItem>
+    public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>
     {
         private string id = String.Empty;
         public string Id
@@ -24,7 +26,7 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservarableUniqueCollection<XmlWorkflowItem> children;
+        private ObservarableUniqueCollection<XmlWorkflowItem> children = new ObservarableUniqueCollection<XmlWorkflowItem>();
         [NotNullable]
         public ObservarableUniqueCollection<XmlWorkflowItem> Children
         {
@@ -35,6 +37,29 @@ namespace Infrastructure.DataType
                 {
                     children = value;
                     NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public XmlWorkflowItem(XmlNode xmlNode)
+            : base(xmlNode)
+        {
+            string name = (from sp in StringProperties
+                where sp.Name.Equals(@"Name")
+                select sp.Value).FirstOrDefault();
+            if(String.IsNullOrEmpty(name))
+            {
+                throw new XmlItemParseException(@"A workflow item doesn't have a name.", xmlNode.OuterXml);
+            }
+            Id = name;
+
+            foreach(XmlNode node in xmlNode.ChildNodes)
+            {
+                string parentNode, nodeName;
+                if(!XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
+                {
+                    XmlWorkflowItem di = new XmlWorkflowItem(node);
+                    children.Add(di);
                 }
             }
         }
@@ -51,7 +76,7 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlWorkflowItem) obj);
+            return Equals((XmlWorkflowItem)obj);
         }
 
         public override int GetHashCode()
@@ -59,8 +84,8 @@ namespace Infrastructure.DataType
             unchecked
             {
                 int hashCode = base.GetHashCode();
-                hashCode = (hashCode*397) ^ id.GetHashCode();
-                hashCode = (hashCode*397) ^ children.GetHashCode();
+                hashCode = (hashCode * 397) ^ id.GetHashCode();
+                hashCode = (hashCode * 397) ^ children.GetHashCode();
                 return hashCode;
             }
         }
@@ -73,6 +98,11 @@ namespace Infrastructure.DataType
         public static bool operator !=(XmlWorkflowItem left, XmlWorkflowItem right)
         {
             return !Equals(left, right);
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + String.Format(@" : ""{0}""", Id);
         }
     }
 }
