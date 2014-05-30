@@ -8,7 +8,7 @@ using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlItemTypeProperty: XmlItemPropertyAbstract, IEquatable<XmlItemTypeProperty>
+    public class XmlTypeProperty: XmlPropertyAbstract, IEquatable<XmlTypeProperty>
     {
         private XmlType pvalue = new XmlType();
         [NotNullable]
@@ -25,7 +25,7 @@ namespace Infrastructure.DataType
             }
         }
 
-        public bool Equals(XmlItemTypeProperty other)
+        public bool Equals(XmlTypeProperty other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
@@ -37,7 +37,7 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlItemTypeProperty) obj);
+            return Equals((XmlTypeProperty) obj);
         }
 
         public override int GetHashCode()
@@ -48,12 +48,12 @@ namespace Infrastructure.DataType
             }
         }
 
-        public static bool operator ==(XmlItemTypeProperty left, XmlItemTypeProperty right)
+        public static bool operator ==(XmlTypeProperty left, XmlTypeProperty right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(XmlItemTypeProperty left, XmlItemTypeProperty right)
+        public static bool operator !=(XmlTypeProperty left, XmlTypeProperty right)
         {
             return !Equals(left, right);
         }

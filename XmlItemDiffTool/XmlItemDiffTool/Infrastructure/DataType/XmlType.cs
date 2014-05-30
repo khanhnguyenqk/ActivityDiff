@@ -25,9 +25,9 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservarableHashSet<XmlItemStringProperty> stringProperties = new ObservarableHashSet<XmlItemStringProperty>();
+        private ObservarableHashSet<XmlStringProperty> stringProperties = new ObservarableHashSet<XmlStringProperty>();
         [NotNullable]
-        public ObservarableHashSet<XmlItemStringProperty> StringProperties
+        public ObservarableHashSet<XmlStringProperty> StringProperties
         {
             get { return stringProperties; }
             set
@@ -40,9 +40,9 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservarableHashSet<XmlItemTypeProperty> typeProperties = new ObservarableHashSet<XmlItemTypeProperty>();
+        private ObservarableHashSet<XmlTypeProperty> typeProperties = new ObservarableHashSet<XmlTypeProperty>();
         [NotNullable]
-        public ObservarableHashSet<XmlItemTypeProperty> TypeProperties
+        public ObservarableHashSet<XmlTypeProperty> TypeProperties
         {
             get { return typeProperties; }
             set

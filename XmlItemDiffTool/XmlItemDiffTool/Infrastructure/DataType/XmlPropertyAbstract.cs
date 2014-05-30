@@ -8,7 +8,7 @@ using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public abstract class XmlItemPropertyAbstract : NotifyPropertyChangedBase, IEquatable<XmlItemPropertyAbstract>
+    public abstract class XmlPropertyAbstract : NotifyPropertyChangedBase, IEquatable<XmlPropertyAbstract>
     {
         private string name = String.Empty;
         [NotNullable]
@@ -25,7 +25,7 @@ namespace Infrastructure.DataType
             }
         }
 
-        public bool Equals(XmlItemPropertyAbstract other)
+        public bool Equals(XmlPropertyAbstract other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
@@ -37,7 +37,7 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlItemPropertyAbstract) obj);
+            return Equals((XmlPropertyAbstract) obj);
         }
 
         public override int GetHashCode()
@@ -45,12 +45,12 @@ namespace Infrastructure.DataType
             return name.GetHashCode();
         }
 
-        public static bool operator ==(XmlItemPropertyAbstract left, XmlItemPropertyAbstract right)
+        public static bool operator ==(XmlPropertyAbstract left, XmlPropertyAbstract right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(XmlItemPropertyAbstract left, XmlItemPropertyAbstract right)
+        public static bool operator !=(XmlPropertyAbstract left, XmlPropertyAbstract right)
         {
             return !Equals(left, right);
         }
