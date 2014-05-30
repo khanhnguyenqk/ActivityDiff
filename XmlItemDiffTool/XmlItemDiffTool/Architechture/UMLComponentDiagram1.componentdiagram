@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<componentModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="b131b022-91ae-480a-accb-4b668faa399b" name="UMLComponentDiagram1" linkedPackageId="18f35979-20d3-45db-8743-1f966ec1df28" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ComponentDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="839b0f0c-d50c-4023-b50f-66291a49ca59">
+      <profileInstance Id="3bc5ef35-8071-415c-90e5-d08106c76c6d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="e688bde5-696b-44e7-bba4-cb04a3e34fb4">
+      <profileInstance Id="e93530c0-b6ae-4d44-9a3d-7a360a6a0cbe" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <componentModelHasComponents>
+      <component Id="a6595e65-c5a0-42aa-8d3e-5716a98cf7ba" name="XmlType" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="23d9035b-e5c2-4eef-a4d5-aa05c95a1c4a" />
+      </component>
+    </componentModelHasComponents>
+  </packagedElements>
+  <package Id="18f35979-20d3-45db-8743-1f966ec1df28" name="Architechture">
+    <elementDefinition Id="75df3a63-1adb-42a5-ae36-a0af3c7366f4" />
+  </package>
+</componentModel>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Infrastructure.DataType
+namespace Infrastructure.ObjectModel
 {
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {

@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataType\NotifyPropertyChangedBase.cs" />
+    <Compile Include="Attribute\NotNullableAttribute.cs" />
+    <Compile Include="Exception\ItemExistsException.cs" />
+    <Compile Include="ObjectModel\NotifyPropertyChangedBase.cs" />
+    <Compile Include="ObjectModel\ObservarableHashSet.cs" />
     <Compile Include="DataType\XmlItem.cs" />
     <Compile Include="DataType\XmlItemProperty.cs" />
+    <Compile Include="DataType\XmlType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Interface\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

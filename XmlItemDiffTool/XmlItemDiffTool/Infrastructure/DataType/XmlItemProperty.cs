@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Infrastructure.Attribute;
+using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlItemProperty : NotifyPropertyChangedBase
+    public class XmlItemProperty : NotifyPropertyChangedBase, IEquatable<XmlItemProperty>
     {
         private string name = String.Empty;
-        /// <summary>
-        /// Not Nullable
-        /// </summary>
+        [NotNullable]
         public string Name
         {
             get { return name; }
@@ -21,63 +21,58 @@ namespace Infrastructure.DataType
             {
                 if(value != null && !value.Equals(name))
                 {
-                    value = name;
+                    name = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private string value = String.Empty;
+        private string pValue = String.Empty;
+        [NotNullable]
         public string Value
         {
-            get { return value; }
+            get { return pValue; }
             set
             {
-                if(value != null && !value.Equals(value))
+                if(value != null && !value.Equals(pValue))
                 {
-                    value = name;
+                    pValue = value;
                     NotifyPropertyChanged();
                 }
             }
+        }
+
+        public bool Equals(XmlItemProperty other)
+        {
+            if(ReferenceEquals(null, other)) return false;
+            if(ReferenceEquals(this, other)) return true;
+            return string.Equals(name, other.name) && string.Equals(pValue, other.pValue);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(ReferenceEquals(null, obj)) return false;
+            if(ReferenceEquals(this, obj)) return true;
+            if(obj.GetType() != this.GetType()) return false;
+            return Equals((XmlItemProperty) obj);
         }
 
         public override int GetHashCode()
         {
-            int ret = Name.GetHashCode();
-            ret = ret << 20;
-            ret = ret ^ Value.GetHashCode();
-            return ret;
+            unchecked
+            {
+                return (name.GetHashCode()*397) ^ pValue.GetHashCode();
+            }
         }
 
-        public override bool Equals(Object obj)
+        public static bool operator ==(XmlItemProperty left, XmlItemProperty right)
         {
-            // If parameter is null return false.
-            if(obj == null)
-            {
-                return false;
-            }
-
-            // If parameter cannot be cast to Point return false.
-            XmlItemProperty x = obj as XmlItemProperty;
-            if((System.Object)x == null)
-            {
-                return false;
-            }
-
-            // Return true if the fields match:
-            return Value.Equals(x.Value) && Name.Equals(x.Name);
+            return Equals(left, right);
         }
 
-        public bool Equals(XmlItemProperty x)
+        public static bool operator !=(XmlItemProperty left, XmlItemProperty right)
         {
-            // If parameter is null return false:
-            if((object)x == null)
-            {
-                return false;
-            }
-
-            // Return true if the fields match:
-            return Value.Equals(x.Value) && Name.Equals(x.Name);
+            return !Equals(left, right);
         }
     }
 }
