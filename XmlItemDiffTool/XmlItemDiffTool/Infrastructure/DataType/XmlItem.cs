@@ -27,6 +27,5 @@ namespace Infrastructure.DataType
         }
 
         private ObservableCollection<XmlItem> children;
-
     }
 }
