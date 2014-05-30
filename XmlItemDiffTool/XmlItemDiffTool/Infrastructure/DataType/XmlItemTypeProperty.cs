@@ -3,36 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using Infrastructure.Attribute;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlItem : XmlType, IEquatable<XmlItem>
+    public class XmlItemTypeProperty: XmlItemPropertyAbstract, IEquatable<XmlItemTypeProperty>
     {
-        private string id = String.Empty;
+        private XmlType pvalue = new XmlType();
         [NotNullable]
-        public string Id
+        public XmlType Value
         {
-            get { return id; }
+            get { return pvalue; }
             set
             {
-                if(value != null && !value.Equals(id))
+                if(value != null && pvalue != value)
                 {
-                    id = value;
+                    pvalue = value;
                     NotifyPropertyChanged();
                 }
             }
         }
 
-        private ObservarableHashSet<XmlItem> children;
-
-        public bool Equals(XmlItem other)
+        public bool Equals(XmlItemTypeProperty other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return base.Equals(other) && string.Equals(id, other.id) && children.Equals(other.children);
+            return base.Equals(other) && pvalue.Equals(other.pvalue);
         }
 
         public override bool Equals(object obj)
@@ -40,26 +37,23 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlItem) obj);
+            return Equals((XmlItemTypeProperty) obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                int hashCode = base.GetHashCode();
-                hashCode = (hashCode*397) ^ id.GetHashCode();
-                hashCode = (hashCode*397) ^ children.GetHashCode();
-                return hashCode;
+                return (base.GetHashCode()*397) ^ pvalue.GetHashCode();
             }
         }
 
-        public static bool operator ==(XmlItem left, XmlItem right)
+        public static bool operator ==(XmlItemTypeProperty left, XmlItemTypeProperty right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(XmlItem left, XmlItem right)
+        public static bool operator !=(XmlItemTypeProperty left, XmlItemTypeProperty right)
         {
             return !Equals(left, right);
         }

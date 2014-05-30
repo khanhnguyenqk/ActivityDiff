@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 namespace Infrastructure.ObjectModel
 {
     /// <summary>
-    /// Act like HashSet. However, is a ObservableCollection
+    /// Act like Collection of Unique items. However, is a ObservableCollection
     /// 
     /// Adding and setting will need to check for ItemExistsException.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ObservarableHashSet<T> : ObservableCollection<T>, IEquatable<ObservarableHashSet<T>>
+    public class ObservarableUniqueCollection<T> : ObservableCollection<T>, IEquatable<ObservarableUniqueCollection<T>>
     {
         protected override void InsertItem(int index, T item)
         {
@@ -27,7 +26,7 @@ namespace Infrastructure.ObjectModel
             base.SetItem(index, item);
         }
 
-        public bool Equals(ObservarableHashSet<T> other)
+        public bool Equals(ObservarableUniqueCollection<T> other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
@@ -37,9 +36,9 @@ namespace Infrastructure.ObjectModel
                 return false;
             }
 
-            foreach(var item in this)
+            for(int i = 0; i < Count; i++)
             {
-                if(!this.Any(i => i.Equals(item)))
+                if(!this[i].Equals(other[i]))
                 {
                     return false;
                 }
@@ -52,7 +51,7 @@ namespace Infrastructure.ObjectModel
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((ObservarableHashSet<T>)obj);
+            return Equals((ObservarableUniqueCollection<T>) obj);
         }
 
         public override int GetHashCode()
@@ -68,12 +67,12 @@ namespace Infrastructure.ObjectModel
             }
         }
 
-        public static bool operator ==(ObservarableHashSet<T> left, ObservarableHashSet<T> right)
+        public static bool operator ==(ObservarableUniqueCollection<T> left, ObservarableUniqueCollection<T> right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(ObservarableHashSet<T> left, ObservarableHashSet<T> right)
+        public static bool operator !=(ObservarableUniqueCollection<T> left, ObservarableUniqueCollection<T> right)
         {
             return !Equals(left, right);
         }

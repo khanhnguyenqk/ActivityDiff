@@ -25,11 +25,41 @@ namespace Infrastructure.DataType
             }
         }
 
+        private ObservarableHashSet<XmlItemStringProperty> stringProperties = new ObservarableHashSet<XmlItemStringProperty>();
+        [NotNullable]
+        public ObservarableHashSet<XmlItemStringProperty> StringProperties
+        {
+            get { return stringProperties; }
+            set
+            {
+                if(value != null && value != stringProperties)
+                {
+                    stringProperties = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservarableHashSet<XmlItemTypeProperty> typeProperties = new ObservarableHashSet<XmlItemTypeProperty>();
+        [NotNullable]
+        public ObservarableHashSet<XmlItemTypeProperty> TypeProperties
+        {
+            get { return typeProperties; }
+            set
+            {
+                if(value != null && value != typeProperties)
+                {
+                    typeProperties = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         public bool Equals(XmlType other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return string.Equals(typeName, other.typeName);
+            return string.Equals(typeName, other.typeName) && stringProperties.Equals(other.stringProperties) && typeProperties.Equals(other.typeProperties);
         }
 
         public override bool Equals(object obj)
@@ -42,7 +72,13 @@ namespace Infrastructure.DataType
 
         public override int GetHashCode()
         {
-            return typeName.GetHashCode();
+            unchecked
+            {
+                int hashCode = typeName.GetHashCode();
+                hashCode = (hashCode*397) ^ stringProperties.GetHashCode();
+                hashCode = (hashCode*397) ^ typeProperties.GetHashCode();
+                return hashCode;
+            }
         }
 
         public static bool operator ==(XmlType left, XmlType right)
