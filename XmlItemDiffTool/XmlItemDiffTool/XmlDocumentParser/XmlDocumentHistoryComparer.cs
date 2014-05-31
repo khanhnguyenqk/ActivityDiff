@@ -59,7 +59,7 @@ namespace XmlDocumentWrapper
             RemoveItems(afterClone, removeListFromAfter);
             removeListFromAfter.Clear();
 
-            // Look for Added
+            // Look for Removed
             foreach(var item in beforeClone)
             {
                 if(!afterClone.ContainsItem(item.Id))
@@ -70,19 +70,19 @@ namespace XmlDocumentWrapper
                     {
                         item.HistoryStates.Add(HistoryState.L);
                         match.HistoryStates.Add(HistoryState.L);
-                        // Todo: multitask
+                        // Todo: multitask -> Can't. L state will have race condition
                         CreateHistoryTrace(item, match);
                     }
                     else
                     {
-                        item.HistoryStates.Add(HistoryState.A);
+                        item.HistoryStates.Add(HistoryState.R);
                     }
                 }
             }
             RemoveItems(beforeClone, removeListFromBefore);
             removeListFromBefore.Clear();
 
-            // Look for Removed
+            // Look for Added
             foreach(var item in afterClone)
             {
                 if(!beforeClone.ContainsItem(item.Id))
@@ -93,12 +93,12 @@ namespace XmlDocumentWrapper
                     {
                         item.HistoryStates.Add(HistoryState.L);
                         match.HistoryStates.Add(HistoryState.L);
-                        // Todo: multitask
+                        // Todo: multitask -> Can't. L state will have race condition
                         CreateHistoryTrace(match, item);
                     }
                     else
                     {
-                        item.HistoryStates.Add(HistoryState.R);
+                        item.HistoryStates.Add(HistoryState.A);
                     }
                 }
             }
