@@ -50,9 +50,9 @@
       <Project>{cdcc49c8-f241-4a9d-8bb0-74227f959094}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XmlDocumentParser\XmlDocumentParser.csproj">
+    <ProjectReference Include="..\XmlDocumentParser\XmlDocumentWrapper.csproj">
       <Project>{4a718ca9-f69e-4fb1-ab59-203ba31dda9d}</Project>
-      <Name>XmlDocumentParser</Name>
+      <Name>XmlDocumentWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.DataType;
+using Infrastructure.Interface;
 
-namespace XmlItemDiffTool
+namespace XmlDocumentWrapper
 {
     public class XmlDocumentParser
     {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.DataType;
 using NUnit.Framework;
-using XmlItemDiffTool;
+using XmlDocumentWrapper;
 
 namespace UnitTest
 {
@@ -17,12 +17,21 @@ namespace UnitTest
         [Test]
         public void SimpleReading()
         {
-            const string fileRelPath = @"..\..\..\TestMaterials\Simple.xrml";
+            string fileRelPath = @"..\..\..\TestMaterials\Simple.xrml";
             string fullFilePath = Directory.GetCurrentDirectory();
             fullFilePath = Path.Combine(fullFilePath, fileRelPath);
             fullFilePath = Path.GetFullPath((new Uri(fullFilePath)).LocalPath);
 
-            XmlDocumentConstructed doc = XmlDocumentParser.ConstructFromFile(fullFilePath);
+            XmlDocumentConstructed doc1 = XmlDocumentParser.ConstructFromFile(fullFilePath);
+
+            fileRelPath = @"..\..\..\TestMaterials\SimpleA-R-L.xrml";
+            fullFilePath = Directory.GetCurrentDirectory();
+            fullFilePath = Path.Combine(fullFilePath, fileRelPath);
+            fullFilePath = Path.GetFullPath((new Uri(fullFilePath)).LocalPath);
+
+            XmlDocumentConstructed doc2 = XmlDocumentParser.ConstructFromFile(fullFilePath);
+
+            XmlDocumentHistoryComparer.CreateHistoryTrace(doc1.Root, doc2.Root);
         }
     }
 }

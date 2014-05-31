@@ -13,6 +13,11 @@ namespace Infrastructure.DataType
 {
     public class XmlDataItem : XmlType, IEquatable<XmlDataItem>
     {
+        /// <summary>
+        /// Metadata this is not used in object comparison.
+        /// </summary>
+        public XmlDataItem Parent { get; set; }
+
         private ObservableCollection<XmlDataItem> children = new ObservableCollection<XmlDataItem>();
         [NotNullable]
         public ObservableCollection<XmlDataItem> Children
@@ -30,6 +35,8 @@ namespace Infrastructure.DataType
 
         public XmlDataItem(XmlNode xmlNode) : base(xmlNode)
         {
+            Parent = null;
+
             if(String.IsNullOrEmpty(xmlNode.InnerText) || !xmlNode.InnerXml.Equals(xmlNode.InnerText))
             {
                 foreach(XmlNode node in xmlNode.ChildNodes)
@@ -37,11 +44,16 @@ namespace Infrastructure.DataType
                     string parentNode, nodeName;
                     if(!XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
                     {
-                        XmlDataItem di = new XmlDataItem(node);
+                        XmlDataItem di = new XmlDataItem(node, this);
                         children.Add(di);
                     }
-                }   
+                }
             }
+        }
+
+        public XmlDataItem(XmlNode xmlNode, XmlDataItem parent) : this(xmlNode)
+        {
+            Parent = parent;
         }
 
         public bool Equals(XmlDataItem other)

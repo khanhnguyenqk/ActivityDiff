@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace XmlItemDiffTool.Properties
+namespace XmlDocumentWrapper.Properties
 {
 
 

@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.Attribute;
+using Infrastructure.Enum;
 using Infrastructure.Helper;
+using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>
+    public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>, IHistoryTraceTree
     {
+        /// <summary>
+        /// Metadata this is not used in object comparison.
+        /// </summary>
+        public XmlWorkflowItem Parent { get; set; }
+
         private string id = String.Empty;
         public string Id
         {
@@ -26,9 +34,17 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservarableUniqueCollection<XmlWorkflowItem> children = new ObservarableUniqueCollection<XmlWorkflowItem>();
+        private ObservableCollection<HistoryState> historyStates = new ObservableCollection<HistoryState>();
+        public ObservableCollection<HistoryState> HistoryStates
+        {
+            get { return historyStates; }
+            set { historyStates = value; }
+        }
+
+        private ObservarableUniqueCollection<IHistoryTraceTree> children = new ObservarableUniqueCollection<IHistoryTraceTree>();
+
         [NotNullable]
-        public ObservarableUniqueCollection<XmlWorkflowItem> Children
+        public ObservarableUniqueCollection<IHistoryTraceTree> Children
         {
             get { return children; }
             set
@@ -41,9 +57,61 @@ namespace Infrastructure.DataType
             }
         }
 
+        public IHistoryTraceTree GetNode(IHistoryTraceTree item)
+        {
+            if(Equals(item))
+            {
+                return this;
+            }
+
+            foreach(var historyTraceTree in Children)
+            {
+                if(item.Equals(historyTraceTree))
+                {
+                    return historyTraceTree;
+                }
+                else
+                {
+                    IHistoryTraceTree ret = historyTraceTree.GetNode(item);
+                    if(ret != null)
+                    {
+                        return ret;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public IHistoryTraceTree GetNode(string id)
+        {
+            if(Id.Equals(id))
+            {
+                return this;
+            }
+
+            foreach(var historyTraceTree in Children)
+            {
+                if(historyTraceTree.Id.Equals(id))
+                {
+                    return historyTraceTree;
+                }
+                else
+                {
+                    IHistoryTraceTree ret = historyTraceTree.GetNode(id);
+                    if(ret != null)
+                    {
+                        return ret;
+                    }
+                }
+            }
+            return null;
+        }
+
         public XmlWorkflowItem(XmlNode xmlNode)
             : base(xmlNode)
         {
+            Parent = null;
+
             string name = (from sp in StringProperties
                 where sp.Name.Equals(@"Name")
                 select sp.Value).FirstOrDefault();
@@ -58,10 +126,15 @@ namespace Infrastructure.DataType
                 string parentNode, nodeName;
                 if(!XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
                 {
-                    XmlWorkflowItem di = new XmlWorkflowItem(node);
+                    XmlWorkflowItem di = new XmlWorkflowItem(node, this);
                     children.Add(di);
                 }
             }
+        }
+
+        public XmlWorkflowItem(XmlNode xmlNode, XmlWorkflowItem parent) : this(xmlNode)
+        {
+            Parent = parent;
         }
 
         public bool Equals(XmlWorkflowItem other)
@@ -102,7 +175,13 @@ namespace Infrastructure.DataType
 
         public override string ToString()
         {
-            return base.ToString() + String.Format(@" : ""{0}""", Id);
+            string ret = base.ToString() + String.Format(@" : ""{0}"" - ", Id);
+            foreach(var historyState in HistoryStates)
+            {
+                ret += historyState.ToString();
+            }
+            return ret;
         }
+
     }
 }

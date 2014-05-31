@@ -49,6 +49,7 @@
     <Compile Include="Exception\ItemExistsException.cs" />
     <Compile Include="Exception\XmlItemParseException.cs" />
     <Compile Include="Helper\XmlParserHelper.cs" />
+    <Compile Include="Interface\IHistoryTraceTree.cs" />
     <Compile Include="ObjectModel\NotifyPropertyChangedBase.cs" />
     <Compile Include="ObjectModel\ObservarableHashSet.cs" />
     <Compile Include="DataType\XmlDataItem.cs" />
@@ -57,9 +58,7 @@
     <Compile Include="ObjectModel\ObservarableUniqueCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interface\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

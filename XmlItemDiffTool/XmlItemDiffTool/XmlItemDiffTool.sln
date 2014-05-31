@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTe
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "Architechture", "Architechture\Architechture.modelproj", "{AEF29946-AF1D-4DED-8F76-C28AED484692}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlDocumentParser", "XmlDocumentParser\XmlDocumentParser.csproj", "{4A718CA9-F69E-4FB1-AB59-203BA31DDA9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlDocumentWrapper", "XmlDocumentParser\XmlDocumentWrapper.csproj", "{4A718CA9-F69E-4FB1-AB59-203BA31DDA9D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
