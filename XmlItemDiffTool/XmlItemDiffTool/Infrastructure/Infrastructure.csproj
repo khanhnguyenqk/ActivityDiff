@@ -45,6 +45,7 @@
     <Compile Include="DataType\XmlResource.cs" />
     <Compile Include="DataType\XmlTypeProperty.cs" />
     <Compile Include="DataType\XmlWorkflowItem.cs" />
+    <Compile Include="Enum\HistoryState.cs" />
     <Compile Include="Exception\ItemExistsException.cs" />
     <Compile Include="Exception\XmlItemParseException.cs" />
     <Compile Include="Helper\XmlParserHelper.cs" />
