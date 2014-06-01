@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Attribute;
+using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
@@ -24,6 +25,8 @@ namespace Infrastructure.DataType
                 }
             }
         }
+
+        public abstract IPropertyValue Value { get; set; }
 
         public bool Equals(XmlPropertyAbstract other)
         {

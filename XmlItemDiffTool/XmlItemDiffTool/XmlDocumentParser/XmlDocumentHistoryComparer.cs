@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Infrastructure.DataType;
 using Infrastructure.Enum;
 using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
@@ -12,7 +13,7 @@ namespace XmlDocumentWrapper
 {
     public static class XmlDocumentHistoryComparer
     {
-        public static void CreateHistoryTrace(IHistoryTraceTree before, IHistoryTraceTree after)
+        public static void CreateHistoryTrace(XmlWorkflowItem before, XmlWorkflowItem after)
         {
             if(before.Equals(after))
             {
@@ -24,20 +25,20 @@ namespace XmlDocumentWrapper
             before.HistoryStates.Add(HistoryState.D);
             after.HistoryStates.Add(HistoryState.D);
 
-            List<IHistoryTraceTree> beforeClone = new List<IHistoryTraceTree>();
+            List<XmlWorkflowItem> beforeClone = new List<XmlWorkflowItem>();
             foreach(var child in before.Children)
             {
                 beforeClone.Add(child);
             }
 
-            List<IHistoryTraceTree> afterClone = new List<IHistoryTraceTree>();
+            List<XmlWorkflowItem> afterClone = new List<XmlWorkflowItem>();
             foreach(var child in after.Children)
             {
                 afterClone.Add(child);
             }
 
-            List<IHistoryTraceTree> removeListFromBefore = new List<IHistoryTraceTree>();
-            List<IHistoryTraceTree> removeListFromAfter = new List<IHistoryTraceTree>();
+            List<XmlWorkflowItem> removeListFromBefore = new List<XmlWorkflowItem>();
+            List<XmlWorkflowItem> removeListFromAfter = new List<XmlWorkflowItem>();
 
             // Remove any entry that have L mark
             foreach(var item in beforeClone)
@@ -65,7 +66,7 @@ namespace XmlDocumentWrapper
                 if(!afterClone.ContainsItem(item.Id))
                 {
                     removeListFromBefore.Add(item);
-                    IHistoryTraceTree match = after.GetNode(item.Id);
+                    XmlWorkflowItem match = after.GetNode(item.Id);
                     if(match != null)
                     {
                         item.HistoryStates.Add(HistoryState.L);
@@ -88,7 +89,7 @@ namespace XmlDocumentWrapper
                 if(!beforeClone.ContainsItem(item.Id))
                 {
                     removeListFromAfter.Add(item);
-                    IHistoryTraceTree match = before.GetNode(item.Id);
+                    XmlWorkflowItem match = before.GetNode(item.Id);
                     if(match != null)
                     {
                         item.HistoryStates.Add(HistoryState.L);
@@ -108,7 +109,7 @@ namespace XmlDocumentWrapper
             CheckItemMovedAround(beforeClone, afterClone);
         }
 
-        private static void CheckItemMovedAround(IList<IHistoryTraceTree> before, IList<IHistoryTraceTree> after)
+        private static void CheckItemMovedAround(IList<XmlWorkflowItem> before, IList<XmlWorkflowItem> after)
         {
             if(before.Count != after.Count)
             {
@@ -129,7 +130,7 @@ namespace XmlDocumentWrapper
             }
             else
             {
-                IHistoryTraceTree match = after.GetNode(before[0].Id);
+                XmlWorkflowItem match = after.GetNode(before[0].Id);
                 if(match == null)
                 {
                     throw new Exception(@"Can't perform on 2 different set.");
@@ -143,7 +144,7 @@ namespace XmlDocumentWrapper
             }
         }
 
-        private static IHistoryTraceTree GetNode(this IEnumerable<IHistoryTraceTree> list, string id)
+        private static XmlWorkflowItem GetNode(this IEnumerable<XmlWorkflowItem> list, string id)
         {
             foreach(var item in list)
             {
@@ -163,7 +164,7 @@ namespace XmlDocumentWrapper
             }
         }
 
-        private static bool ContainsItem(this IEnumerable<IHistoryTraceTree> list, string id)
+        private static bool ContainsItem(this IEnumerable<XmlWorkflowItem> list, string id)
         {
             foreach(var item in list)
             {

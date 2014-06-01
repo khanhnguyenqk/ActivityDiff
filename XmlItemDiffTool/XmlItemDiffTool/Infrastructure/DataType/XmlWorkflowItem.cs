@@ -13,7 +13,7 @@ using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>, IHistoryTraceTree
+    public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>
     {
         /// <summary>
         /// Metadata this is not used in object comparison.
@@ -34,17 +34,17 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservableCollection<HistoryState> historyStates = new ObservableCollection<HistoryState>();
-        public ObservableCollection<HistoryState> HistoryStates
+        private ObservableList<HistoryState> historyStates = new ObservableList<HistoryState>();
+        public ObservableList<HistoryState> HistoryStates
         {
             get { return historyStates; }
             set { historyStates = value; }
         }
 
-        private ObservarableUniqueCollection<IHistoryTraceTree> children = new ObservarableUniqueCollection<IHistoryTraceTree>();
+        private ObservarableUniqueCollection<XmlWorkflowItem> children = new ObservarableUniqueCollection<XmlWorkflowItem>();
 
         [NotNullable]
-        public ObservarableUniqueCollection<IHistoryTraceTree> Children
+        public ObservarableUniqueCollection<XmlWorkflowItem> Children
         {
             get { return children; }
             set
@@ -57,22 +57,22 @@ namespace Infrastructure.DataType
             }
         }
 
-        public IHistoryTraceTree GetNode(IHistoryTraceTree item)
+        public XmlWorkflowItem GetNode(XmlWorkflowItem item)
         {
             if(Equals(item))
             {
                 return this;
             }
 
-            foreach(var historyTraceTree in Children)
+            foreach(var child in Children)
             {
-                if(item.Equals(historyTraceTree))
+                if(item.Equals(child))
                 {
-                    return historyTraceTree;
+                    return child;
                 }
                 else
                 {
-                    IHistoryTraceTree ret = historyTraceTree.GetNode(item);
+                    XmlWorkflowItem ret = child.GetNode(item);
                     if(ret != null)
                     {
                         return ret;
@@ -82,22 +82,22 @@ namespace Infrastructure.DataType
             return null;
         }
 
-        public IHistoryTraceTree GetNode(string id)
+        public XmlWorkflowItem GetNode(string id)
         {
             if(Id.Equals(id))
             {
                 return this;
             }
 
-            foreach(var historyTraceTree in Children)
+            foreach(var child in Children)
             {
-                if(historyTraceTree.Id.Equals(id))
+                if(child.Id.Equals(id))
                 {
-                    return historyTraceTree;
+                    return child;
                 }
                 else
                 {
-                    IHistoryTraceTree ret = historyTraceTree.GetNode(id);
+                    XmlWorkflowItem ret = child.GetNode(id);
                     if(ret != null)
                     {
                         return ret;
@@ -112,9 +112,9 @@ namespace Infrastructure.DataType
         {
             Parent = null;
 
-            string name = (from sp in StringProperties
+            string name = (from sp in Properties
                 where sp.Name.Equals(@"Name")
-                select sp.Value).FirstOrDefault();
+                select sp.Value.ToString()).FirstOrDefault();
             if(String.IsNullOrEmpty(name))
             {
                 throw new XmlItemParseException(@"A workflow item doesn't have a name.", xmlNode.OuterXml);

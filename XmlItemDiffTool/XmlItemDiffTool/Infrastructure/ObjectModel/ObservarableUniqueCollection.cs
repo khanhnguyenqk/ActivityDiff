@@ -9,7 +9,7 @@ namespace Infrastructure.ObjectModel
     /// Adding and setting will need to check for ItemExistsException.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ObservarableUniqueCollection<T> : ObservableCollection<T>, IEquatable<ObservarableUniqueCollection<T>>
+    public class ObservarableUniqueCollection<T> : ObservableList<T>, IEquatable<ObservarableUniqueCollection<T>>
     {
         protected override void InsertItem(int index, T item)
         {
@@ -31,19 +31,7 @@ namespace Infrastructure.ObjectModel
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
 
-            if(Count != other.Count)
-            {
-                return false;
-            }
-
-            for(int i = 0; i < Count; i++)
-            {
-                if(!this[i].Equals(other[i]))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return base.Equals(other);
         }
 
         public override bool Equals(object obj)

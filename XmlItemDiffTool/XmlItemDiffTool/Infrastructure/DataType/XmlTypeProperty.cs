@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.Attribute;
 using Infrastructure.Helper;
+using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
@@ -14,15 +15,19 @@ namespace Infrastructure.DataType
     {
         private XmlDataItem pvalue;
         [NotNullable]
-        public XmlDataItem Value
+        public override IPropertyValue Value
         {
             get { return pvalue; }
             set
             {
-                if(value != null && pvalue != value)
+                if(value is XmlDataItem)
                 {
-                    pvalue = value;
-                    NotifyPropertyChanged();
+                    XmlDataItem cValue = value as XmlDataItem;
+                    if(pvalue != cValue)
+                    {
+                        pvalue = value as XmlDataItem;
+                        NotifyPropertyChanged();
+                    }
                 }
             }
         }

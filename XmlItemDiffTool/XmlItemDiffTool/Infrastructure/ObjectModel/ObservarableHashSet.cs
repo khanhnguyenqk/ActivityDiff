@@ -10,7 +10,7 @@ namespace Infrastructure.ObjectModel
     /// Adding and setting will need to check for ItemExistsException.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ObservarableHashSet<T> : ObservableCollection<T>, IEquatable<ObservarableHashSet<T>>
+    public class ObservarableHashSet<T> : ObservableList<T>, IEquatable<ObservarableHashSet<T>>
     {
         protected override void InsertItem(int index, T item)
         {
@@ -39,7 +39,7 @@ namespace Infrastructure.ObjectModel
 
             foreach(var item in this)
             {
-                if(!this.Any(i => i.Equals(item)))
+                if(!other.Any(i => i.Equals(item)))
                 {
                     return false;
                 }

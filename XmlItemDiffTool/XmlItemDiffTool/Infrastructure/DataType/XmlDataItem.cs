@@ -7,20 +7,21 @@ using System.Collections.ObjectModel;
 using System.Xml;
 using Infrastructure.Attribute;
 using Infrastructure.Helper;
+using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlDataItem : XmlType, IEquatable<XmlDataItem>
+    public class XmlDataItem : XmlType, IEquatable<XmlDataItem>, IPropertyValue
     {
         /// <summary>
         /// Metadata this is not used in object comparison.
         /// </summary>
         public XmlDataItem Parent { get; set; }
 
-        private ObservableCollection<XmlDataItem> children = new ObservableCollection<XmlDataItem>();
+        private ObservableList<XmlDataItem> children = new ObservableList<XmlDataItem>();
         [NotNullable]
-        public ObservableCollection<XmlDataItem> Children
+        public ObservableList<XmlDataItem> Children
         {
             get { return children; }
             set

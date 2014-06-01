@@ -8,22 +8,23 @@ using System.Runtime.CompilerServices;
 using System.Xml;
 using Infrastructure.Attribute;
 using Infrastructure.Helper;
+using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlStringProperty : XmlPropertyAbstract, IEquatable<XmlStringProperty>
+    public sealed class XmlStringProperty : XmlPropertyAbstract, IEquatable<XmlStringProperty>
     {
-        private string pValue = String.Empty;
+        private PropertyStringValue pValue = String.Empty;
         [NotNullable]
-        public string Value
+        public override IPropertyValue Value
         {
             get { return pValue; }
             set
             {
                 if(value != null && !value.Equals(pValue))
                 {
-                    pValue = value;
+                    pValue = value.ToString();
                     NotifyPropertyChanged();
                 }
             }
@@ -32,13 +33,13 @@ namespace Infrastructure.DataType
         public XmlStringProperty(XmlAttribute xmlAttribute)
         {
             Name = xmlAttribute.LocalName;
-            Value = xmlAttribute.Value;
+            Value = (PropertyStringValue)xmlAttribute.Value;
         }
 
         public XmlStringProperty(string name, string value1)
         {
             Name = name;
-            Value = value1;
+            Value = (PropertyStringValue)value1;
         }
 
         public bool Equals(XmlStringProperty other)

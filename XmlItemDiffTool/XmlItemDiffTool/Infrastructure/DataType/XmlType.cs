@@ -27,31 +27,16 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservarableHashSet<XmlStringProperty> stringProperties = new ObservarableHashSet<XmlStringProperty>();
+        private ObservarableHashSet<XmlPropertyAbstract> properties = new ObservarableHashSet<XmlPropertyAbstract>();
         [NotNullable]
-        public ObservarableHashSet<XmlStringProperty> StringProperties
+        public ObservarableHashSet<XmlPropertyAbstract> Properties
         {
-            get { return stringProperties; }
+            get { return properties; }
             set
             {
-                if(value != null && value != stringProperties)
+                if(value != null && value != properties)
                 {
-                    stringProperties = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
-        private ObservarableHashSet<XmlTypeProperty> typeProperties = new ObservarableHashSet<XmlTypeProperty>();
-        [NotNullable]
-        public ObservarableHashSet<XmlTypeProperty> TypeProperties
-        {
-            get { return typeProperties; }
-            set
-            {
-                if(value != null && value != typeProperties)
-                {
-                    typeProperties = value;
+                    properties = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -65,7 +50,7 @@ namespace Infrastructure.DataType
                 foreach(XmlAttribute att in xmlNode.Attributes)
                 {
                     XmlStringProperty p = new XmlStringProperty(att);
-                    StringProperties.Add(p);
+                    Properties.Add(p);
                 }
             }
             if(!String.IsNullOrEmpty(xmlNode.InnerText) && xmlNode.InnerXml.Equals(xmlNode.InnerText))  
@@ -76,7 +61,7 @@ namespace Infrastructure.DataType
                     throw new XmlItemParseException(@"When inner text and inner xml are the same, expect only 1 child node.", 
                         xmlNode.OuterXml);
                 }
-                StringProperties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText));
+                Properties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText));
             }
             else
             {
@@ -90,17 +75,24 @@ namespace Infrastructure.DataType
                             throw new XmlItemParseException(@"Property node has different parent name with its parent.", node.OuterXml);
                         }
                         XmlTypeProperty tp = new XmlTypeProperty(node);
-                        TypeProperties.Add(tp);
+                        Properties.Add(tp);
                     }
                 }
             }
+        }
+
+        public bool ArePropertiesEqual(XmlType other)
+        {
+            if(ReferenceEquals(null, other)) return false;
+            if(ReferenceEquals(this, other)) return true;
+            return properties.Equals(other.properties);
         }
 
         public bool Equals(XmlType other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return string.Equals(typeName, other.typeName) && stringProperties.Equals(other.stringProperties) && typeProperties.Equals(other.typeProperties);
+            return string.Equals(typeName, other.typeName) && properties.Equals(other.properties);
         }
 
         public override bool Equals(object obj)
@@ -116,8 +108,7 @@ namespace Infrastructure.DataType
             unchecked
             {
                 int hashCode = typeName.GetHashCode();
-                hashCode = (hashCode*397) ^ stringProperties.GetHashCode();
-                hashCode = (hashCode*397) ^ typeProperties.GetHashCode();
+                hashCode = (hashCode*397) ^ properties.GetHashCode();
                 return hashCode;
             }
         }
