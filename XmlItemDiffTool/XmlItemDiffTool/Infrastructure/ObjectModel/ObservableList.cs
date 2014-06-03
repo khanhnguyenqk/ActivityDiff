@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -62,6 +63,18 @@ namespace Infrastructure.ObjectModel
         public static bool operator !=(ObservableList<T> left, ObservableList<T> right)
         {
             return !Equals(left, right);
+        }
+
+        public new virtual bool Contains(T matchItem)
+        {
+            foreach(var item in this)
+            {
+                if(item.Equals(matchItem))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

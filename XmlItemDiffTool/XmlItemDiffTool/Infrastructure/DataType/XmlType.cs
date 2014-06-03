@@ -5,13 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.Attribute;
-using Infrastructure.Helper;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
     public class XmlType : NotifyPropertyChangedBase, IEquatable<XmlType>
     {
+        /// <summary>
+        /// Meta data. Contains information of properties that changed.
+        /// </summary>
+        private ObservableList<XmlStringPropertyHistory> changedProperties = new ObservableList<XmlStringPropertyHistory>();
+        [NotNullable]
+        public ObservableList<XmlStringPropertyHistory> ChangedProperties
+        {
+            get { return changedProperties; }
+            set
+            {
+                if(!changedProperties.Equals(value))
+                {
+                    changedProperties = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private string typeName = String.Empty;
         [NotNullable]
         public string TypeName
@@ -49,7 +66,7 @@ namespace Infrastructure.DataType
             {
                 foreach(XmlAttribute att in xmlNode.Attributes)
                 {
-                    XmlStringProperty p = new XmlStringProperty(att);
+                    XmlStringProperty p = new XmlStringProperty(att, this);
                     Properties.Add(p);
                 }
             }
@@ -61,7 +78,7 @@ namespace Infrastructure.DataType
                     throw new XmlItemParseException(@"When inner text and inner xml are the same, expect only 1 child node.", 
                         xmlNode.OuterXml);
                 }
-                Properties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText));
+                Properties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText, this));
             }
             else
             {
@@ -74,7 +91,7 @@ namespace Infrastructure.DataType
                         {
                             throw new XmlItemParseException(@"Property node has different parent name with its parent.", node.OuterXml);
                         }
-                        XmlTypeProperty tp = new XmlTypeProperty(node);
+                        XmlTypeProperty tp = new XmlTypeProperty(node, this);
                         Properties.Add(tp);
                     }
                 }

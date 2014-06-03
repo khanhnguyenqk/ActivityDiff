@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using Infrastructure.Attribute;
-using Infrastructure.Helper;
 using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
@@ -30,16 +29,18 @@ namespace Infrastructure.DataType
             }
         }
 
-        public XmlStringProperty(XmlAttribute xmlAttribute)
+        public XmlStringProperty(XmlAttribute xmlAttribute, XmlType host)
         {
             Name = xmlAttribute.LocalName;
             Value = (PropertyStringValue)xmlAttribute.Value;
+            Host = host;
         }
 
-        public XmlStringProperty(string name, string value1)
+        public XmlStringProperty(string name, string value1, XmlType host)
         {
             Name = name;
             Value = (PropertyStringValue)value1;
+            Host = host;
         }
 
         public bool Equals(XmlStringProperty other)

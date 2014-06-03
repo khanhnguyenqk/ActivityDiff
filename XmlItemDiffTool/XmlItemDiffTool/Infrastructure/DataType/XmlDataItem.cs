@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.ObjectModel;
 using System.Xml;
 using Infrastructure.Attribute;
-using Infrastructure.Helper;
 using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
@@ -18,6 +12,8 @@ namespace Infrastructure.DataType
         /// Metadata this is not used in object comparison.
         /// </summary>
         public XmlDataItem Parent { get; set; }
+
+        public XmlPropertyAbstract PropertyHost { get; set; }
 
         private ObservableList<XmlDataItem> children = new ObservableList<XmlDataItem>();
         [NotNullable]
@@ -50,6 +46,11 @@ namespace Infrastructure.DataType
                     }
                 }
             }
+        }
+
+        public XmlDataItem(XmlNode xmlNode, XmlPropertyAbstract propertyHost):this(xmlNode)
+        {
+            PropertyHost = propertyHost;
         }
 
         public XmlDataItem(XmlNode xmlNode, XmlDataItem parent) : this(xmlNode)

@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.Attribute;
-using Infrastructure.Helper;
 using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
 {
-    public class XmlTypeProperty: XmlPropertyAbstract, IEquatable<XmlTypeProperty>
+    public sealed class XmlTypeProperty: XmlPropertyAbstract, IEquatable<XmlTypeProperty>
     {
         private XmlDataItem pvalue;
         [NotNullable]
@@ -32,7 +31,7 @@ namespace Infrastructure.DataType
             }
         }
 
-        public XmlTypeProperty(XmlNode xmlNode)
+        public XmlTypeProperty(XmlNode xmlNode, XmlType host)
         {
             if(xmlNode.ChildNodes.Count != 1)
             {
@@ -49,7 +48,8 @@ namespace Infrastructure.DataType
                 throw new XmlItemParseException(@"A property node name has to have a parent type.", xmlNode.OuterXml);
             }
 
-            Value = new XmlDataItem(xmlNode.ChildNodes[0]);
+            Value = new XmlDataItem(xmlNode.ChildNodes[0], this);
+            Host = host;
         }
 
         public bool Equals(XmlTypeProperty other)

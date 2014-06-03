@@ -11,6 +11,23 @@ namespace Infrastructure.DataType
 {
     public abstract class XmlPropertyAbstract : NotifyPropertyChangedBase, IEquatable<XmlPropertyAbstract>
     {
+        private XmlType host;
+        /// <summary>
+        /// Metadata: the type that hosts this 
+        /// </summary>
+        public XmlType Host
+        {
+            get { return host; }
+            set
+            {
+                if(!ReferenceEquals(host, value))
+                {
+                    host = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private string name = String.Empty;
         [NotNullable]
         public string Name
@@ -61,6 +78,40 @@ namespace Infrastructure.DataType
         public override string ToString()
         {
             return Name;
+        }
+
+        public XmlPropertyPath GetPathToRoot()
+        {   // Todo: Deal with ARRAY
+            XmlPropertyPath ret = new XmlPropertyPath();
+            if(Host is XmlDataItem)
+            {
+                XmlDataItem di = Host as XmlDataItem;
+                if(di.PropertyHost != null)
+                {
+                    ret = di.PropertyHost.GetPathToRoot();
+                }
+            }
+
+            ret.Add(this);
+
+            return ret;
+        }
+    }
+
+    public class XmlPropertyPath : List<XmlPropertyAbstract>
+    {
+        public override string ToString()
+        {
+            string ret = String.Empty;
+            foreach(var item in this)
+            {
+                if(!String.IsNullOrEmpty(ret))
+                {
+                    ret += '.';
+                }
+                ret += item.Name;
+            }
+            return ret;
         }
     }
 }

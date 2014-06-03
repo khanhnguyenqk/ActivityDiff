@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.Attribute;
 using Infrastructure.Enum;
-using Infrastructure.Helper;
-using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
+using Microsoft.SqlServer.Server;
 
 namespace Infrastructure.DataType
 {
@@ -20,15 +19,25 @@ namespace Infrastructure.DataType
         /// </summary>
         public XmlWorkflowItem Parent { get; set; }
 
-        private string id = String.Empty;
+        /// <summary>
+        /// Unique name of a WorkflowItem
+        /// </summary>
+        [NotNullable]
         public string Id
         {
-            get { return id; }
+            get { return String.Format(@"{0} - {1}", TypeName, Name); }
+        }
+
+        private string name = String.Empty;
+        [NotNullable]
+        public string Name
+        {
+            get { return name; }
             set
             {
-                if(value != null && !value.Equals(id))
+                if(value != null && !value.Equals(name))
                 {
-                    id = value;
+                    name = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -119,7 +128,7 @@ namespace Infrastructure.DataType
             {
                 throw new XmlItemParseException(@"A workflow item doesn't have a name.", xmlNode.OuterXml);
             }
-            Id = name;
+            Name = name;
 
             foreach(XmlNode node in xmlNode.ChildNodes)
             {
@@ -141,7 +150,7 @@ namespace Infrastructure.DataType
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return base.Equals(other) && string.Equals(id, other.id) && children.Equals(other.children);
+            return base.Equals(other) && string.Equals(Name, other.Name) && Children.Equals(other.Children);
         }
 
         public override bool Equals(object obj)
@@ -157,8 +166,8 @@ namespace Infrastructure.DataType
             unchecked
             {
                 int hashCode = base.GetHashCode();
-                hashCode = (hashCode * 397) ^ id.GetHashCode();
-                hashCode = (hashCode * 397) ^ children.GetHashCode();
+                hashCode = (hashCode * 397) ^ Name.GetHashCode();
+                hashCode = (hashCode * 397) ^ Children.GetHashCode();
                 return hashCode;
             }
         }
@@ -175,7 +184,7 @@ namespace Infrastructure.DataType
 
         public override string ToString()
         {
-            string ret = base.ToString() + String.Format(@" : ""{0}"" - ", Id);
+            string ret = base.ToString() + String.Format(@" : ""{0}"" - ", Name);
             foreach(var historyState in HistoryStates)
             {
                 ret += historyState.ToString();
@@ -183,5 +192,37 @@ namespace Infrastructure.DataType
             return ret;
         }
 
+        public XmlWorkflowPath GetPathToRoot()
+        {
+            XmlWorkflowPath ret;
+            if(Parent != null)
+            {
+                ret = Parent.GetPathToRoot();
+            }
+            else
+            {
+                ret = new XmlWorkflowPath();
+            }
+            ret.Add(this);
+            return ret;
+        }
+
+    }
+
+    public class XmlWorkflowPath : List<XmlWorkflowItem>
+    {
+        public override string ToString()
+        {
+            string ret = String.Empty;
+            foreach(var item in this)
+            {
+                if(!String.IsNullOrEmpty(ret))
+                {
+                    ret += '.';
+                }
+                ret += String.Format(@"[{0}]", item.Name);
+            }
+            return ret;
+        }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace Infrastructure.Helper
+namespace Infrastructure
 {
     public static class XmlParserHelper
     {
