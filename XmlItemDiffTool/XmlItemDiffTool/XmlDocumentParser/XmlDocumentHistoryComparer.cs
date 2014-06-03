@@ -14,6 +14,71 @@ namespace XmlDocumentWrapper
 {
     public static class XmlDocumentHistoryComparer
     {
+        public static string HistoryTraceToString(XmlWorkflowItem before, XmlWorkflowItem after)
+        {
+            if(before.HistoryStates.Count == 0)
+            {
+                return String.Empty;
+            }
+            if(before.HistoryStates.Count == 1 && before.HistoryStates.Contains(HistoryState.I))
+            {
+                return String.Empty;
+            }
+
+            string ret = String.Empty;
+            if(!(before.HistoryStates.Count == 1 && before.HistoryStates.Contains(HistoryState.D)))
+            {
+                ret = before.GetPathToRoot() + @": ";
+                foreach(var historyState in before.HistoryStates)
+                {
+                    if(historyState != HistoryState.I &&
+                       historyState != HistoryState.P &&
+                       historyState != HistoryState.L &&
+                       historyState != HistoryState.D)
+                    {
+                        ret += historyState.ToString();   
+                    }
+                }
+                ret += Environment.NewLine;
+                if(before.HistoryStates.Contains(HistoryState.L))
+                {
+                    ret += @"    Moved to a different level -> ";
+                    ret += after.GetNode(before.Id).GetPathToRoot() + Environment.NewLine;
+                }
+                if(before.HistoryStates.Contains(HistoryState.P))
+                {
+                    ret += @"    Properties changed:" + Environment.NewLine;
+                    foreach(var item in before.ChangedProperties)
+                    {
+                        ret += @"        " + item.OriginalProperty.GetPathToRoot() + @" "
+                               + item + Environment.NewLine;
+                    }
+                }
+            }
+
+            foreach(var xmlWorkflowItem in before.Children)
+            {
+                ret += HistoryTraceToString(xmlWorkflowItem, after);
+            }
+
+            return ret;
+        }
+
+        public static string AddedWorkflowItemsDemonstration(XmlWorkflowItem after)
+        {
+            string ret = String.Empty;
+            if(after.HistoryStates.Contains(HistoryState.A))
+            {
+                ret = after.GetPathToRoot() + @": A" + Environment.NewLine;
+            }
+            foreach(var xmlWorkflowItem in after.Children)
+            {
+                ret += AddedWorkflowItemsDemonstration(xmlWorkflowItem);
+            }
+
+            return ret;
+        }
+
         public static void CreateHistoryTrace(XmlWorkflowItem before, XmlWorkflowItem after)
         {
             if(before.Equals(after))
@@ -159,7 +224,7 @@ namespace XmlDocumentWrapper
                                 XmlStringPropertyHistory sph = new XmlStringPropertyHistory
                                 {
                                     OriginalProperty = property,
-                                    OriginalValue = @"NULL",
+                                    OriginalValue = @"null",
                                     ChangedValue = String.Format(@"new {0}", newType)
                                 };
                                 ret.Add(sph);
@@ -180,7 +245,7 @@ namespace XmlDocumentWrapper
                                 {
                                     OriginalProperty = property,
                                     OriginalValue = String.Format(@"delete {0}", oldType),
-                                    ChangedValue = @"NULL"
+                                    ChangedValue = @"null"
                                 };
                                 ret.Add(sph);
                             }
@@ -213,7 +278,7 @@ namespace XmlDocumentWrapper
                         XmlTypeProperty mTypeProperty = match as XmlTypeProperty;
                         if(mTypeProperty != null)
                         {
-                            List<XmlStringPropertyHistory> result = 
+                            List<XmlStringPropertyHistory> result =
                                 CreatePropertyChangeHistory(property.Value as XmlType, mTypeProperty.Value as XmlType);
                             AddItems(ret, result);
                         }

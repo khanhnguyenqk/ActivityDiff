@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1542" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3hhOI1rVe8/DwBFMJVzuX4xA12PnQJzEpHeGWQyBcA3YFbLQtHsbWcAeJBCUaiiJykIhlQrmkVAkPKU/bzzPIFeA+M6MpjqrylZO4UCtol6Z8q2gOcXyIEzrV3HCrwAMgumbrsKzB5i10mIM2b28Ql8K8A5U/3poC6oW+7S0PtWn57ZC4O5mXwQdsi28cpu615667Jx0jgyl2nU4lF9K/+n9uN+uEmJdrctSFqsSMqf2dmI1EqQmpJ7TR7GhEEKBdSsprEYpEAfMnxjZMdJy0c8RIYX2qIZw0fvWZ0CT9mCqyf4vJ9OqrCsHGvkIihnmTMrx5qNpT6nGYPdA39xXkb8IzmlcVBfNZkhnmsgqlBQ908Am46nJz5NdUBeFvgaT45HEzSQZVliutWWoGw4L81WXL4Ekr6+6yRJYeHip2nnUphxO9o7HbmVSZGyA7GgMDYrhtQHriWFhPzdhExCIFasINIczMGpnRy4m7GeQvoQr+BYBwkM2+0LlSapjqoPj7dEUv9BG9drtb2T4P2g/7vHpJXq6qcU5DOLqWKiDwx+KzDQklW+nODllPv6suCG5gnlqVPdHoEGZhCSbtKNzVWGhP3+q/mfVegRDK/7YtURFA/S8sgqh8UkwczXTqRCwx9mRpTz82sZX7yRGT+BiqU0LY8fwLaJIqcK9UKNBB31gaJg4tryE2hQHuczakVy7OJXHRNFhvBDhPOfbDiLXxBFB2TthyXMsCbS5crMI0LjmdGIGKJ1bVscqmlCr1qKGCC/p+ls6YE6puQy2csF86bSO1kWs9MDVzOvlE205vcljgdTSqoD/pyknNEOrQ5FhDHRs3TAmKmUdwvA0wXkSp9nC7ftA0cC3hbYGEpHbDXIthp1BugtBK7VQA3kPk1vjlXS9DJ4vMydUr58dWr9J2kY5877/3Bsn/RQ+Ucwf8jsQ0LbtdPLQyp3WWPJWO5cPcxpdo1Snjw43LvpyBRffRcaI5rd2nvDSEo6V3zik7OlpmAWyy0kS7BLLIuxC5eBHqiGGTbjzZJzzOvGD1PpjsK/EGMN7JFa6/XHfiyjDfWwFqNR+UrYCsljkRIMlJArkScRL5S46Qw7m5Z6mPE/Y/mtUmaWaXcn4tkTXhfD5zfZkxBbjHbGx76aM78/yK2EmbJP+U6S+vvtn3aS1cBf15sXQp9BMKYi/lBjGiFlX8O7tP6WFRGfHjxkJOdmGcwD7yQhfe9/PRj+ZUFRat976xOCcSvOKnr8FLRCk9fceiaEtcKyPVD98g1UUCo9YHVzGbMOxvELr/aPBUqdpNQnGbQ9EaBw6ykCYFgD3ShWwTOlo91kHhfMV83LPeXpzV8HjTzEN1BbcKVaIgiLVj/CEcRA==">
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1542" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3hhOI1rVe8/DwBFMJVzuX4xA12PnQJzEpHeGWQyBcA3YFbLQtHsbWcAeJBCUaiiJykIhlQrmkVAkPKU/bzzPIFeA+M6MpjqrylZO4UCtol6Z8q2gOcXyIEzrV3HCrwAMgumbrsKzB5i10mIM2b28Ql8K8A5U/3poC6oW+7S0PtWn57ZC4O5mXwQdsi28cpu61YGgQbOD5GXjh9yhZJOQWaQ1TufclBn2j7j+aeXwZnPmyXOqIWHgdyZ6kpFWOWv8XqG+KHnmkpmE9X3EoNHhsvMu4yqPJCcZ72j4jxIoDMFLD1qg/VxfI5Wd5mYqNd41WYvU6bPJ+22jlEjBasw5/S6qaZ8C+qCsHcCy7WeV38SciYS/yj9GzwTVl5EUfNiuZl7VgLOqiu5cCh2T5oqfkjg/77HQ4xKzHpABieCGz+AsiLx8KdXjXeqZmpLDI56whsAu3iyUStPTEx7KzrfWiMLQkRc65Y7Z9j4tkP7nU4NGXdnpjT410nDJg0sRa8+5U+OJY5SW9M/C2oCwUmjWsHEktjl0v3XfAnCZIN6MSBaeUDujSaIUS6mdmhOOV0DIaa1l0RwEpUkkoLs+3hF1KQSnYAj5GOj0M0peN9ncotesfoXnHzhkT64/mLeQIX21pGJRdE/nYkIn0/NL1QNePDSO6W0PzMkLbrl2TxqKEypSSh4hg5D+KX3HMT2YOnV5+vfMwN7bsi7ixCyAMH0rB6cpEsaNy++Tib7PgKe4sXy23X2/AgPPHF+YHJupQWJ7LpP1OUQjNlbmptsxxeVLjGAzYLiBhNype3+Pb5mfPpxftWDf4GFeTUD+a/pL725dY2JURqzEHDf2o1ydsHRk3hWUn4qhcITX2qQ1TCV1fRalJmWA9vvaJvvCcCInXikDku93P8X9Y3LLMJ3Fq26kHf43UBTkppDAr+fnRTkM9g2kxLRvIDT9kh6OGjK1lXIAA4bsMMBdFgO0eBePhD/sFvuSniQnXi5RjyanCmE/7NlrSwnHoYaHlhEhgNEAqBk/UTEK3uA/heN2t8zNwCSqVU0NdKAKSIeNuOKmj2h/IFqD7gYan6nT1vq21Q0QbJynnUnbNb6O4QznzlnRQXs68y+ZVAD8NFbQaTTnar1me7FkVCu9p1YSB12X9h3x9g+gc42XclyrHLn6bTmfZQ6RHcstCy4cOUCmd4pE6GlnQJhpohvpbrnwEOg+L76xWjeLs8/JfhzyhGHUKRk7gfRpcJihQPLXBFTSpSKs0mYU1FNKUiKNqBM/ZPymXB2cIeLXC2yxqeZiixBcaKRriQ6fr8wSk/TvE3YSJ4nvHpeEbd0gZF/PTw0EU0qWA1YwPzYyTCrLfmLrvCs038XgdivWOVZAvz9ctB8MZfUdc5oRV/79MYOVqSqHnAuWJ+VemGyBqIS6xs1aCgWwf58kcUMozjAC3njjarFAzmdYxC8PvylmDByRLZLTJGxqdjNshzJIy">
 <Workflow>
 <ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="S A-R-L-M-P" xmlns:ns1="clr-namespace:Fei.Workflow.Activities.xT.SiteProcessingActivities;Assembly=Fei.Workflow.Activities.xT, Version=3.3.1101.2237, Culture=neutral, PublicKeyToken=null" xmlns:ns2="clr-namespace:Fei.Workflow.Activities.xT;assembly=Fei.Workflow.Activities.xT, SerializedRevision=3.0" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/workflow" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
 	<ns1:SiteProcessorActivity LocationX="{x:Null}" AlignmentOptions="DeskewOnceAlignmentOnce" LamellaOrientation="{x:Null}" x:Name="SiteProcessor" TraversalMethod="SiteOriented" OptimizeSiteList="True" Expanded="True" BlockList="{x:Null}" UseSiteTracking="True" ActivityType="Site Processor" LocationY="{x:Null}">
@@ -9,7 +9,7 @@
 		<ns1:SiteProcessorActivity.Expressions>
 			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 		</ns1:SiteProcessorActivity.Expressions>
-		<ns1:SiteProcessingBlockActivity Unlocked="True" RecipePath="{x:Null}" ProcessingOffset="None" Expanded="False" EncodedIcon="" TraversalMethod="NotSpecified" CustomProcessingOffset="{x:Null}" ActivityType="Site Processing Block" Version="0" BlockSiteList="{x:Null}" LamellaOrientationDelta="{x:Null}" SetupBlock="False" Password="{x:Null}" x:Name="SiteProcessingBlock" VersionCreationTime="0001-01-01T00:00:00.0000000" IgnoreProcessingOffset="False" UseSiteTracking="True" FaultAction="FailSite" VersionCreationId="{x:Null}">
+		<ns1:SiteProcessingBlockActivity Unlocked="True" RecipePath="{x:Null}" ProcessingOffset="None" Expanded="True" EncodedIcon="" TraversalMethod="NotSpecified" CustomProcessingOffset="{x:Null}" ActivityType="Site Processing Block" Version="0" BlockSiteList="{x:Null}" LamellaOrientationDelta="{x:Null}" SetupBlock="False" Password="{x:Null}" x:Name="SiteProcessingBlock" VersionCreationTime="0001-01-01T00:00:00.0000000" IgnoreProcessingOffset="False" UseSiteTracking="True" FaultAction="FailSite" VersionCreationId="{x:Null}">
 			<ns1:SiteProcessingBlockActivity.RotationAngle>
 				<ns3:Angle RawValue="0" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
 			</ns1:SiteProcessingBlockActivity.RotationAngle>
@@ -25,11 +25,113 @@
 				<ns1:SiteProcessingBlockSequenceActivity.Expressions>
 					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 				</ns1:SiteProcessingBlockSequenceActivity.Expressions>
+				<ns2:FIBImageActivity Image="{x:Null}" FrameCount="1" Description="Acquire a FIB image" Detector="Current" Expanded="False" ActivityType="FIB Image" AcquisitionFaultAction="Echo" LoadImageFromFile="" EnableDCFI="False" LineIntegration="1" SelectedAreaScan="False" x:Name="FIBImage" Collapsed="True" ScanInterlacing="1" StretchHistogram="True" ShowImageView="False" Dwell="2" Resolution="1536, 1024" ZoomFactor="0">
+					<ns2:FIBImageActivity.HorizontalFieldWidth>
+						<ns3:Length RawValue="1E-05" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+					</ns2:FIBImageActivity.HorizontalFieldWidth>
+					<ns2:FIBImageActivity.DwellUnit>
+						<ns3:Dwell RawValue="2E-06" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+					</ns2:FIBImageActivity.DwellUnit>
+					<ns2:FIBImageActivity.DCFISelectedAreaScanParam>
+						<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:SelectedAreaSetting.Bottom>
+								<ns3:Percentage RawValue="95" />
+							</ns3:SelectedAreaSetting.Bottom>
+							<ns3:SelectedAreaSetting.Top>
+								<ns3:Percentage RawValue="5" />
+							</ns3:SelectedAreaSetting.Top>
+							<ns3:SelectedAreaSetting.Right>
+								<ns3:Percentage RawValue="95" />
+							</ns3:SelectedAreaSetting.Right>
+							<ns3:SelectedAreaSetting.Left>
+								<ns3:Percentage RawValue="5" />
+							</ns3:SelectedAreaSetting.Left>
+						</ns3:SelectedAreaSetting>
+					</ns2:FIBImageActivity.DCFISelectedAreaScanParam>
+					<ns2:FIBImageActivity.SelectedAreaScanPosition>
+						<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:PointLength.X>
+								<ns3:Length RawValue="0" />
+							</ns3:PointLength.X>
+							<ns3:PointLength.Y>
+								<ns3:Length RawValue="0" />
+							</ns3:PointLength.Y>
+						</ns3:PointLength>
+					</ns2:FIBImageActivity.SelectedAreaScanPosition>
+					<ns2:FIBImageActivity.SelectedAreaScanSize>
+						<ns3:SizeLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:SizeLength.Height>
+								<ns3:Length RawValue="5E-06" />
+							</ns3:SizeLength.Height>
+							<ns3:SizeLength.Width>
+								<ns3:Length RawValue="5E-06" />
+							</ns3:SizeLength.Width>
+						</ns3:SizeLength>
+					</ns2:FIBImageActivity.SelectedAreaScanSize>
+					<ns2:FIBImageActivity.PanLocation>
+						<ns4:Point X="0" Y="0" xmlns:ns4="clr-namespace:System.Windows;Assembly=WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+					</ns2:FIBImageActivity.PanLocation>
+					<ns2:FIBImageActivity.SelectedAreaScanParam>
+						<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:SelectedAreaSetting.Bottom>
+								<ns3:Percentage RawValue="87.5" />
+							</ns3:SelectedAreaSetting.Bottom>
+							<ns3:SelectedAreaSetting.Top>
+								<ns3:Percentage RawValue="12.5" />
+							</ns3:SelectedAreaSetting.Top>
+							<ns3:SelectedAreaSetting.Right>
+								<ns3:Percentage RawValue="75" />
+							</ns3:SelectedAreaSetting.Right>
+							<ns3:SelectedAreaSetting.Left>
+								<ns3:Percentage RawValue="25" />
+							</ns3:SelectedAreaSetting.Left>
+						</ns3:SelectedAreaSetting>
+					</ns2:FIBImageActivity.SelectedAreaScanParam>
+					<ns2:FIBImageActivity.StretchHistogramRegionOfInterest>
+						<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:SelectedAreaSetting.Bottom>
+								<ns3:Percentage RawValue="100" />
+							</ns3:SelectedAreaSetting.Bottom>
+							<ns3:SelectedAreaSetting.Top>
+								<ns3:Percentage RawValue="0" />
+							</ns3:SelectedAreaSetting.Top>
+							<ns3:SelectedAreaSetting.Right>
+								<ns3:Percentage RawValue="100" />
+							</ns3:SelectedAreaSetting.Right>
+							<ns3:SelectedAreaSetting.Left>
+								<ns3:Percentage RawValue="0" />
+							</ns3:SelectedAreaSetting.Left>
+						</ns3:SelectedAreaSetting>
+					</ns2:FIBImageActivity.StretchHistogramRegionOfInterest>
+					<ns2:FIBImageActivity.Expressions>
+						<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+					</ns2:FIBImageActivity.Expressions>
+					<ns2:AlignmentResultsOnlySequenceActivity ActivityType="AlignmentResultsOnlySequenceActivity" Expanded="True" x:Name="sequence_FIBImage">
+						<ns2:AlignmentResultsOnlySequenceActivity.Expressions>
+							<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+						</ns2:AlignmentResultsOnlySequenceActivity.Expressions>
+					</ns2:AlignmentResultsOnlySequenceActivity>
+				</ns2:FIBImageActivity>
 			</ns1:SiteProcessingBlockSequenceActivity>
 			<ns1:SiteProcessingBlockSequenceActivity ActivityType="SiteProcessingBlockSequenceActivity" Expanded="True" x:Name="siteProcess">
 				<ns1:SiteProcessingBlockSequenceActivity.Expressions>
 					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 				</ns1:SiteProcessingBlockSequenceActivity.Expressions>
+				<ns2:SEMBeamControlActivity HFW="{x:Null}" DoNotDegauss="DoNotChange" BeamStig="{x:Null}" FocusMoveMode="Relative" Current="{x:Null}" HighVoltage="{x:Null}" SpotSize="{x:Null}" ScanRotation="{x:Null}" Description="This activity will control the paramters for the ebeam" FocusWithDegauss="True" SpotSetting="ByCurrent" Focus="{x:Null}" x:Name="SEMBeamSettings" StageBias="{x:Null}" LandingEnergy="{x:Null}" HorizontalFieldWidth="{x:Null}" SemCurrent="" BeamShiftMoveMode="Relative" SEMMode="DoNotChange" SemHighVoltage="" BeamStigMoveMode="Relative" ActivityType="SEM Beam Settings" BeamDecelerationMode="{x:Null}">
+					<ns2:SEMBeamControlActivity.BeamShift>
+						<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+							<ns3:PointLength.X>
+								<ns3:Length RawValue="0" />
+							</ns3:PointLength.X>
+							<ns3:PointLength.Y>
+								<ns3:Length RawValue="0" />
+							</ns3:PointLength.Y>
+						</ns3:PointLength>
+					</ns2:SEMBeamControlActivity.BeamShift>
+					<ns2:SEMBeamControlActivity.Expressions>
+						<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+					</ns2:SEMBeamControlActivity.Expressions>
+				</ns2:SEMBeamControlActivity>
 			</ns1:SiteProcessingBlockSequenceActivity>
 			<FaultHandlersActivity x:Name="faultHandlersActivity1">
 				<FaultHandlerActivity x:Name="catchAllFault" FaultType="{x:Type p14:Exception}" xmlns:p14="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -41,7 +143,7 @@
 				</FaultHandlerActivity>
 			</FaultHandlersActivity>
 		</ns1:SiteProcessingBlockActivity>
-		<ns1:SiteProcessingBlockActivity Unlocked="True" RecipePath="{x:Null}" ProcessingOffset="None" Expanded="False" EncodedIcon="" TraversalMethod="NotSpecified" CustomProcessingOffset="{x:Null}" ActivityType="Site Processing Block" Version="0" BlockSiteList="{x:Null}" LamellaOrientationDelta="{x:Null}" SetupBlock="False" Password="{x:Null}" x:Name="SiteProcessingBlock1" VersionCreationTime="0001-01-01T00:00:00.0000000" IgnoreProcessingOffset="False" UseSiteTracking="True" FaultAction="FailSite" VersionCreationId="{x:Null}">
+		<ns1:SiteProcessingBlockActivity Unlocked="True" RecipePath="{x:Null}" ProcessingOffset="None" Expanded="True" EncodedIcon="" TraversalMethod="NotSpecified" CustomProcessingOffset="{x:Null}" ActivityType="Site Processing Block" Version="0" BlockSiteList="{x:Null}" LamellaOrientationDelta="{x:Null}" SetupBlock="False" Password="{x:Null}" x:Name="SiteProcessingBlock1" VersionCreationTime="0001-01-01T00:00:00.0000000" IgnoreProcessingOffset="False" UseSiteTracking="True" FaultAction="FailSite" VersionCreationId="{x:Null}">
 			<ns1:SiteProcessingBlockActivity.RotationAngle>
 				<ns3:Angle RawValue="0" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
 			</ns1:SiteProcessingBlockActivity.RotationAngle>
@@ -57,11 +159,34 @@
 				<ns1:SiteProcessingBlockSequenceActivity.Expressions>
 					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 				</ns1:SiteProcessingBlockSequenceActivity.Expressions>
+				<ns2:FIBOnOffActivity Description="This activity will turn the ion beam on or off" x:Name="FIBOnOff" ActivityType="FIB On Off" Power="Off">
+					<ns2:FIBOnOffActivity.Expressions>
+						<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+					</ns2:FIBOnOffActivity.Expressions>
+				</ns2:FIBOnOffActivity>
 			</ns1:SiteProcessingBlockSequenceActivity>
 			<ns1:SiteProcessingBlockSequenceActivity ActivityType="SiteProcessingBlockSequenceActivity" Expanded="True" x:Name="siteProcess1">
 				<ns1:SiteProcessingBlockSequenceActivity.Expressions>
 					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 				</ns1:SiteProcessingBlockSequenceActivity.Expressions>
+				<ns0:UserInteractionSequenceActivity Description="This activity will unlock xT UI, run its child activities, and return UI to previous state." DoUnlock="True" x:Name="UserInteractionSequence1" ActivityType="User Interaction Sequence" Expanded="True">
+					<ns0:UserInteractionSequenceActivity.Expressions>
+						<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+					</ns0:UserInteractionSequenceActivity.Expressions>
+					<ns0:HiddenSequenceActivity ActivityType="HiddenSequenceActivity" Expanded="True" x:Name="hiddenSequence_UserInteractionSequence1">
+						<ns0:HiddenSequenceActivity.Expressions>
+							<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+						</ns0:HiddenSequenceActivity.Expressions>
+						<ns0:SendEmailActivity AttachLastImage="True" ActivityType="Send Email" Description="Send Email." x:Name="SendEmail">
+							<ns0:SendEmailActivity.Expressions>
+								<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+							</ns0:SendEmailActivity.Expressions>
+							<ns0:SendEmailActivity.MessageContents>
+								<ns0:PropertyReferenceLink FullLinkId="res:SendEmail.MessageContents" />
+							</ns0:SendEmailActivity.MessageContents>
+						</ns0:SendEmailActivity>
+					</ns0:HiddenSequenceActivity>
+				</ns0:UserInteractionSequenceActivity>
 			</ns1:SiteProcessingBlockSequenceActivity>
 			<FaultHandlersActivity x:Name="faultHandlersActivity2">
 				<FaultHandlerActivity x:Name="catchAllFault1" FaultType="{x:Type p14:Exception}" xmlns:p14="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -74,93 +199,21 @@
 			</FaultHandlersActivity>
 		</ns1:SiteProcessingBlockActivity>
 	</ns1:SiteProcessorActivity>
-	<ns2:FIBImageActivity Image="{x:Null}" FrameCount="1" Description="Acquire a FIB image" Detector="Current" Expanded="False" ActivityType="FIB Image" AcquisitionFaultAction="Echo" LoadImageFromFile="" EnableDCFI="False" LineIntegration="1" SelectedAreaScan="False" x:Name="FIBImage" Collapsed="True" ScanInterlacing="1" StretchHistogram="True" ShowImageView="False" Dwell="2" Resolution="1536, 1024" ZoomFactor="0">
-		<ns2:FIBImageActivity.HorizontalFieldWidth>
-			<ns3:Length RawValue="1E-05" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
-		</ns2:FIBImageActivity.HorizontalFieldWidth>
-		<ns2:FIBImageActivity.DwellUnit>
-			<ns3:Dwell RawValue="2E-06" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
-		</ns2:FIBImageActivity.DwellUnit>
-		<ns2:FIBImageActivity.DCFISelectedAreaScanParam>
-			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-				<ns3:SelectedAreaSetting.Bottom>
-					<ns3:Percentage RawValue="95" />
-				</ns3:SelectedAreaSetting.Bottom>
-				<ns3:SelectedAreaSetting.Top>
-					<ns3:Percentage RawValue="5" />
-				</ns3:SelectedAreaSetting.Top>
-				<ns3:SelectedAreaSetting.Right>
-					<ns3:Percentage RawValue="95" />
-				</ns3:SelectedAreaSetting.Right>
-				<ns3:SelectedAreaSetting.Left>
-					<ns3:Percentage RawValue="5" />
-				</ns3:SelectedAreaSetting.Left>
-			</ns3:SelectedAreaSetting>
-		</ns2:FIBImageActivity.DCFISelectedAreaScanParam>
-		<ns2:FIBImageActivity.SelectedAreaScanPosition>
+	<ns2:IonBeamControlActivity HFW="{x:Null}" BeamStig="{x:Null}" FocusMoveMode="Relative" Current="{x:Null}" HighVoltage="{x:Null}" FIBImmersion="DoNotChange" ScanRotation="{x:Null}" IonHighVoltage="" Description="This activity will control the ion beam" Focus="{x:Null}" x:Name="FIBBeamSettings" HorizontalFieldWidth="{x:Null}" BeamShiftMoveMode="Relative" IonCurrent="" BeamStigMoveMode="Relative" ActivityType="FIB Beam Settings">
+		<ns2:IonBeamControlActivity.BeamShift>
 			<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
 				<ns3:PointLength.X>
 					<ns3:Length RawValue="0" />
 				</ns3:PointLength.X>
 				<ns3:PointLength.Y>
-					<ns3:Length RawValue="0" />
+					<ns3:Length RawValue="9.99E-06" />
 				</ns3:PointLength.Y>
 			</ns3:PointLength>
-		</ns2:FIBImageActivity.SelectedAreaScanPosition>
-		<ns2:FIBImageActivity.SelectedAreaScanSize>
-			<ns3:SizeLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-				<ns3:SizeLength.Height>
-					<ns3:Length RawValue="5E-06" />
-				</ns3:SizeLength.Height>
-				<ns3:SizeLength.Width>
-					<ns3:Length RawValue="5E-06" />
-				</ns3:SizeLength.Width>
-			</ns3:SizeLength>
-		</ns2:FIBImageActivity.SelectedAreaScanSize>
-		<ns2:FIBImageActivity.PanLocation>
-			<ns5:Point X="0" Y="0" xmlns:ns5="clr-namespace:System.Windows;Assembly=WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-		</ns2:FIBImageActivity.PanLocation>
-		<ns2:FIBImageActivity.SelectedAreaScanParam>
-			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-				<ns3:SelectedAreaSetting.Bottom>
-					<ns3:Percentage RawValue="87.5" />
-				</ns3:SelectedAreaSetting.Bottom>
-				<ns3:SelectedAreaSetting.Top>
-					<ns3:Percentage RawValue="12.5" />
-				</ns3:SelectedAreaSetting.Top>
-				<ns3:SelectedAreaSetting.Right>
-					<ns3:Percentage RawValue="75" />
-				</ns3:SelectedAreaSetting.Right>
-				<ns3:SelectedAreaSetting.Left>
-					<ns3:Percentage RawValue="25" />
-				</ns3:SelectedAreaSetting.Left>
-			</ns3:SelectedAreaSetting>
-		</ns2:FIBImageActivity.SelectedAreaScanParam>
-		<ns2:FIBImageActivity.StretchHistogramRegionOfInterest>
-			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-				<ns3:SelectedAreaSetting.Bottom>
-					<ns3:Percentage RawValue="100" />
-				</ns3:SelectedAreaSetting.Bottom>
-				<ns3:SelectedAreaSetting.Top>
-					<ns3:Percentage RawValue="0" />
-				</ns3:SelectedAreaSetting.Top>
-				<ns3:SelectedAreaSetting.Right>
-					<ns3:Percentage RawValue="100" />
-				</ns3:SelectedAreaSetting.Right>
-				<ns3:SelectedAreaSetting.Left>
-					<ns3:Percentage RawValue="0" />
-				</ns3:SelectedAreaSetting.Left>
-			</ns3:SelectedAreaSetting>
-		</ns2:FIBImageActivity.StretchHistogramRegionOfInterest>
-		<ns2:FIBImageActivity.Expressions>
+		</ns2:IonBeamControlActivity.BeamShift>
+		<ns2:IonBeamControlActivity.Expressions>
 			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
-		</ns2:FIBImageActivity.Expressions>
-		<ns2:AlignmentResultsOnlySequenceActivity ActivityType="AlignmentResultsOnlySequenceActivity" Expanded="True" x:Name="sequence_FIBImage">
-			<ns2:AlignmentResultsOnlySequenceActivity.Expressions>
-				<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
-			</ns2:AlignmentResultsOnlySequenceActivity.Expressions>
-		</ns2:AlignmentResultsOnlySequenceActivity>
-	</ns2:FIBImageActivity>
+		</ns2:IonBeamControlActivity.Expressions>
+	</ns2:IonBeamControlActivity>
 	<ns0:UserInteractionSequenceActivity Description="This activity will unlock xT UI, run its child activities, and return UI to previous state." DoUnlock="True" x:Name="UserInteractionSequence" ActivityType="User Interaction Sequence" Expanded="True">
 		<ns0:UserInteractionSequenceActivity.Expressions>
 			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
@@ -169,64 +222,6 @@
 			<ns0:HiddenSequenceActivity.Expressions>
 				<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
 			</ns0:HiddenSequenceActivity.Expressions>
-			<ns2:SEMBeamControlActivity HFW="{x:Null}" DoNotDegauss="DoNotChange" BeamStig="{x:Null}" FocusMoveMode="Relative" Current="{x:Null}" HighVoltage="{x:Null}" SpotSize="{x:Null}" ScanRotation="{x:Null}" Description="This activity will control the paramters for the ebeam" FocusWithDegauss="True" SpotSetting="ByCurrent" Focus="{x:Null}" x:Name="SEMBeamSettings" StageBias="{x:Null}" LandingEnergy="{x:Null}" HorizontalFieldWidth="{x:Null}" SemCurrent="" BeamShiftMoveMode="Relative" SEMMode="DoNotChange" SemHighVoltage="" BeamStigMoveMode="Relative" ActivityType="SEM Beam Settings" BeamDecelerationMode="{x:Null}">
-				<ns2:SEMBeamControlActivity.BeamShift>
-					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-						<ns3:PointLength.X>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.X>
-						<ns3:PointLength.Y>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.Y>
-					</ns3:PointLength>
-				</ns2:SEMBeamControlActivity.BeamShift>
-				<ns2:SEMBeamControlActivity.Expressions>
-					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
-				</ns2:SEMBeamControlActivity.Expressions>
-			</ns2:SEMBeamControlActivity>
-			<ns2:IonBeamControlActivity HFW="{x:Null}" BeamStig="{x:Null}" FocusMoveMode="Relative" Current="{x:Null}" HighVoltage="{x:Null}" FIBImmersion="DoNotChange" ScanRotation="{x:Null}" IonHighVoltage="" Description="This activity will control the ion beam" Focus="{x:Null}" x:Name="FIBBeamSettings" HorizontalFieldWidth="{x:Null}" BeamShiftMoveMode="Relative" IonCurrent="" BeamStigMoveMode="Relative" ActivityType="FIB Beam Settings">
-				<ns2:IonBeamControlActivity.BeamShift>
-					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-						<ns3:PointLength.X>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.X>
-						<ns3:PointLength.Y>
-							<ns3:Length RawValue="9.99E-06" />
-						</ns3:PointLength.Y>
-					</ns3:PointLength>
-				</ns2:IonBeamControlActivity.BeamShift>
-				<ns2:IonBeamControlActivity.Expressions>
-					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
-				</ns2:IonBeamControlActivity.Expressions>
-			</ns2:IonBeamControlActivity>
-			<ns2:MillSpotActivity BeamType="Ion Beam" Description="Mill a spot at position." Running="False" ActivityType="MillSpotActivity" x:Name="Spot" Duration="00:00:01">
-				<ns2:MillSpotActivity.CenterOffset>
-					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-						<ns3:PointLength.X>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.X>
-						<ns3:PointLength.Y>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.Y>
-					</ns3:PointLength>
-				</ns2:MillSpotActivity.CenterOffset>
-				<ns2:MillSpotActivity.BoundingrectLocation>
-					<ns6:PointF X="0" Y="0" xmlns:ns6="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-				</ns2:MillSpotActivity.BoundingrectLocation>
-				<ns2:MillSpotActivity.Position>
-					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
-						<ns3:PointLength.X>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.X>
-						<ns3:PointLength.Y>
-							<ns3:Length RawValue="0" />
-						</ns3:PointLength.Y>
-					</ns3:PointLength>
-				</ns2:MillSpotActivity.Position>
-				<ns2:MillSpotActivity.Expressions>
-					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
-				</ns2:MillSpotActivity.Expressions>
-			</ns2:MillSpotActivity>
 			<ns2:MillLineActivity RelativeInteractionDiameter="{x:Null}" Miller="{x:Null}" Gas6DutyCycle="{x:Null}" GasDutyCycles="{x:Null}" GasType="{x:Null}" Gas1DutyCycle="{x:Null}" Description="Mill a line" Blur="{x:Null}" BeamType="Ion Beam" TotalVolumeSputterRate="{x:Null}" ActivityType="MillLineActivity" Gas4DutyCycle="{x:Null}" PatterningApplicationName="Si" TotalTime="{x:Null}" Gas2DutyCycle="{x:Null}" Passes="{x:Null}" RefreshTime="{x:Null}" x:Name="Line" SaturationSputterRate="{x:Null}" ShowImageView="False" SaturationCurrentDensity="{x:Null}" Gas5DutyCycle="{x:Null}" Defocus="{x:Null}" InAdvancedMode="False" VolumePerDose="{x:Null}" Gas3DutyCycle="{x:Null}" WaitForTrigger="False" DriftCorrection="{x:Null}" InteractionDiameter="{x:Null}" DwellTime="{x:Null}" Overlap="{x:Null}">
 				<ns2:MillLineActivity.CheckedProperties>
 					<ns0:StringBoolList>
@@ -331,6 +326,34 @@
 					<ns3:Angle RawValue="0" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
 				</ns2:MillPolygonActivity.Rotation>
 			</ns2:MillPolygonActivity>
+			<ns2:MillSpotActivity BeamType="Ion Beam" Description="Mill a spot at position." Running="False" ActivityType="MillSpotActivity" x:Name="Spot" Duration="00:00:01">
+				<ns2:MillSpotActivity.CenterOffset>
+					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns3:PointLength.X>
+							<ns3:Length RawValue="0" />
+						</ns3:PointLength.X>
+						<ns3:PointLength.Y>
+							<ns3:Length RawValue="0" />
+						</ns3:PointLength.Y>
+					</ns3:PointLength>
+				</ns2:MillSpotActivity.CenterOffset>
+				<ns2:MillSpotActivity.BoundingrectLocation>
+					<ns6:PointF X="0" Y="0" xmlns:ns6="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+				</ns2:MillSpotActivity.BoundingrectLocation>
+				<ns2:MillSpotActivity.Position>
+					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns3:PointLength.X>
+							<ns3:Length RawValue="0" />
+						</ns3:PointLength.X>
+						<ns3:PointLength.Y>
+							<ns3:Length RawValue="0" />
+						</ns3:PointLength.Y>
+					</ns3:PointLength>
+				</ns2:MillSpotActivity.Position>
+				<ns2:MillSpotActivity.Expressions>
+					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+				</ns2:MillSpotActivity.Expressions>
+			</ns2:MillSpotActivity>
 			<ns2:MillRectangleActivity RelativeInteractionDiameter="{x:Null}" Miller="{x:Null}" Gas6DutyCycle="{x:Null}" GasDutyCycles="{x:Null}" GasType="{x:Null}" Gas1DutyCycle="{x:Null}" Description="Mill a rectangle" ScanType="{x:Null}" Gas3DutyCycle="{x:Null}" BeamType="Ion Beam" TotalVolumeSputterRate="{x:Null}" Pitch="{x:Null}" ActivityType="MillRectangleActivity" Blur="{x:Null}" FillStyle="{x:Null}" Gas4DutyCycle="{x:Null}" PatterningApplicationName="Si" TotalTime="{x:Null}" Dose="{x:Null}" Gas2DutyCycle="{x:Null}" Passes="{x:Null}" RefreshTime="{x:Null}" x:Name="Rectangle" ShowImageView="False" SaturationCurrentDensity="{x:Null}" Gas5DutyCycle="{x:Null}" Defocus="{x:Null}" WaitForTrigger="False" InAdvancedMode="False" VolumePerDose="{x:Null}" Overlap="{x:Null}" SaturationSputterRate="{x:Null}" DriftCorrection="{x:Null}" InteractionDiameter="{x:Null}" ScanDirection="{x:Null}" DwellTime="{x:Null}">
 				<ns2:MillRectangleActivity.Position>
 					<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
@@ -385,5 +408,6 @@
 		<SubWaferType>0</SubWaferType>
 	</Resource>
 	<Resource Name="siteProcessorActivity1.SiteListLink" />
+	<Resource Name="SendEmail.MessageContents" />
 </Resources>
 </Recipe>

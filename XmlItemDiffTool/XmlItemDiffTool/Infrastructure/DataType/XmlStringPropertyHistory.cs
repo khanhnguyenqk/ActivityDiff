@@ -54,7 +54,7 @@ namespace Infrastructure.DataType
 
         public override string ToString()
         {
-            return String.Format(@"{0} -> ""{1}""", OriginalValue, ChangedValue);
+            return String.Format(@"""{0}"" -> ""{1}""", OriginalValue, ChangedValue);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace UnitTest
 
             XmlDocumentConstructed doc1 = XmlDocumentParser.ConstructFromFile(fullFilePath);
 
-            fileRelPath = @"..\..\..\TestMaterials\s D.xrml";
+            fileRelPath = @"..\..\..\TestMaterials\S A-R-L-M-P.xrml";
             fullFilePath = Directory.GetCurrentDirectory();
             fullFilePath = Path.Combine(fullFilePath, fileRelPath);
             fullFilePath = Path.GetFullPath((new Uri(fullFilePath)).LocalPath);
@@ -32,6 +32,9 @@ namespace UnitTest
             XmlDocumentConstructed doc2 = XmlDocumentParser.ConstructFromFile(fullFilePath);
 
             XmlDocumentHistoryComparer.CreateHistoryTrace(doc1.Root, doc2.Root);
+
+            Console.WriteLine(XmlDocumentHistoryComparer.HistoryTraceToString(doc1.Root, doc2.Root));
+            Console.WriteLine(XmlDocumentHistoryComparer.AddedWorkflowItemsDemonstration(doc2.Root));
         }
     }
 }

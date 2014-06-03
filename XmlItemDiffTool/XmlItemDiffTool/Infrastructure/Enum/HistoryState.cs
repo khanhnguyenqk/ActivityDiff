@@ -12,7 +12,7 @@ namespace Infrastructure.Enum
         A, // Added
         R, // Removed
         M, // Moved to the same level of the tree
-        L, // Moved to different level of the tree,
+        L, // Moved to different level of the tree
         D, // Different, changed (Inner property change OR children changed)
         P  // Properties changed 
     }
