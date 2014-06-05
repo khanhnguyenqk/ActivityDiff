@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using Infrastructure;
@@ -91,12 +92,12 @@ namespace XmlDocumentWrapper
             before.HistoryStates.Add(HistoryState.D);
             after.HistoryStates.Add(HistoryState.D);
 
-            if(!before.ArePropertiesEqual(after))
+            if(!before.ArePropertiesEqual(after) || !before.Expressions.Equals(after.Expressions))
             {
                 before.HistoryStates.Add(HistoryState.P);
                 after.HistoryStates.Add(HistoryState.P);
 
-                List<XmlStringPropertyHistory> l = CreatePropertyChangeHistory(before, after);
+                List<XmlPropertyHistory> l = CreatePropertyChangeHistory(before, after);
                 AddItems(before.ChangedProperties, l);
             }
 
@@ -189,7 +190,7 @@ namespace XmlDocumentWrapper
         /// </summary>
         /// <param name="before"></param>
         /// <param name="after"></param>
-        public static List<XmlStringPropertyHistory> CreatePropertyChangeHistory(XmlType before, XmlType after)
+        public static List<XmlPropertyHistory> CreatePropertyChangeHistory(XmlType before, XmlType after)
         {
             if(!before.TypeName.Equals(after.TypeName)) // Not gonna compare 2 different types. No thank you.
             {
@@ -197,7 +198,7 @@ namespace XmlDocumentWrapper
                 throw new TypeMismatchException(@"Can't compare 2 different types.");
             }
 
-            List<XmlStringPropertyHistory> ret = new List<XmlStringPropertyHistory>();
+            List<XmlPropertyHistory> ret = new List<XmlPropertyHistory>();
 
             foreach(var property in before.Properties)  // Traverse through properties
             {
@@ -217,15 +218,13 @@ namespace XmlDocumentWrapper
                         if(property is XmlStringProperty && match is XmlTypeProperty)
                         {
                             XmlStringProperty mStringProperty = property as XmlStringProperty;
-                            XmlTypeProperty mTypeProperty = match as XmlTypeProperty;
-                            string newType = mTypeProperty.Value.ToString();
                             if(mStringProperty.Value.ToString().ToLower().Contains("null"))
                             {
-                                XmlStringPropertyHistory sph = new XmlStringPropertyHistory
+                                XmlPropertyHistory sph = new XmlPropertyHistory
                                 {
                                     OriginalProperty = property,
-                                    OriginalValue = @"null",
-                                    ChangedValue = String.Format(@"new {0}", newType)
+                                    OriginalValue = null,
+                                    ChangedValue = match.Value
                                 };
                                 ret.Add(sph);
                             }
@@ -237,15 +236,13 @@ namespace XmlDocumentWrapper
                         else if(property is XmlTypeProperty && match is XmlStringProperty)
                         {
                             XmlStringProperty mStringProperty = match as XmlStringProperty;
-                            XmlTypeProperty mTypeProperty = property as XmlTypeProperty;
-                            string oldType = mTypeProperty.Value.ToString();
                             if(mStringProperty.Value.ToString().ToLower().Contains("null"))
                             {
-                                XmlStringPropertyHistory sph = new XmlStringPropertyHistory
+                                XmlPropertyHistory sph = new XmlPropertyHistory
                                 {
                                     OriginalProperty = property,
-                                    OriginalValue = String.Format(@"delete {0}", oldType),
-                                    ChangedValue = @"null"
+                                    OriginalValue = property.Value,
+                                    ChangedValue = null
                                 };
                                 ret.Add(sph);
                             }
@@ -264,7 +261,7 @@ namespace XmlDocumentWrapper
                         XmlStringProperty mStringProperty = match as XmlStringProperty;
                         if(mStringProperty != null)
                         {
-                            XmlStringPropertyHistory sph = new XmlStringPropertyHistory
+                            XmlPropertyHistory sph = new XmlPropertyHistory
                             {
                                 OriginalProperty = property,
                                 OriginalValue = (property as XmlStringProperty).Value.ToString(),
@@ -275,24 +272,58 @@ namespace XmlDocumentWrapper
                     }
                     else if(property is XmlTypeProperty)
                     {
-                        XmlTypeProperty mTypeProperty = match as XmlTypeProperty;
-                        if(mTypeProperty != null)
+                        XmlTypeProperty tMatch = match as XmlTypeProperty;
+                        if(tMatch != null)
                         {
-                            List<XmlStringPropertyHistory> result =
-                                CreatePropertyChangeHistory(property.Value as XmlType, mTypeProperty.Value as XmlType);
-                            AddItems(ret, result);
+                            var pValue = property.Value as XmlType;
+                            var mValue = tMatch.Value as XmlType;
+                            if(mValue != null && pValue != null)
+                            {
+                                if(pValue.TypeName.Equals(mValue.TypeName))
+                                {
+                                    List<XmlPropertyHistory> result =
+                                        CreatePropertyChangeHistory(property.Value as XmlType, tMatch.Value as XmlType);
+                                    AddItems(ret, result);
+                                }
+                                else
+                                {
+                                    XmlPropertyHistory ph = new XmlPropertyHistory
+                                    {
+                                        OriginalProperty = property,
+                                        OriginalValue = pValue.TypeName,
+                                        ChangedValue = mValue.TypeName
+                                    };
+                                    ret.Add(ph);
+                                }
+                            }
                         }
-
-                        // Todo: deal with Array
                     }
                 }
             }
 
-            if(before is XmlDataItem)
+            if(before is XmlDataItem && after is XmlDataItem)       // Array case
             {
-                // Have not found a way to compare DataItem completely yet.
-                //  For example, DataItem is an Array of Points. There are many scenarios 
-                //      where Array can be changed.
+                XmlDataItem dBefore = before as XmlDataItem;
+                XmlDataItem dAfter = after as XmlDataItem;
+
+                if(dBefore.Children.Count != dAfter.Children.Count)
+                {
+                    XmlPropertyHistory ph = new XmlPropertyHistory
+                    {
+                        OriginalProperty = dBefore.PropertyHost,
+                        OriginalValue = dBefore.Children.Count,
+                        ChangedValue = dAfter.Children.Count
+                    };
+                    ret.Add(ph);
+                }
+
+                int count = Math.Min(dBefore.Children.Count, dAfter.Children.Count);
+                for(int i = 0; i < count; i++)
+                {
+                    List<XmlPropertyHistory> result =
+                                CreatePropertyChangeHistory(dBefore.Children[i], dAfter.Children[i]);
+                    AddItems(ret, result);
+                }
             }
 
             return ret;

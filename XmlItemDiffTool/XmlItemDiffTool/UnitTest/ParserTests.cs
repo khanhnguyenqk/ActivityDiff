@@ -17,14 +17,14 @@ namespace UnitTest
         [Test]
         public void SimpleReading()
         {
-            string fileRelPath = @"..\..\..\TestMaterials\s.xrml";
+            string fileRelPath = @"..\..\..\TestMaterials\Array.xrml";
             string fullFilePath = Directory.GetCurrentDirectory();
             fullFilePath = Path.Combine(fullFilePath, fileRelPath);
             fullFilePath = Path.GetFullPath((new Uri(fullFilePath)).LocalPath);
 
             XmlDocumentConstructed doc1 = XmlDocumentParser.ConstructFromFile(fullFilePath);
 
-            fileRelPath = @"..\..\..\TestMaterials\S A-R-L-M-P.xrml";
+            fileRelPath = @"..\..\..\TestMaterials\Array P.xrml";
             fullFilePath = Directory.GetCurrentDirectory();
             fullFilePath = Path.Combine(fullFilePath, fileRelPath);
             fullFilePath = Path.GetFullPath((new Uri(fullFilePath)).LocalPath);

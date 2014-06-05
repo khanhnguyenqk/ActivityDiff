@@ -42,8 +42,10 @@
     <Compile Include="Attribute\NotNullableAttribute.cs" />
     <Compile Include="DataType\XmlDocumentConstructed.cs" />
     <Compile Include="DataType\XmlPropertyAbstract.cs" />
+    <Compile Include="DataType\XmlPropertyExpression.cs" />
+    <Compile Include="DataType\XmlPropertyHistoryAbstract.cs" />
     <Compile Include="DataType\XmlResource.cs" />
-    <Compile Include="DataType\XmlStringPropertyHistory.cs" />
+    <Compile Include="DataType\XmlPropertyHistory.cs" />
     <Compile Include="DataType\XmlTypeProperty.cs" />
     <Compile Include="DataType\XmlWorkflowItem.cs" />
     <Compile Include="Enum\HistoryState.cs" />
@@ -55,7 +57,7 @@
     <Compile Include="ObjectModel\NotifyPropertyChangedBase.cs" />
     <Compile Include="ObjectModel\ObservableList.cs" />
     <Compile Include="ObjectModel\ObservarableHashSet.cs" />
-    <Compile Include="DataType\XmlDataItem.cs" />
+    <Compile Include="DataType\XmlValue.cs" />
     <Compile Include="DataType\XmlStringProperty.cs" />
     <Compile Include="DataType\XmlType.cs" />
     <Compile Include="ObjectModel\ObservarableUniqueCollection.cs" />

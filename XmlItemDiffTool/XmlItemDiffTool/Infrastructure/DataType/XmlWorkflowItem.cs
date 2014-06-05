@@ -28,6 +28,25 @@ namespace Infrastructure.DataType
             get { return String.Format(@"{0} - {1}", TypeName, Name); }
         }
 
+        /// <summary>
+        /// Store Expressions property because it will be removed from the Properties set
+        /// </summary>
+        public XmlTypeProperty ExpressionArray { get; private set; }
+        private ObservarableHashSet<XmlPropertyExpression> expressions = new ObservarableHashSet<XmlPropertyExpression>();
+        [NotNullable]
+        public ObservarableHashSet<XmlPropertyExpression> Expressions
+        {
+            get { return expressions; }
+            set
+            {
+                if(value != null && !value.Equals(expressions))
+                {
+                    expressions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private string name = String.Empty;
         [NotNullable]
         public string Name
@@ -58,7 +77,7 @@ namespace Infrastructure.DataType
             get { return children; }
             set
             {
-                if(value != null && value.Equals(children))
+                if(value != null && !value.Equals(children))
                 {
                     children = value;
                     NotifyPropertyChanged();
@@ -122,13 +141,52 @@ namespace Infrastructure.DataType
             Parent = null;
 
             string name = (from sp in Properties
-                where sp.Name.Equals(@"Name")
-                select sp.Value.ToString()).FirstOrDefault();
+                           where sp.Name.Equals(@"Name")
+                           select sp.Value.ToString()).FirstOrDefault();
             if(String.IsNullOrEmpty(name))
             {
                 throw new XmlItemParseException(@"A workflow item doesn't have a name.", xmlNode.OuterXml);
             }
             Name = name;
+
+            // Deal with Expressions
+            XmlPropertyAbstract pa = (from p in Properties
+                                      where
+                                          p is XmlTypeProperty &&
+                                          p.Name.Equals(@"Expressions")
+                                      select p).FirstOrDefault();
+            if(pa != null)
+            {
+                // Remove and store away
+                Properties.Remove(pa);
+                ExpressionArray = pa as XmlTypeProperty;
+                XmlDataItem di = (pa.Value as XmlDataItem);
+
+                foreach(var item in di.Children)
+                {
+                    if(!item.TypeName.Equals(@"ActivityExpressionProperty"))
+                    {
+                        throw new XmlItemParseException(@"Wrong expression type",
+                            xmlNode.OuterXml);
+                    }
+                    string propertyName = (from p in item.Properties
+                                           where p.Name.Equals(@"PropertyName")
+                                           select p.Value.ToString()).FirstOrDefault();
+                    string expression = (from p in item.Properties
+                                         where p.Name.Equals(@"Expression")
+                                         select p.Value.ToString()).FirstOrDefault();
+                    if(String.IsNullOrEmpty(propertyName) || expression.Equals(@""))
+                    {
+                        throw new XmlItemParseException(@"Invalid Expression", xmlNode.OuterXml);
+                    }
+
+                    Expressions.Add(new XmlPropertyExpression
+                    {
+                        PropertyName = propertyName,
+                        Expression = expression
+                    });
+                }
+            }
 
             foreach(XmlNode node in xmlNode.ChildNodes)
             {
@@ -141,7 +199,8 @@ namespace Infrastructure.DataType
             }
         }
 
-        public XmlWorkflowItem(XmlNode xmlNode, XmlWorkflowItem parent) : this(xmlNode)
+        public XmlWorkflowItem(XmlNode xmlNode, XmlWorkflowItem parent)
+            : this(xmlNode)
         {
             Parent = parent;
         }
@@ -150,7 +209,9 @@ namespace Infrastructure.DataType
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return base.Equals(other) && string.Equals(Name, other.Name) && Children.Equals(other.Children);
+            return base.Equals(other) && string.Equals(Name, other.Name)
+                && Children.Equals(other.Children)
+                && Expressions.Equals(other.Expressions);
         }
 
         public override bool Equals(object obj)
@@ -168,6 +229,7 @@ namespace Infrastructure.DataType
                 int hashCode = base.GetHashCode();
                 hashCode = (hashCode * 397) ^ Name.GetHashCode();
                 hashCode = (hashCode * 397) ^ Children.GetHashCode();
+                hashCode = (hashCode * 397) ^ Expressions.GetHashCode();
                 return hashCode;
             }
         }

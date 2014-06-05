@@ -14,14 +14,14 @@ namespace Infrastructure.DataType
         /// <summary>
         /// Meta data. Contains information of properties that changed.
         /// </summary>
-        private ObservableList<XmlStringPropertyHistory> changedProperties = new ObservableList<XmlStringPropertyHistory>();
+        private ObservableList<XmlPropertyHistory> changedProperties = new ObservableList<XmlPropertyHistory>();
         [NotNullable]
-        public ObservableList<XmlStringPropertyHistory> ChangedProperties
+        public ObservableList<XmlPropertyHistory> ChangedProperties
         {
             get { return changedProperties; }
             set
             {
-                if(!changedProperties.Equals(value))
+                if(value != null && !changedProperties.Equals(value))
                 {
                     changedProperties = value;
                     NotifyPropertyChanged();
@@ -29,9 +29,9 @@ namespace Infrastructure.DataType
             }
         }
 
-        private string typeName = String.Empty;
+        private XmlTypeName typeName = String.Empty;
         [NotNullable]
-        public string TypeName
+        public XmlTypeName TypeName
         {
             get { return typeName; }
             set
@@ -70,19 +70,13 @@ namespace Infrastructure.DataType
                     Properties.Add(p);
                 }
             }
-            if(!String.IsNullOrEmpty(xmlNode.InnerText) && xmlNode.InnerXml.Equals(xmlNode.InnerText))  
-                // Special case. Don't know if I'm correct or not. So let's throw exception if I'm wrong
+            foreach(XmlNode node in xmlNode.ChildNodes)
             {
-                if(xmlNode.ChildNodes.Count != 1)
+                if(node is XmlText)
                 {
-                    throw new XmlItemParseException(@"When inner text and inner xml are the same, expect only 1 child node.", 
-                        xmlNode.OuterXml);
+                    Properties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText, this));
                 }
-                Properties.Add(new XmlStringProperty(@"Text", xmlNode.InnerText, this));
-            }
-            else
-            {
-                foreach(XmlNode node in xmlNode.ChildNodes)
+                else
                 {
                     string parentNode, nodeName;
                     if(XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
@@ -117,7 +111,7 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlType) obj);
+            return Equals((XmlType)obj);
         }
 
         public override int GetHashCode()
@@ -125,7 +119,7 @@ namespace Infrastructure.DataType
             unchecked
             {
                 int hashCode = typeName.GetHashCode();
-                hashCode = (hashCode*397) ^ properties.GetHashCode();
+                hashCode = (hashCode * 397) ^ properties.GetHashCode();
                 return hashCode;
             }
         }
@@ -143,6 +137,62 @@ namespace Infrastructure.DataType
         public override string ToString()
         {
             return TypeName;
+        }
+    }
+
+
+    public class XmlTypeName : IEquatable<XmlTypeName>
+    {
+        private readonly string innerValue;
+
+        public XmlTypeName(string value)
+        {
+            innerValue = value;
+        }
+
+        public static implicit operator XmlTypeName(string value)
+        {
+            return new XmlTypeName(value);
+        }
+
+        public static implicit operator string(XmlTypeName sv)
+        {
+            return sv.innerValue;
+        }
+
+        public override string ToString()
+        {
+            return innerValue;
+        }
+
+        public bool Equals(XmlTypeName other)
+        {
+            if(ReferenceEquals(null, other)) return false;
+            if(ReferenceEquals(this, other)) return true;
+            return string.Equals(innerValue, other.innerValue);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if(ReferenceEquals(null, obj)) return false;
+            if(ReferenceEquals(this, obj)) return true;
+            if(obj.GetType() != this.GetType()) return false;
+            return Equals((XmlTypeName) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (innerValue != null ? innerValue.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(XmlTypeName left, XmlTypeName right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(XmlTypeName left, XmlTypeName right)
+        {
+            return !Equals(left, right);
         }
     }
 }

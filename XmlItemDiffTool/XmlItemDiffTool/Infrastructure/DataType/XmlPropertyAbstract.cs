@@ -28,6 +28,21 @@ namespace Infrastructure.DataType
             }
         }
 
+        private string expression = string.Empty;
+        [NotNullable]
+        public string Expression
+        {
+            get { return expression; }
+            set
+            {
+                if(value != null && !value.Equals(expression))
+                {
+                    expression = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
         private string name = String.Empty;
         [NotNullable]
         public string Name
@@ -49,7 +64,7 @@ namespace Infrastructure.DataType
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return string.Equals(name, other.name);
+            return string.Equals(Name, other.Name) && string.Equals(Expression, other.Expression);
         }
 
         public override bool Equals(object obj)
@@ -57,7 +72,7 @@ namespace Infrastructure.DataType
             if(ReferenceEquals(null, obj)) return false;
             if(ReferenceEquals(this, obj)) return true;
             if(obj.GetType() != this.GetType()) return false;
-            return Equals((XmlPropertyAbstract) obj);
+            return Equals((XmlPropertyAbstract)obj);
         }
 
         public override int GetHashCode()
@@ -81,14 +96,20 @@ namespace Infrastructure.DataType
         }
 
         public XmlPropertyPath GetPathToRoot()
-        {   // Todo: Deal with ARRAY
+        {
             XmlPropertyPath ret = new XmlPropertyPath();
-            if(Host is XmlDataItem)
+            if(Host is XmlDataItem) // Terminal case
             {
                 XmlDataItem di = Host as XmlDataItem;
                 if(di.PropertyHost != null)
                 {
                     ret = di.PropertyHost.GetPathToRoot();
+                }
+                else if(di.Parent != null &&
+                    di.Parent.IsArrayType &&
+                    di.Parent.PropertyHost != null) // Array case
+                {
+                    ret = di.Parent.PropertyHost.GetPathToRoot();
                 }
             }
 
@@ -105,6 +126,17 @@ namespace Infrastructure.DataType
             string ret = String.Empty;
             foreach(var item in this)
             {
+                XmlDataItem di = item.Host as XmlDataItem;
+                // Array case  -> Add index
+                if(di != null &&
+                    di.Parent != null &&
+                   di.Parent.IsArrayType &&
+                   di.Parent.PropertyHost != null)
+                {
+                    int index = di.Parent.Children.IndexOf(di);
+                    ret += "[" + index + "]";
+                }
+
                 if(!String.IsNullOrEmpty(ret))
                 {
                     ret += '.';
