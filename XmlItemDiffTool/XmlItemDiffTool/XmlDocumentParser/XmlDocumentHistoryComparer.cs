@@ -2,19 +2,70 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using Infrastructure;
 using Infrastructure.DataType;
 using Infrastructure.Enum;
-using Infrastructure.Interface;
-using Infrastructure.ObjectModel;
 
 namespace XmlDocumentWrapper
 {
     public static class XmlDocumentHistoryComparer
     {
+        public static void CreateHistoryTrace(XmlDocumentConstructed before, XmlDocumentConstructed after)
+        {
+            CreateHistoryTrace(before.Root, after.Root);
+            CreateResourceHistory(before.Resources, after.Resources);
+        }
+
+        public static string HistoryTraceToString(XmlDocumentConstructed before, XmlDocumentConstructed after)
+        {
+            return HistoryTraceToString(before.Root, after.Root) + Environment.NewLine +
+            AddedWorkflowItemsDemonstration(after.Root) + Environment.NewLine +
+            ResourcesTraceToString(before.Resources);
+        }
+
+        public static string ResourcesTraceToString(XmlResources resources)
+        {
+            string ret = String.Empty;
+            ret += @"Added resources:" + Environment.NewLine;
+            foreach(var item in resources.AddedResources)
+            {
+                ret += @"    " + item.Name + Environment.NewLine;
+            }
+
+            ret += @"Removed resources:" + Environment.NewLine;
+            foreach(var item in resources.RemovedResources)
+            {
+                ret += @"    " + item.Name + Environment.NewLine;
+            }
+
+            ret += @"Modified resources:" + Environment.NewLine;
+            foreach(XmlResource item in resources.ChangedResources)
+            {
+                if(item is XmlWorkflowTemplateResource)
+                {
+                    XmlWorkflowTemplateResource wtItem = (XmlWorkflowTemplateResource) item;
+                    if(wtItem.ReferencedTemplate != null)
+                    {
+                        ret += @"    " + item.Name + Environment.NewLine;
+                        ret += @"~~~~~~START Inner Template~~~~~~" + Environment.NewLine;
+                        ret += HistoryTraceToString(wtItem.Template, wtItem.ReferencedTemplate);
+                        ret += @"~~~~~~END   Inner Template~~~~~~" + Environment.NewLine;
+                    }
+                }
+                else
+                {
+                    ret += @"    " + item.Name + Environment.NewLine;
+                    foreach(XmlPropertyHistory property in item.ChangedProperties)
+                    {
+                        ret += @"        " + property.OriginalProperty.GetResourcePath() + @" "
+                                   + property + Environment.NewLine;
+                    }
+                }
+            }
+
+            return ret;
+        }
+
         public static string HistoryTraceToString(XmlWorkflowItem before, XmlWorkflowItem after)
         {
             if(before.HistoryStates.Count == 0)
@@ -37,7 +88,7 @@ namespace XmlDocumentWrapper
                        historyState != HistoryState.L &&
                        historyState != HistoryState.D)
                     {
-                        ret += historyState.ToString();   
+                        ret += historyState.ToString();
                     }
                 }
                 ret += Environment.NewLine;
@@ -211,89 +262,93 @@ namespace XmlDocumentWrapper
                     // Todo: I don't want to deal with this now. So throw exception
                     if(match == null)
                     {
-                        throw new NotImplementedException(@"Cannot deal with property disappeared yet.");
+                        // Todo:  NotImplementedException(@"Cannot deal with property disappeared yet.");
+                        // Happens with namespace
                     }
-                    if(property.GetType() != match.GetType())   // NULL property case
+                    else
                     {
-                        if(property is XmlStringProperty && match is XmlTypeProperty)
+                        if(property.GetType() != match.GetType())   // NULL property case
                         {
-                            XmlStringProperty mStringProperty = property as XmlStringProperty;
-                            if(mStringProperty.Value.ToString().ToLower().Contains("null"))
+                            if(property is XmlStringProperty && match is XmlTypeProperty)
                             {
-                                XmlPropertyHistory sph = new XmlPropertyHistory
+                                XmlStringProperty mStringProperty = property as XmlStringProperty;
+                                if(mStringProperty.Value.ToString().ToLower().Contains("null"))
                                 {
-                                    OriginalProperty = property,
-                                    OriginalValue = null,
-                                    ChangedValue = match.Value
-                                };
-                                ret.Add(sph);
-                            }
-                            else
-                            {
-                                throw new NotImplementedException(@"Cannot deal with this case yet.");
-                            }
-                        }
-                        else if(property is XmlTypeProperty && match is XmlStringProperty)
-                        {
-                            XmlStringProperty mStringProperty = match as XmlStringProperty;
-                            if(mStringProperty.Value.ToString().ToLower().Contains("null"))
-                            {
-                                XmlPropertyHistory sph = new XmlPropertyHistory
-                                {
-                                    OriginalProperty = property,
-                                    OriginalValue = property.Value,
-                                    ChangedValue = null
-                                };
-                                ret.Add(sph);
-                            }
-                            else
-                            {
-                                throw new NotImplementedException(@"Cannot deal with this case yet.");
-                            }
-                        }
-                        else
-                        {
-                            throw new NotImplementedException(@"Cannot deal with this case yet.");
-                        }
-                    }
-                    else if(property is XmlStringProperty)
-                    {
-                        XmlStringProperty mStringProperty = match as XmlStringProperty;
-                        if(mStringProperty != null)
-                        {
-                            XmlPropertyHistory sph = new XmlPropertyHistory
-                            {
-                                OriginalProperty = property,
-                                OriginalValue = (property as XmlStringProperty).Value.ToString(),
-                                ChangedValue = mStringProperty.Value.ToString()
-                            };
-                            ret.Add(sph);
-                        }
-                    }
-                    else if(property is XmlTypeProperty)
-                    {
-                        XmlTypeProperty tMatch = match as XmlTypeProperty;
-                        if(tMatch != null)
-                        {
-                            var pValue = property.Value as XmlType;
-                            var mValue = tMatch.Value as XmlType;
-                            if(mValue != null && pValue != null)
-                            {
-                                if(pValue.TypeName.Equals(mValue.TypeName))
-                                {
-                                    List<XmlPropertyHistory> result =
-                                        CreatePropertyChangeHistory(property.Value as XmlType, tMatch.Value as XmlType);
-                                    AddItems(ret, result);
+                                    XmlPropertyHistory sph = new XmlPropertyHistory
+                                    {
+                                        OriginalProperty = property,
+                                        OriginalValue = null,
+                                        ChangedValue = match.Value
+                                    };
+                                    ret.Add(sph);
                                 }
                                 else
                                 {
-                                    XmlPropertyHistory ph = new XmlPropertyHistory
+                                    throw new NotImplementedException(@"Cannot deal with this case yet.");
+                                }
+                            }
+                            else if(property is XmlTypeProperty && match is XmlStringProperty)
+                            {
+                                XmlStringProperty mStringProperty = match as XmlStringProperty;
+                                if(mStringProperty.Value.ToString().ToLower().Contains("null"))
+                                {
+                                    XmlPropertyHistory sph = new XmlPropertyHistory
                                     {
                                         OriginalProperty = property,
-                                        OriginalValue = pValue.TypeName,
-                                        ChangedValue = mValue.TypeName
+                                        OriginalValue = property.Value,
+                                        ChangedValue = null
                                     };
-                                    ret.Add(ph);
+                                    ret.Add(sph);
+                                }
+                                else
+                                {
+                                    throw new NotImplementedException(@"Cannot deal with this case yet.");
+                                }
+                            }
+                            else
+                            {
+                                throw new NotImplementedException(@"Cannot deal with this case yet.");
+                            }
+                        }
+                        else if(property is XmlStringProperty)
+                        {
+                            XmlStringProperty mStringProperty = match as XmlStringProperty;
+                            if(mStringProperty != null)
+                            {
+                                XmlPropertyHistory sph = new XmlPropertyHistory
+                                {
+                                    OriginalProperty = property,
+                                    OriginalValue = (property as XmlStringProperty).Value.ToString(),
+                                    ChangedValue = mStringProperty.Value.ToString()
+                                };
+                                ret.Add(sph);
+                            }
+                        }
+                        else if(property is XmlTypeProperty)
+                        {
+                            XmlTypeProperty tMatch = match as XmlTypeProperty;
+                            if(tMatch != null)
+                            {
+                                var pValue = property.Value as XmlType;
+                                var mValue = tMatch.Value as XmlType;
+                                if(mValue != null && pValue != null)
+                                {
+                                    if(pValue.TypeName.Equals(mValue.TypeName))
+                                    {
+                                        List<XmlPropertyHistory> result =
+                                            CreatePropertyChangeHistory(property.Value as XmlType, tMatch.Value as XmlType);
+                                        AddItems(ret, result);
+                                    }
+                                    else
+                                    {
+                                        XmlPropertyHistory ph = new XmlPropertyHistory
+                                        {
+                                            OriginalProperty = property,
+                                            OriginalValue = pValue.TypeName,
+                                            ChangedValue = mValue.TypeName
+                                        };
+                                        ret.Add(ph);
+                                    }
                                 }
                             }
                         }
@@ -326,7 +381,188 @@ namespace XmlDocumentWrapper
                 }
             }
 
+            if(before is XmlResourceItem && after is XmlResourceItem)
+            {
+                XmlResourceItem rBefore = (XmlResourceItem)before;
+                XmlResourceItem rAfter = (XmlResourceItem)after;
+                foreach(XmlResourceItem item in rBefore.Children)
+                {
+                    List<XmlResourceItem> matches = (from i in rAfter.Children
+                                                     where i.TypeName.Equals(item.TypeName)
+                                                     select i).ToList();
+
+                    if(matches.Count == 1)
+                    {
+
+                        XmlResourceItem match = matches.First();
+
+                        List<XmlPropertyHistory> result = CreatePropertyChangeHistory(item, match);
+                        AddItems(ret, result);
+                    }
+                    else
+                    {
+                        // Todo: NotImplementedException(@"Cannot deal with this case yet.");
+                    }
+                }
+            }
+
+            if(before is XmlMatchImageItem && after is XmlMatchImageItem)
+            {
+                XmlMatchImageItem rBefore = (XmlMatchImageItem)before;
+                XmlMatchImageItem rAfter = (XmlMatchImageItem)after;
+
+                if(rBefore.IsArray && rAfter.IsArray)
+                {
+                    if(rBefore.Children.Count != rAfter.Children.Count)
+                    {
+                        throw new NotImplementedException(@"Match Image resource's array has different counts.");
+                    }
+
+                    for(int i = 0; i < rBefore.Children.Count; i++)
+                    {
+                        List<XmlPropertyHistory> result = CreatePropertyChangeHistory(rBefore.Children[i], rAfter.Children[i]);
+                        AddItems(ret, result);
+                    }
+                }
+                else if(!rBefore.IsArray && !rAfter.IsArray)
+                {
+                    foreach(XmlMatchImageItem item in rBefore.Children)
+                    {
+                        List<XmlMatchImageItem> matches = (from i in rAfter.Children
+                            where i.TypeName.Equals(item.TypeName)
+                            select i).ToList();
+
+                        if(matches.Count == 1)
+                        {
+
+                            XmlMatchImageItem match = matches.First();
+
+                            List<XmlPropertyHistory> result = CreatePropertyChangeHistory(item, match);
+                            AddItems(ret, result);
+                        }
+                        else
+                        {
+                            // Todo: NotImplementedException(@"Cannot deal with this case yet.");
+                        }
+                    }
+                }
+                else
+                {
+                    throw new Exception(@"Parsed xml files have different types for same properties' name.");
+                }
+            }
+
             return ret;
+        }
+
+        public static void CreateResourceHistory(XmlResources before, XmlResources after)
+        {
+            foreach(XmlResource item in before.Resources)
+            {
+                XmlResource match = (from r in after.Resources
+                                     where r.Name.Equals(item.Name)
+                                     select r).FirstOrDefault();
+
+                if(match == null)   // Look for deleted resources
+                {
+                    before.RemovedResources.Add(item);
+                }
+                else
+                {   // Look for changed resources
+                    if(item is XmlSampleMapResource)
+                    {
+                        XmlSampleMapResource smBefore = (XmlSampleMapResource)item;
+                        XmlSampleMapResource smAfter = (XmlSampleMapResource)match;
+                        if(!smBefore.Equals(smAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
+                               smBefore.SampleMap, smAfter.SampleMap);
+                            AddItems(item.ChangedProperties, result);
+                        }
+                    }
+                    else if(item is XmlTypeResource)
+                    {
+                        XmlTypeResource trBefore = (XmlTypeResource)item;
+                        XmlTypeResource trAfter = (XmlTypeResource)match;
+
+                        if(!trBefore.Equals(trAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
+                                trBefore.Data, trAfter.Data);
+                            AddItems(item.ChangedProperties, result);
+                        }
+                    }
+                    else if(item is XmlPatMaxResource)
+                    {
+                        XmlPatMaxResource prBefore = (XmlPatMaxResource)item;
+                        XmlPatMaxResource prAfter = (XmlPatMaxResource)match;
+
+                        if(!prBefore.Equals(prAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
+                                prBefore.Data, prAfter.Data);
+                            AddItems(item.ChangedProperties, result);
+                        }
+                    }
+                    else if(item is XmlMatchImageResource)
+                    {
+                        XmlMatchImageResource mrBefore = (XmlMatchImageResource)item;
+                        XmlMatchImageResource mrAfter = (XmlMatchImageResource)match;
+
+                        if(!mrBefore.Equals(mrAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
+                                mrBefore.Data, mrAfter.Data);
+                            AddItems(item.ChangedProperties, result);
+                        }
+                    }
+                    else if(item is XmlSiteListResource)
+                    {
+                        XmlSiteListResource slBefore = (XmlSiteListResource)item;
+                        XmlSiteListResource slAfter = (XmlSiteListResource)match;
+
+                        if(!slBefore.Equals(slAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            // Todo: handle this
+                        }
+                    }
+                    else if(item is XmlWorkflowTemplateResource)
+                    {
+                        XmlWorkflowTemplateResource wtBefore = (XmlWorkflowTemplateResource)item;
+                        XmlWorkflowTemplateResource wtAfter = (XmlWorkflowTemplateResource)match;
+
+                        if(!wtBefore.Equals(wtAfter))
+                        {
+                            before.ChangedResources.Add(item);
+
+                            CreateHistoryTrace(wtBefore.Template, wtAfter.Template);
+                            wtBefore.ReferencedTemplate = wtAfter.Template;
+                        }
+                    }
+                }
+            }
+
+            foreach(XmlResource item in after.Resources)     // Look for new resources
+            {
+                XmlResource match = (from r in before.Resources
+                                     where r.Name.Equals(item.Name)
+                                     select r).FirstOrDefault();
+
+                if(match == null)
+                {
+                    before.AddedResources.Add(item);
+                }
+            }
         }
 
         /// <summary>

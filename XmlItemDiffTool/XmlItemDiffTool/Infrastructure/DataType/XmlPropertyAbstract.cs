@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Infrastructure.Attribute;
-using Infrastructure.Interface;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
@@ -116,6 +112,15 @@ namespace Infrastructure.DataType
             ret.Add(this);
 
             return ret;
+        }
+
+        public string GetResourcePath()
+        {
+            if(Host is IGetPathToRoot)
+            {
+                return ((IGetPathToRoot)Host).GetPathToRoot() + "." + Name;
+            }
+            return String.Empty;
         }
     }
 

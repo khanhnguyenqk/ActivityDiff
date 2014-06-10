@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1546" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3shhgr4P3IQ6vlMY/ugUYkIPFDqLAUe8BEx0jeWI40/cu7osmkswYClUbknacHyiu/WCroJP1lytbRszXQB4l0NYSY5Gv751ZM4FlnWBTkmXuQBffimz0cIHolJSEKiHxG5s0lOVukPq+jBLAJawxiBUqVV1uJnIcRKagoBNX+cZYabUakmqQZzXUj6qzBPdMxLTXOxEiqv4Sys5woad4mrgAUBj6SjRLNIbs1RBQ3JB6Ha2rR4WdWPDGv+uqEkQ7XVNvYR1eCRWjpLJ0CaBHkjcTD7awOjfyLFoIURcBoOeWTSdbJF0/hrrn7+/Iq0I/92OUXqRY5xNybAPWmPmtmtF76EJl1eBywkofCwPAM4UR2oJPxPE4sojQv6umrU3AglbnqL0uuBdUhrPyR5snBxKTYo7kAy4yz39EbocsLuQOhqQ1kuwHarVhLIqZgl5kDhQ0WDwn9XVCdB0/k7OO/0krQSMR2L8USdeYPzcJkMlSUQQByxHfG6PeY33g+JAZc5K7cDw3uGOAV1kpgSuFwuIiPh5bnjiu1dcku7ccDuk83Arn0mLtgraD6orbr/zLGkRtuU9RTp2FiJw09+o4WA==">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="Instructionform" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns0:InstructionFormActivity BackGround="0XFFFFFFFF" FitToContent="False" ExpressionList="" OptionOnTimeout="Continue" TextBoxContent="{x:Null}" Description="Create an instruction form that appears during workflow run time to prompt for continue or stop." CallOutLineBegin="LeftTop" BorderColor="0XFFFFFF00" DisplayLine="True" ActivityType="Instruction Form" x:Name="InstructionForm">
+		<ns0:InstructionFormActivity.CallOutLineEnd>
+			<ns1:PointLength xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns1:PointLength.X>
+					<ns1:Length RawValue="0" />
+				</ns1:PointLength.X>
+				<ns1:PointLength.Y>
+					<ns1:Length RawValue="0" />
+				</ns1:PointLength.Y>
+			</ns1:PointLength>
+		</ns0:InstructionFormActivity.CallOutLineEnd>
+		<ns0:InstructionFormActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns0:InstructionFormActivity.Expressions>
+		<ns0:InstructionFormActivity.BorderOpacity>
+			<ns1:Percentage RawValue="100" xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns0:InstructionFormActivity.BorderOpacity>
+		<ns0:InstructionFormActivity.ShapeSize>
+			<ns1:SizeLength xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns1:SizeLength.Height>
+					<ns1:Length RawValue="1E-06" />
+				</ns1:SizeLength.Height>
+				<ns1:SizeLength.Width>
+					<ns1:Length RawValue="3E-06" />
+				</ns1:SizeLength.Width>
+			</ns1:SizeLength>
+		</ns0:InstructionFormActivity.ShapeSize>
+		<ns0:InstructionFormActivity.Opacity>
+			<ns1:Percentage RawValue="100" xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns0:InstructionFormActivity.Opacity>
+		<ns0:InstructionFormActivity.Center>
+			<ns1:PointLength xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns1:PointLength.X>
+					<ns1:Length RawValue="0" />
+				</ns1:PointLength.X>
+				<ns1:PointLength.Y>
+					<ns1:Length RawValue="0" />
+				</ns1:PointLength.Y>
+			</ns1:PointLength>
+		</ns0:InstructionFormActivity.Center>
+		<ns0:InstructionFormActivity.TimeOut>
+			<ns1:Dwell RawValue="0" xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns0:InstructionFormActivity.TimeOut>
+		<ns0:InstructionFormActivity.MessageContents>
+			<ns0:PropertyReferenceLink FullLinkId="res:InstructionForm.MessageContents" />
+		</ns0:InstructionFormActivity.MessageContents>
+		<ns0:InstructionFormActivity.BackGroundOpacity>
+			<ns1:Percentage RawValue="100" xmlns:ns1="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns0:InstructionFormActivity.BackGroundOpacity>
+		<ns0:InstructionFormActivity.WindowPosition>
+			<ns2:Rectangle Size="429, 327" X="0" Y="0" Location="0, 0" Width="429" Height="327" xmlns:ns2="clr-namespace:System.Drawing;Assembly=System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+		</ns0:InstructionFormActivity.WindowPosition>
+	</ns0:InstructionFormActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="InstructionForm.MessageContents" Type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+		<string>{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+{\colortbl ;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\fs24 Contents A\par
+\par
+}
+</string>
+	</Resource>
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

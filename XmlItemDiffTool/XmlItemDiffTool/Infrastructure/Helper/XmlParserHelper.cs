@@ -18,7 +18,7 @@ namespace Infrastructure
                 string[] arr = originalName.Split(new[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
                 if(arr.Length != 2)
                 {
-                    throw new XmlItemParseException(@"Cannot parse the property name.", xmlNode.OuterXml);
+                    return false;
                 }
                 parent = arr[0];
                 name = arr[1];
@@ -42,6 +42,18 @@ namespace Infrastructure
                 }
             }
             return name;
+        }
+
+        /// <summary>
+        /// Given a string convert it to an XmlNode
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static XmlNode StringToXmlNode(string str)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(str);
+            return doc.DocumentElement;
         }
     }
 }

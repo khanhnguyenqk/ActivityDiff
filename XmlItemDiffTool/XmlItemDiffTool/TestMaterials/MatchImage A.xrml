@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1546" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3U+oSXppr25ogWl/Pym2c+CsVq1ZgJFUkQW35q8gsG9nSf7P/sABnjCXI3Fu1aomguhuG2aNqzUGSdhD5b0h5f+/03DUqT2Iz3M73LcRHyUi2miFlR78IvPBZB16zH2HOa7mPh/3vK78uFiQH2rOPOTyLxcQ2ljS1m8V8zZreYN0yu9qv9Rw/6HKtP/kddzVWNpDAkS9b7k78qQuMia8fZJXgnZuTOo0awYpgNn2Y9fN40zBkeJpfQYzin+MwMd7/AaH4V6bxB9o7YnCN/9sslUa3mFbVLXov7cVBSu9eBy9GoSrQdrrP+A1BsO0Qr4oWQOcRAN5DzJEPpRU008lKEle2Gi97KadVbGvwahonwq6gdO2nNX7Os1BectcvMv9UfMFyvzFbRPcqo2bQ0FDksmktmnhQfLkdr4CzxG5ja8Ev2sm76gPhTH9bTN6gCrtGhc5/L/XCR9zEuxQsm/U9B+JI947wnKMD4m0uc94wi9BAaLyx+oIN3jW7PWsY3J4RQgS/3CfgTyW1b54v1OlBDHA1J5VIcxd9r66BGWHEJXH5xzqXwIcfMKSdGv1Wpz/rQhQfYR+T3MOBMc7xp2PVxqgbmkJ16FEbzedqvRWfpyfYvHb2UdjDKBS6y1kff5RQ">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="MatchImage A" xmlns:ns1="clr-namespace:Fei.Workflow.Activities.xT;assembly=Fei.Workflow.Activities.xT, SerializedRevision=3.0" xmlns:ns2="clr-namespace:Fei.Workflow.Activities.MachineVision;assembly=Fei.Workflow.Activities.MachineVision, SerializedRevision=2.0" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns1:FIBImageActivity Image="{x:Null}" FrameCount="1" Description="Acquire a FIB image" Detector="Current" Expanded="True" ActivityType="FIB Image" AcquisitionFaultAction="Echo" LoadImageFromFile="" EnableDCFI="False" LineIntegration="1" SelectedAreaScan="False" x:Name="FIBImage" Collapsed="True" ScanInterlacing="1" StretchHistogram="True" ShowImageView="False" Dwell="2" Resolution="1536, 1024" ZoomFactor="0">
+		<ns1:FIBImageActivity.HorizontalFieldWidth>
+			<ns3:Length RawValue="1E-05" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns1:FIBImageActivity.HorizontalFieldWidth>
+		<ns1:FIBImageActivity.DwellUnit>
+			<ns3:Dwell RawValue="2E-06" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns1:FIBImageActivity.DwellUnit>
+		<ns1:FIBImageActivity.DCFISelectedAreaScanParam>
+			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:SelectedAreaSetting.Bottom>
+					<ns3:Percentage RawValue="95" />
+				</ns3:SelectedAreaSetting.Bottom>
+				<ns3:SelectedAreaSetting.Top>
+					<ns3:Percentage RawValue="5" />
+				</ns3:SelectedAreaSetting.Top>
+				<ns3:SelectedAreaSetting.Right>
+					<ns3:Percentage RawValue="95" />
+				</ns3:SelectedAreaSetting.Right>
+				<ns3:SelectedAreaSetting.Left>
+					<ns3:Percentage RawValue="5" />
+				</ns3:SelectedAreaSetting.Left>
+			</ns3:SelectedAreaSetting>
+		</ns1:FIBImageActivity.DCFISelectedAreaScanParam>
+		<ns1:FIBImageActivity.SelectedAreaScanPosition>
+			<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:PointLength.X>
+					<ns3:Length RawValue="0" />
+				</ns3:PointLength.X>
+				<ns3:PointLength.Y>
+					<ns3:Length RawValue="0" />
+				</ns3:PointLength.Y>
+			</ns3:PointLength>
+		</ns1:FIBImageActivity.SelectedAreaScanPosition>
+		<ns1:FIBImageActivity.SelectedAreaScanSize>
+			<ns3:SizeLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:SizeLength.Height>
+					<ns3:Length RawValue="5E-06" />
+				</ns3:SizeLength.Height>
+				<ns3:SizeLength.Width>
+					<ns3:Length RawValue="5E-06" />
+				</ns3:SizeLength.Width>
+			</ns3:SizeLength>
+		</ns1:FIBImageActivity.SelectedAreaScanSize>
+		<ns1:FIBImageActivity.PanLocation>
+			<ns4:Point X="0" Y="0" xmlns:ns4="clr-namespace:System.Windows;Assembly=WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+		</ns1:FIBImageActivity.PanLocation>
+		<ns1:FIBImageActivity.SelectedAreaScanParam>
+			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:SelectedAreaSetting.Bottom>
+					<ns3:Percentage RawValue="87.5" />
+				</ns3:SelectedAreaSetting.Bottom>
+				<ns3:SelectedAreaSetting.Top>
+					<ns3:Percentage RawValue="12.5" />
+				</ns3:SelectedAreaSetting.Top>
+				<ns3:SelectedAreaSetting.Right>
+					<ns3:Percentage RawValue="75" />
+				</ns3:SelectedAreaSetting.Right>
+				<ns3:SelectedAreaSetting.Left>
+					<ns3:Percentage RawValue="25" />
+				</ns3:SelectedAreaSetting.Left>
+			</ns3:SelectedAreaSetting>
+		</ns1:FIBImageActivity.SelectedAreaScanParam>
+		<ns1:FIBImageActivity.StretchHistogramRegionOfInterest>
+			<ns3:SelectedAreaSetting xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:SelectedAreaSetting.Bottom>
+					<ns3:Percentage RawValue="100" />
+				</ns3:SelectedAreaSetting.Bottom>
+				<ns3:SelectedAreaSetting.Top>
+					<ns3:Percentage RawValue="0" />
+				</ns3:SelectedAreaSetting.Top>
+				<ns3:SelectedAreaSetting.Right>
+					<ns3:Percentage RawValue="100" />
+				</ns3:SelectedAreaSetting.Right>
+				<ns3:SelectedAreaSetting.Left>
+					<ns3:Percentage RawValue="0" />
+				</ns3:SelectedAreaSetting.Left>
+			</ns3:SelectedAreaSetting>
+		</ns1:FIBImageActivity.StretchHistogramRegionOfInterest>
+		<ns1:FIBImageActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns1:FIBImageActivity.Expressions>
+		<ns1:AlignmentResultsOnlySequenceActivity ActivityType="AlignmentResultsOnlySequenceActivity" Expanded="True" x:Name="sequence_FIBImage">
+			<ns1:AlignmentResultsOnlySequenceActivity.Expressions>
+				<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+			</ns1:AlignmentResultsOnlySequenceActivity.Expressions>
+		</ns1:AlignmentResultsOnlySequenceActivity>
+	</ns1:FIBImageActivity>
+	<ns2:MatchImageActivity ExpectedNumberOfMatches="1" Position="{x:Null}" ShowImageView="False" Filter="None" RotationalCorrectionEnabled="False" ZoomFactor="1" Scale="1" Description="Match an input image with a reference image." FilterDeviation="1" x:Name="MatchImage" StageCenterStrategy="StageMove" ScoreThreshold="0.5" ActivityType="Match Image" InputImage="{x:Null}" PixelWiseCentering="False">
+		<ns2:MatchImageActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns2:MatchImageActivity.Expressions>
+		<ns2:MatchImageActivity.NominalAngle>
+			<ns3:Angle RawValue="0" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns2:MatchImageActivity.NominalAngle>
+		<ns2:MatchImageActivity.IncrementAngle>
+			<ns3:Angle RawValue="1" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns2:MatchImageActivity.IncrementAngle>
+		<ns2:MatchImageActivity.SearchRangeAngle>
+			<ns3:Angle RawValue="10" xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns2:MatchImageActivity.SearchRangeAngle>
+		<ns2:MatchImageActivity.ReferenceImageEditor>
+			<ns0:PropertyReferenceLink FullLinkId="res:MatchImage.ReferenceImageEditor" />
+		</ns2:MatchImageActivity.ReferenceImageEditor>
+		<ns2:MatchImageActivity.CenterOffset>
+			<ns3:PointLength xmlns:ns3="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+				<ns3:PointLength.X>
+					<ns3:Length RawValue="-1.52542372544607E-06" />
+				</ns3:PointLength.X>
+				<ns3:PointLength.Y>
+					<ns3:Length RawValue="-3.10734510421753E-07" />
+				</ns3:PointLength.Y>
+			</ns3:PointLength>
+		</ns2:MatchImageActivity.CenterOffset>
+	</ns2:MatchImageActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="MatchImage.ReferenceImageEditor" Type="Fei.Workflow.Activities.MachineVision.AdornedImageConvertible, Fei.Workflow.Activities.MachineVision, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<AdornedImageConvertible xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			<Image picture="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" />
+			<Metadata>&lt;?xml version="1.0"?&gt;
+&lt;Metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nil="http://schemas.fei.com/Metadata/v1/2013/07"&gt;
+  &lt;Core&gt;
+    &lt;Guid&gt;8794b734-6de4-44c1-9119-b12a4af97059&lt;/Guid&gt;
+    &lt;ApplicationSoftware&gt;xT&lt;/ApplicationSoftware&gt;
+    &lt;ApplicationSoftwareVersion&gt;0&lt;/ApplicationSoftwareVersion&gt;
+  &lt;/Core&gt;
+  &lt;Acquisition&gt;
+    &lt;AcquisitionDatetime&gt;2014-06-10T01:15:21.7754977-07:00&lt;/AcquisitionDatetime&gt;
+    &lt;BeamType&gt;Ion&lt;/BeamType&gt;
+  &lt;/Acquisition&gt;
+  &lt;Optics&gt;
+    &lt;ScanFieldOfView&gt;
+      &lt;X&gt;1E-05&lt;/X&gt;
+      &lt;Y&gt;6.66666666666667E-06&lt;/Y&gt;
+    &lt;/ScanFieldOfView&gt;
+  &lt;/Optics&gt;
+  &lt;StageSettings&gt;
+    &lt;StagePosition&gt;
+      &lt;X&gt;0&lt;/X&gt;
+      &lt;Y&gt;0&lt;/Y&gt;
+      &lt;Z&gt;0&lt;/Z&gt;
+      &lt;Rotation&gt;0&lt;/Rotation&gt;
+      &lt;Tilt&gt;
+        &lt;Alpha&gt;0&lt;/Alpha&gt;
+      &lt;/Tilt&gt;
+    &lt;/StagePosition&gt;
+  &lt;/StageSettings&gt;
+  &lt;ScanSettings&gt;
+    &lt;DwellTime&gt;2E-06&lt;/DwellTime&gt;
+    &lt;ScanSize&gt;
+      &lt;Width&gt;1536&lt;/Width&gt;
+      &lt;Height&gt;1024&lt;/Height&gt;
+    &lt;/ScanSize&gt;
+    &lt;LineIntegrationCount&gt;1&lt;/LineIntegrationCount&gt;
+    &lt;LineInterlacing&gt;1&lt;/LineInterlacing&gt;
+  &lt;/ScanSettings&gt;
+  &lt;BinaryResult&gt;
+    &lt;AcquisitionUnit&gt;Pixel&lt;/AcquisitionUnit&gt;
+    &lt;CompositionType&gt;Single&lt;/CompositionType&gt;
+    &lt;ImageSize&gt;
+      &lt;X&gt;1536&lt;/X&gt;
+      &lt;Y&gt;1024&lt;/Y&gt;
+    &lt;/ImageSize&gt;
+    &lt;FilterFrameCount&gt;1&lt;/FilterFrameCount&gt;
+    &lt;PixelSize&gt;
+      &lt;X unit="m" unitPrefixPower="1"&gt;6.5104166666666675E-09&lt;/X&gt;
+      &lt;Y unit="m" unitPrefixPower="1"&gt;6.5104166666666675E-09&lt;/Y&gt;
+    &lt;/PixelSize&gt;
+    &lt;IntensityScale&gt;1&lt;/IntensityScale&gt;
+    &lt;IntensityOffset&gt;0&lt;/IntensityOffset&gt;
+    &lt;Gamma&gt;1&lt;/Gamma&gt;
+    &lt;AcquisitionArea&gt;
+      &lt;X&gt;0&lt;/X&gt;
+      &lt;Y&gt;0&lt;/Y&gt;
+      &lt;Width&gt;1&lt;/Width&gt;
+      &lt;Height&gt;1&lt;/Height&gt;
+    &lt;/AcquisitionArea&gt;
+  &lt;/BinaryResult&gt;
+  &lt;CustomPropertyGroup&gt;
+    &lt;CustomProperties scope="RunParameters.SelectedAreaScanRectangle"&gt;
+      &lt;CustomProperty name="X" value="106" /&gt;
+      &lt;CustomProperty name="Y" value="498" /&gt;
+      &lt;CustomProperty name="Width" value="768" /&gt;
+      &lt;CustomProperty name="Height" value="512" /&gt;
+    &lt;/CustomProperties&gt;
+    &lt;CustomProperties scope="RunParameters.SelectedAreaScanParameters"&gt;
+      &lt;CustomProperty name="Left" value="1.06" /&gt;
+      &lt;CustomProperty name="Right" value="8.74" /&gt;
+      &lt;CustomProperty name="Top" value="4.98" /&gt;
+      &lt;CustomProperty name="Bottom" value="10.1" /&gt;
+    &lt;/CustomProperties&gt;
+    &lt;CustomProperties scope="RunParameters"&gt;
+      &lt;CustomProperty name="Name" value="FIBImage" /&gt;
+      &lt;CustomProperty name="PathToImage" value="" /&gt;
+      &lt;CustomProperty name="ACBTime" value="0" /&gt;
+      &lt;CustomProperty name="AFTime" value="0" /&gt;
+      &lt;CustomProperty name="ExecutionTime" value="0.4960992" /&gt;
+      &lt;CustomProperty name="SelectedAreaScan" value="True" /&gt;
+    &lt;/CustomProperties&gt;
+  &lt;/CustomPropertyGroup&gt;
+&lt;/Metadata&gt;</Metadata></AdornedImageConvertible>
+	</Resource>
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

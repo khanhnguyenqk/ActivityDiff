@@ -15,6 +15,24 @@ namespace Infrastructure.DataType
     public class XmlWorkflowItem : XmlType, IEquatable<XmlWorkflowItem>
     {
         /// <summary>
+        /// Meta data. Contains information of properties that changed.
+        /// </summary>
+        private ObservableList<XmlPropertyHistory> changedProperties = new ObservableList<XmlPropertyHistory>();
+        [NotNullable]
+        public ObservableList<XmlPropertyHistory> ChangedProperties
+        {
+            get { return changedProperties; }
+            set
+            {
+                if(value != null && !changedProperties.Equals(value))
+                {
+                    changedProperties = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
         /// Metadata this is not used in object comparison.
         /// </summary>
         public XmlWorkflowItem Parent { get; set; }

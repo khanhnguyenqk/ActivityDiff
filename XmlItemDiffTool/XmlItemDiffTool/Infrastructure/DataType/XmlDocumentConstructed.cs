@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Infrastructure.ObjectModel;
 
 namespace Infrastructure.DataType
@@ -23,13 +24,41 @@ namespace Infrastructure.DataType
             }
         }
 
-        public XmlResource Resource { get; set; }
+        private XmlResources resources;
+
+        public XmlResources Resources
+        {
+            get
+            {
+                return resources;
+            }
+            set
+            {
+                if(value != resources)
+                {
+                    resources = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public XmlDocumentConstructed(XmlNode workflowNode, XmlNode resourcesNode)
+        {
+            Root = new XmlWorkflowItem(workflowNode);
+            Resources = new XmlResources(resourcesNode);
+        }
+
+        public XmlDocumentConstructed(XmlDocument xmlDocument)
+        {
+            Root = new XmlWorkflowItem(xmlDocument.ChildNodes[1].ChildNodes[0].ChildNodes[0]);
+            Resources = new XmlResources(xmlDocument.ChildNodes[1].ChildNodes[1]);
+        }
 
         public bool Equals(XmlDocumentConstructed other)
         {
             if(ReferenceEquals(null, other)) return false;
             if(ReferenceEquals(this, other)) return true;
-            return Equals(root, other.root) && Equals(Resource, other.Resource);
+            return Equals(root, other.root) && Equals(Resources, other.Resources);
         }
 
         public override bool Equals(object obj)
@@ -44,7 +73,7 @@ namespace Infrastructure.DataType
         {
             unchecked
             {
-                return ((root != null ? root.GetHashCode() : 0)*397) ^ (Resource != null ? Resource.GetHashCode() : 0);
+                return ((root != null ? root.GetHashCode() : 0)*397) ^ (Resources != null ? Resources.GetHashCode() : 0);
             }
         }
 

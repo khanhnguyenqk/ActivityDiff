@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1546" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3ugtrTpYP7AqVU8gXRohz8DItCsYT3N7zqpdaunkJWk36oGZm0I6GeZcr50LXudmnRKToyAuNCrj0BVjkHMp8ddJgKDdzy/JyGu18bxxztwIIU9TFajg4FPMpTD5P0AlpnmjBDqlg3WVZFbd0OvfF/h2xP/X9sA2GyyfkxH4wr6eqwZaYozX/jYAIGGzjnT37GB7NFIyzfZN/KLQD7NaAoTuJvXTcjETT3QX7tradeYfGciJXcJcw0ryv69+RcmtzF/YJX1Mv+Kv8skIGXuZZ8ZW+RCwDbzbVPVTZ6nbFhmdTeAeEN26zbLYq7y/vwqNtEEF8/1gH6nKAd/iJUtIQhhj1BNKDHlLFwSY5uq3B8GoZt7qvn2s3xtABSnbVcVLizIUlEf/2hAZLyHhFMK9r10ZcuppxBIMXZB+CRY9AywhhFtR6JgXvz8UiABGVWVOhn2voCWV3WdKKWZAldBRxn9w+3M7ldLj39lB5EMUvu7SKX4TrylW7h9l8s1R7u/Qo4kfF/KMKn2tHptciQyxEX6umPLnPEJ2XQyeMyF3RTfAfbe60UGXAl0ZFG3ZkkCqP">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="Variable A" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns0:CustomVariableActivity x:Name="VariableContainer" ReadFromFile="False" WriteToFile="False" Expanded="True" Description="Contains user defined variables." FileName="" ActivityType="Variable Container">
+		<ns0:CustomVariableActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns0:CustomVariableActivity.Expressions>
+		<ns0:CustomVariableActivity.UserInputList>
+			<ns0:UserInputList>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName1" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="" PropertyType="{x:Type p8:String}" DefaultValue="" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:String xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"></ns1:String>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName2" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="" PropertyType="{x:Type p8:PathString}" DefaultValue="" xmlns:p8="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+					<ns0:UserInput.Value>
+						<ns2:PathString Path="" xmlns:ns2="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p8:DependencyPropertyInput}" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName3" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="0" PropertyType="{x:Type p8:Double}" DefaultValue="0" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:Double xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Double>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName4" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="0" PropertyType="{x:Type p8:Int32}" DefaultValue="0" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:Int32 xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">0</ns1:Int32>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+				<ns0:UserInput DefaultArraySize="1" DefaultList="{x:Null}" DisplayName="" ComponentType="{x:Null}" IsExpressionable="{x:Null}" Name="InputName5" IsReadOnly="False" SubPropertyName="{x:Null}" Category="Input Properties" Description="" DefaultValueMasked="False" PropertyType="{x:Type p8:Boolean}" DefaultValue="False" xmlns:p8="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+					<ns0:UserInput.Value>
+						<ns1:Boolean xmlns:ns1="clr-namespace:System;Assembly=mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">false</ns1:Boolean>
+					</ns0:UserInput.Value>
+					<ns0:UserInput.DependancyPropertiesValues>
+						<x:Array Type="{x:Type p11:DependencyPropertyInput}" xmlns:p11="clr-namespace:Fei.AutomationFramework.Common.Library;Assembly=Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null" />
+					</ns0:UserInput.DependancyPropertiesValues>
+				</ns0:UserInput>
+			</ns0:UserInputList>
+		</ns0:CustomVariableActivity.UserInputList>
+	</ns0:CustomVariableActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1546" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3VPd5kENGggxIUvyapp5x+QRbCoj5gzmj2OlO+KvkdmYLU3cmnvxMDLRmqEYUQjYLhhN8lsNbj38IHKbmwxMLfHemUYtkSXmwixbtaIZd8DZrrp/UAkQjiHeOdRFOOIOMLXV3hNhD6JHY497zdXbKkV8cSWH8xOcQnXFq1oDMkQep/WjUxNmwCSZPe7c4E4xQyfX4prET2zbocE4uFaO+zC8I3KefhIjxcgtl7yeDhXxDNlwbHUxBOMGgUm0//MYRctktEIlfUnznIDfcVMLCzERSGQKCvzl5SELfHo0LbHUc5CTy05GLmAEFN14vwC4Odc9AxwJxqPa/1uqHI/Yl2SEuGaanvigTwnkLl8r71GXQ4zzqOtLTdYPb7C4w2GKEMxLQRTUBne2xfOKaakYnCW9Q7/fs4kH6ykK3c3dmsCIN6UdD4alFzmgWIaFYKejtmLbW8n0h4aYoDoen343H4ebwMJJzQ81b9hzfqBwnhr+VqciG06fTDIiaTR34AmSIcr5tpq/aAuAMHzVyE7CuJwVXwfD/LWVIBaC/ZqhiRdL08yaeBD2HQ58Nc1rNFvwKmdCdqooMku0qroony2RdhS1D/nfv2ED1I1q6kWfXEj3Dtn9jFnywt04o9mkNhNE8BkBxdQ0ZlIi87pWUsF2wEveyBFD7UUx4HAz5AWu/XZ0cCGIqL4Wo6RMBqfGiGQT7ED5n8B0oHKeUOq3lT3yHqtZkn7vLZyn8PIwDdpu7sTQ=">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="EncapsulateLocked" xmlns:ns1="clr-namespace:Fei.Workflow.Activities.xT;assembly=Fei.Workflow.Activities.xT, SerializedRevision=3.0" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns0:EncapsulatedActivity RecipePath="" x:Name="Encapsulate" Unlocked="False" Expanded="True" Password="1B2M2Y8AsgTpgAmY7PhCfg==" EncodedIcon="" VersionCreationTime="0001-01-01T00:00:00.0000000" Description="Encapsulates a recipe with the option of locking it with a password for security reasons" Version="0" ActivityType="Encapsulate" VersionCreationId="">
+		<ns0:EncapsulatedActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns0:EncapsulatedActivity.Expressions>
+		<ns0:HiddenSequenceActivity ActivityType="HiddenSequenceActivity" Expanded="True" x:Name="hiddenSequence_EncapsulatedActivity">
+			<ns0:HiddenSequenceActivity.Expressions>
+				<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+			</ns0:HiddenSequenceActivity.Expressions>
+			<ns1:FIBAutoFocusActivity Description="Runs a selected area xT-based FIB auto focus routine" Dwell="{x:Null}" ActivityType="FIB Auto Focus" HorizontalFieldWidth="{x:Null}" x:Name="FIBAutoFocus">
+				<ns1:FIBAutoFocusActivity.Size>
+					<ns2:SizePercentage xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:SizePercentage.Height>
+							<ns2:Percentage RawValue="50" />
+						</ns2:SizePercentage.Height>
+						<ns2:SizePercentage.Width>
+							<ns2:Percentage RawValue="50" />
+						</ns2:SizePercentage.Width>
+					</ns2:SizePercentage>
+				</ns1:FIBAutoFocusActivity.Size>
+				<ns1:FIBAutoFocusActivity.Expressions>
+					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+				</ns1:FIBAutoFocusActivity.Expressions>
+				<ns1:FIBAutoFocusActivity.Center>
+					<ns2:PointPercentage xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:PointPercentage.X>
+							<ns2:Percentage RawValue="0" />
+						</ns2:PointPercentage.X>
+						<ns2:PointPercentage.Y>
+							<ns2:Percentage RawValue="0" />
+						</ns2:PointPercentage.Y>
+					</ns2:PointPercentage>
+				</ns1:FIBAutoFocusActivity.Center>
+			</ns1:FIBAutoFocusActivity>
+			<ns1:FIBImageActivity Image="{x:Null}" FrameCount="1" Description="Acquire a FIB image" Detector="Current" Expanded="False" ActivityType="FIB Image" AcquisitionFaultAction="Echo" LoadImageFromFile="" EnableDCFI="False" LineIntegration="1" SelectedAreaScan="False" x:Name="FIBImage" Collapsed="True" ScanInterlacing="1" StretchHistogram="True" ShowImageView="False" Dwell="2" Resolution="1536, 1024" ZoomFactor="0">
+				<ns1:FIBImageActivity.HorizontalFieldWidth>
+					<ns2:Length RawValue="1E-05" xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+				</ns1:FIBImageActivity.HorizontalFieldWidth>
+				<ns1:FIBImageActivity.DwellUnit>
+					<ns2:Dwell RawValue="2E-06" xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+				</ns1:FIBImageActivity.DwellUnit>
+				<ns1:FIBImageActivity.DCFISelectedAreaScanParam>
+					<ns2:SelectedAreaSetting xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:SelectedAreaSetting.Bottom>
+							<ns2:Percentage RawValue="95" />
+						</ns2:SelectedAreaSetting.Bottom>
+						<ns2:SelectedAreaSetting.Top>
+							<ns2:Percentage RawValue="5" />
+						</ns2:SelectedAreaSetting.Top>
+						<ns2:SelectedAreaSetting.Right>
+							<ns2:Percentage RawValue="95" />
+						</ns2:SelectedAreaSetting.Right>
+						<ns2:SelectedAreaSetting.Left>
+							<ns2:Percentage RawValue="5" />
+						</ns2:SelectedAreaSetting.Left>
+					</ns2:SelectedAreaSetting>
+				</ns1:FIBImageActivity.DCFISelectedAreaScanParam>
+				<ns1:FIBImageActivity.SelectedAreaScanPosition>
+					<ns2:PointLength xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:PointLength.X>
+							<ns2:Length RawValue="0" />
+						</ns2:PointLength.X>
+						<ns2:PointLength.Y>
+							<ns2:Length RawValue="0" />
+						</ns2:PointLength.Y>
+					</ns2:PointLength>
+				</ns1:FIBImageActivity.SelectedAreaScanPosition>
+				<ns1:FIBImageActivity.SelectedAreaScanSize>
+					<ns2:SizeLength xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:SizeLength.Height>
+							<ns2:Length RawValue="5E-06" />
+						</ns2:SizeLength.Height>
+						<ns2:SizeLength.Width>
+							<ns2:Length RawValue="5E-06" />
+						</ns2:SizeLength.Width>
+					</ns2:SizeLength>
+				</ns1:FIBImageActivity.SelectedAreaScanSize>
+				<ns1:FIBImageActivity.PanLocation>
+					<ns3:Point X="0" Y="0" xmlns:ns3="clr-namespace:System.Windows;Assembly=WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+				</ns1:FIBImageActivity.PanLocation>
+				<ns1:FIBImageActivity.SelectedAreaScanParam>
+					<ns2:SelectedAreaSetting xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:SelectedAreaSetting.Bottom>
+							<ns2:Percentage RawValue="87.5" />
+						</ns2:SelectedAreaSetting.Bottom>
+						<ns2:SelectedAreaSetting.Top>
+							<ns2:Percentage RawValue="12.5" />
+						</ns2:SelectedAreaSetting.Top>
+						<ns2:SelectedAreaSetting.Right>
+							<ns2:Percentage RawValue="75" />
+						</ns2:SelectedAreaSetting.Right>
+						<ns2:SelectedAreaSetting.Left>
+							<ns2:Percentage RawValue="25" />
+						</ns2:SelectedAreaSetting.Left>
+					</ns2:SelectedAreaSetting>
+				</ns1:FIBImageActivity.SelectedAreaScanParam>
+				<ns1:FIBImageActivity.StretchHistogramRegionOfInterest>
+					<ns2:SelectedAreaSetting xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null">
+						<ns2:SelectedAreaSetting.Bottom>
+							<ns2:Percentage RawValue="100" />
+						</ns2:SelectedAreaSetting.Bottom>
+						<ns2:SelectedAreaSetting.Top>
+							<ns2:Percentage RawValue="0" />
+						</ns2:SelectedAreaSetting.Top>
+						<ns2:SelectedAreaSetting.Right>
+							<ns2:Percentage RawValue="100" />
+						</ns2:SelectedAreaSetting.Right>
+						<ns2:SelectedAreaSetting.Left>
+							<ns2:Percentage RawValue="0" />
+						</ns2:SelectedAreaSetting.Left>
+					</ns2:SelectedAreaSetting>
+				</ns1:FIBImageActivity.StretchHistogramRegionOfInterest>
+				<ns1:FIBImageActivity.Expressions>
+					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+				</ns1:FIBImageActivity.Expressions>
+				<ns1:AlignmentResultsOnlySequenceActivity ActivityType="AlignmentResultsOnlySequenceActivity" Expanded="True" x:Name="sequence_FIBImage">
+					<ns1:AlignmentResultsOnlySequenceActivity.Expressions>
+						<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+					</ns1:AlignmentResultsOnlySequenceActivity.Expressions>
+				</ns1:AlignmentResultsOnlySequenceActivity>
+			</ns1:FIBImageActivity>
+			<ns1:FIBOnOffActivity Description="This activity will turn the ion beam on or off" x:Name="FIBOnOff" ActivityType="FIB On Off" Power="Off">
+				<ns1:FIBOnOffActivity.Expressions>
+					<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+				</ns1:FIBOnOffActivity.Expressions>
+			</ns1:FIBOnOffActivity>
+		</ns0:HiddenSequenceActivity>
+	</ns0:EncapsulatedActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

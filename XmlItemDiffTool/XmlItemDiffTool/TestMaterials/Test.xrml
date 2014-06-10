@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Recipe Name="New Recipe Workflow" Version="1.0" SoftwareVersion="2.3.1.1546" Description="" RecipeInformation="IxyPLmQ2Gx1TJNPoOfPAICTw92avzTJkLwfOP2zCgrL9Gy7fyox6J36M3z0qlDVgm6fgXFwE2BFGaAd+Lqn9q8/zKz3xZaWrUNhn3U2AMwlNkDELyDBG7S2LyZDRP4YIr/ISTM+8zeYfVjOpLFS/pxKJRoMB1QJmcPmy9dymn3naQ8jOb4NRniVVxyxB3tOKAXZNSPbEpb72ApCm49ISECqnAOrCfy1UtgycoULt+EIURImxFV2L7qou7eRyvqMYoKJyLxojmxinfwl3t0YoazEGZ8uUyF3MqJHADDuko1tvGT7vV9XxIIMzCmxIZD/3ZBVfsJel4c5TSLqTgM8RjuB37CiFLI8SyzhcqPpQt1VNX8FoX80kJON1ZS1zucdJFnjMA99JolIS47tCIs2sKi5WMPAD4f1W3zEdPvotmChI+WuTNCYHKs99s/7ZCaZ09i8GOIOpmVs3k5bw5duSUfv+824XeOrzJ3V2pnztRhT4ySzcmR8pj9I+WoN61ezVjo7sWUuEJ4sVAI+omRxr9aOH9xX+YIzQf3Nl3w29DgdKFE9bIe2lxJiyvjrInFI6aM7RPm9jp9xNlfNj/K1mBCN++SWqNV+IWm/na5BEV7c/tXldSPRZe2FTrQJoaoVdjKhQcQ/jldNQWsh0p1bNtT7PKcCQmc6WsMINGLYejNjo/NTlXV5FiZ0T7tXOsMbFvRF+25ublzmgU80GtcQ/5mBMz8C8wUk6IUKOb9yZ3l7H94VByGWBx5G9+FwBIDvvqn2via9aIi8QtTIQq95U3p7WTD6grnnbCyQK81jgZUkxBvtEhlSgvVTBsXNRftoYVVGsI8TQ1Q4gH5ecJao3rmR/4KmwTlNBem47/eaKUfQWBcSY8CK5z9hnJQQeSh7u">
+<Workflow>
+<ns0:NamedSequentialWorkflowActivity DynamicUpdateCondition="{p1:Null}" x:Name="New Recipe Workflow" RecipeTag="" LockXtUi="False" FileName="Test" xmlns:ns1="clr-namespace:Fei.Workflow.Activities.MachineVision;assembly=Fei.Workflow.Activities.MachineVision, SerializedRevision=2.0" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:p1="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ns0="clr-namespace:Fei.Workflow.Activities;assembly=Fei.Workflow.Activities, SerializedRevision=3.0">
+	<ns1:MatchImageActivity ExpectedNumberOfMatches="1" Position="{x:Null}" ShowImageView="False" Filter="None" RotationalCorrectionEnabled="False" ZoomFactor="1" Scale="1" Description="Match an input image with a reference image." FilterDeviation="1" x:Name="MatchImage" StageCenterStrategy="StageMove" ScoreThreshold="0.5" ActivityType="Match Image" InputImage="{x:Null}" CenterOffset="{x:Null}" PixelWiseCentering="False">
+		<ns1:MatchImageActivity.Expressions>
+			<x:Array Type="{x:Type ns0:ActivityExpressionProperty}" />
+		</ns1:MatchImageActivity.Expressions>
+		<ns1:MatchImageActivity.NominalAngle>
+			<ns2:Angle RawValue="0" xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns1:MatchImageActivity.NominalAngle>
+		<ns1:MatchImageActivity.IncrementAngle>
+			<ns2:Angle RawValue="1" xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns1:MatchImageActivity.IncrementAngle>
+		<ns1:MatchImageActivity.SearchRangeAngle>
+			<ns2:Angle RawValue="10" xmlns:ns2="clr-namespace:Fei.Types;Assembly=Fei.Types, Version=3.1.1739.0, Culture=neutral, PublicKeyToken=null" />
+		</ns1:MatchImageActivity.SearchRangeAngle>
+		<ns1:MatchImageActivity.ReferenceImageEditor>
+			<ns0:PropertyReferenceLink FullLinkId="res:MatchImage.ReferenceImageEditor" />
+		</ns1:MatchImageActivity.ReferenceImageEditor>
+	</ns1:MatchImageActivity>
+</ns0:NamedSequentialWorkflowActivity>
+</Workflow>
+<Resources>
+	<Resource Name="MatchImage.ReferenceImageEditor" />
+	<Resource Name="SubWaferResourceKey" Type="Fei.AutomationFramework.Common.Library.SubWaferType, Fei.AutomationFramework.Common, Version=3.3.1101.1431, Culture=neutral, PublicKeyToken=null">
+		<SubWaferType>0</SubWaferType>
+	</Resource>
+</Resources>
+</Recipe>

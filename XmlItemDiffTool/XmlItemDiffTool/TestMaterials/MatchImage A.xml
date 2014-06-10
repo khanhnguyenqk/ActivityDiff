@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<Metadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nil="http://schemas.fei.com/Metadata/v1/2013/07">
+  <Core>
+    <Guid>8794b734-6de4-44c1-9119-b12a4af97059</Guid>
+    <ApplicationSoftware>xT</ApplicationSoftware>
+    <ApplicationSoftwareVersion>0</ApplicationSoftwareVersion>
+  </Core>
+  <Acquisition>
+    <AcquisitionDatetime>2014-06-10T01:15:21.7754977-07:00</AcquisitionDatetime>
+    <BeamType>Ion</BeamType>
+  </Acquisition>
+  <Optics>
+    <ScanFieldOfView>
+      <X>1E-05</X>
+      <Y>6.66666666666667E-06</Y>
+    </ScanFieldOfView>
+  </Optics>
+  <StageSettings>
+    <StagePosition>
+      <X>0</X>
+      <Y>0</Y>
+      <Z>0</Z>
+      <Rotation>0</Rotation>
+      <Tilt>
+        <Alpha>0</Alpha>
+      </Tilt>
+    </StagePosition>
+  </StageSettings>
+  <ScanSettings>
+    <DwellTime>2E-06</DwellTime>
+    <ScanSize>
+      <Width>1536</Width>
+      <Height>1024</Height>
+    </ScanSize>
+    <LineIntegrationCount>1</LineIntegrationCount>
+    <LineInterlacing>1</LineInterlacing>
+  </ScanSettings>
+  <BinaryResult>
+    <AcquisitionUnit>Pixel</AcquisitionUnit>
+    <CompositionType>Single</CompositionType>
+    <ImageSize>
+      <X>1536</X>
+      <Y>1024</Y>
+    </ImageSize>
+    <FilterFrameCount>1</FilterFrameCount>
+    <PixelSize>
+      <X unit="m" unitPrefixPower="1">6.5104166666666675E-09</X>
+      <Y unit="m" unitPrefixPower="1">6.5104166666666675E-09</Y>
+    </PixelSize>
+    <IntensityScale>1</IntensityScale>
+    <IntensityOffset>0</IntensityOffset>
+    <Gamma>1</Gamma>
+    <AcquisitionArea>
+      <X>0</X>
+      <Y>0</Y>
+      <Width>1</Width>
+      <Height>1</Height>
+    </AcquisitionArea>
+  </BinaryResult>
+  <CustomPropertyGroup>
+    <CustomProperties scope="RunParameters.SelectedAreaScanRectangle">
+      <CustomProperty name="X" value="106" />
+      <CustomProperty name="Y" value="498" />
+      <CustomProperty name="Width" value="768" />
+      <CustomProperty name="Height" value="512" />
+    </CustomProperties>
+    <CustomProperties scope="RunParameters.SelectedAreaScanParameters">
+      <CustomProperty name="Left" value="1.06" />
+      <CustomProperty name="Right" value="8.74" />
+      <CustomProperty name="Top" value="4.98" />
+      <CustomProperty name="Bottom" value="10.1" />
+    </CustomProperties>
+    <CustomProperties scope="RunParameters">
+      <CustomProperty name="Name" value="FIBImage" />
+      <CustomProperty name="PathToImage" value="" />
+      <CustomProperty name="ACBTime" value="0" />
+      <CustomProperty name="AFTime" value="0" />
+      <CustomProperty name="ExecutionTime" value="0.4960992" />
+      <CustomProperty name="SelectedAreaScan" value="True" />
+    </CustomProperties>
+  </CustomPropertyGroup>
+</Metadata>

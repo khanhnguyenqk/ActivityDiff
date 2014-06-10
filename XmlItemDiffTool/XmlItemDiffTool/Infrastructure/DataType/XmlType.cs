@@ -11,24 +11,6 @@ namespace Infrastructure.DataType
 {
     public class XmlType : NotifyPropertyChangedBase, IEquatable<XmlType>
     {
-        /// <summary>
-        /// Meta data. Contains information of properties that changed.
-        /// </summary>
-        private ObservableList<XmlPropertyHistory> changedProperties = new ObservableList<XmlPropertyHistory>();
-        [NotNullable]
-        public ObservableList<XmlPropertyHistory> ChangedProperties
-        {
-            get { return changedProperties; }
-            set
-            {
-                if(value != null && !changedProperties.Equals(value))
-                {
-                    changedProperties = value;
-                    NotifyPropertyChanged();
-                }
-            }
-        }
-
         private XmlTypeName typeName = String.Empty;
         [NotNullable]
         public XmlTypeName TypeName
@@ -81,12 +63,11 @@ namespace Infrastructure.DataType
                     string parentNode, nodeName;
                     if(XmlParserHelper.IsAProperty(node, out parentNode, out nodeName))
                     {
-                        if(!parentNode.Equals(TypeName))
+                        if(parentNode.Equals(TypeName))
                         {
-                            throw new XmlItemParseException(@"Property node has different parent name with its parent.", node.OuterXml);
+                            XmlTypeProperty tp = new XmlTypeProperty(node, this);
+                            Properties.Add(tp);
                         }
-                        XmlTypeProperty tp = new XmlTypeProperty(node, this);
-                        Properties.Add(tp);
                     }
                 }
             }
