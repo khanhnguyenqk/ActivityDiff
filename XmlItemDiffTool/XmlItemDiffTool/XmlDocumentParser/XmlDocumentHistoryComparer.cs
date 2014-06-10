@@ -10,6 +10,8 @@ namespace XmlDocumentWrapper
 {
     public static class XmlDocumentHistoryComparer
     {
+        private static readonly Tab tab = new Tab();
+
         public static void CreateHistoryTrace(XmlDocumentConstructed before, XmlDocumentConstructed after)
         {
             CreateHistoryTrace(before.Root, after.Root);
@@ -26,39 +28,54 @@ namespace XmlDocumentWrapper
         public static string ResourcesTraceToString(XmlResources resources)
         {
             string ret = String.Empty;
-            ret += @"Added resources:" + Environment.NewLine;
-            foreach(var item in resources.AddedResources)
+            if(resources.AddedResources.Count > 0)
             {
-                ret += @"    " + item.Name + Environment.NewLine;
-            }
-
-            ret += @"Removed resources:" + Environment.NewLine;
-            foreach(var item in resources.RemovedResources)
-            {
-                ret += @"    " + item.Name + Environment.NewLine;
-            }
-
-            ret += @"Modified resources:" + Environment.NewLine;
-            foreach(XmlResource item in resources.ChangedResources)
-            {
-                if(item is XmlWorkflowTemplateResource)
+                ret += @"Added resources:" + Environment.NewLine;
+                foreach(var item in resources.AddedResources)
                 {
-                    XmlWorkflowTemplateResource wtItem = (XmlWorkflowTemplateResource) item;
-                    if(wtItem.ReferencedTemplate != null)
-                    {
-                        ret += @"    " + item.Name + Environment.NewLine;
-                        ret += @"~~~~~~START Inner Template~~~~~~" + Environment.NewLine;
-                        ret += HistoryTraceToString(wtItem.Template, wtItem.ReferencedTemplate);
-                        ret += @"~~~~~~END   Inner Template~~~~~~" + Environment.NewLine;
-                    }
+                    ret += tab + item.Name + Environment.NewLine;
                 }
-                else
+            }
+
+            if(resources.RemovedResources.Count > 0)
+            {
+                ret += @"Removed resources:" + Environment.NewLine;
+                foreach(var item in resources.RemovedResources)
                 {
-                    ret += @"    " + item.Name + Environment.NewLine;
-                    foreach(XmlPropertyHistory property in item.ChangedProperties)
+                    ret += tab + item.Name + Environment.NewLine;
+                }
+            }
+
+            if(resources.ModifiedResources.Count > 0)
+            {
+                ret += @"Modified resources:" + Environment.NewLine;
+                foreach(XmlResource item in resources.ModifiedResources)
+                {
+                    if(item is XmlWorkflowTemplateResource)
                     {
-                        ret += @"        " + property.OriginalProperty.GetResourcePath() + @" "
-                                   + property + Environment.NewLine;
+                        XmlWorkflowTemplateResource wtItem = (XmlWorkflowTemplateResource)item;
+                        if(wtItem.ReferencedTemplate != null)
+                        {
+                            ret += tab + item.Name + Environment.NewLine;
+                            ret += tab + @"~~~~~~START WFTemplate~~~~~~" + Environment.NewLine;
+                            string template = HistoryTraceToString(wtItem.Template, wtItem.ReferencedTemplate);
+                            // Modify the string for pretty print
+                            template = template.Replace(Environment.NewLine, Environment.NewLine + 3 * tab);
+                            template = template.TrimEnd(' ');
+                            template = 3 * tab + template;
+
+                            ret += template;
+                            ret += tab + @"~~~~~~END   WFTemplate~~~~~~" + Environment.NewLine;
+                        }
+                    }
+                    else
+                    {
+                        ret += tab + item.Name + Environment.NewLine;
+                        foreach(XmlPropertyHistory property in item.ChangedProperties)
+                        {
+                            ret += 2 * tab + property.OriginalProperty.GetResourcePath() + @" "
+                                       + property + Environment.NewLine;
+                        }
                     }
                 }
             }
@@ -94,16 +111,53 @@ namespace XmlDocumentWrapper
                 ret += Environment.NewLine;
                 if(before.HistoryStates.Contains(HistoryState.L))
                 {
-                    ret += @"    Moved to a different level -> ";
+                    ret += tab + @"Moved to a different level -> ";
                     ret += after.GetNode(before.Id).GetPathToRoot() + Environment.NewLine;
                 }
                 if(before.HistoryStates.Contains(HistoryState.P))
                 {
-                    ret += @"    Properties changed:" + Environment.NewLine;
-                    foreach(var item in before.ChangedProperties)
+                    if(before.ChangedProperties.Count > 0)
                     {
-                        ret += @"        " + item.OriginalProperty.GetPathToRoot() + @" "
-                               + item + Environment.NewLine;
+                        ret += tab + @"Properties changed:" + Environment.NewLine;
+                        foreach(var item in before.ChangedProperties)
+                        {
+                            ret += 2 * tab + item.OriginalProperty.GetPathToRoot() + @" "
+                                   + item + Environment.NewLine;
+                        }
+                    }
+                    else if(before.ExpressionsHistory.HasChanges)
+                    {
+                        ret += tab + @"Expressions changes:" + Environment.NewLine;
+                        if(before.ExpressionsHistory.AddedExpressions.Count > 0)
+                        {
+                            ret += 2 * tab + @"Added Expressions:" + Environment.NewLine;
+                            foreach(XmlPropertyExpression expression in before.ExpressionsHistory.AddedExpressions)
+                            {
+                                ret += 3 * tab + expression + Environment.NewLine;
+                            }
+                        }
+
+                        if(before.ExpressionsHistory.RemovedExpressions.Count > 0)
+                        {
+                            ret += 2 * tab + @"Removed Expressions:" + Environment.NewLine;
+                            foreach(XmlPropertyExpression expression in before.ExpressionsHistory.RemovedExpressions)
+                            {
+                                ret += 3 * tab + expression + Environment.NewLine;
+                            }
+                        }
+
+                        if(before.ExpressionsHistory.ModifiedExpressions.Count > 0)
+                        {
+                            ret += 2 * tab + @"Modified Expressions:" + Environment.NewLine;
+                            foreach(Tuple<XmlPropertyExpression, string> tuple in before.ExpressionsHistory.ModifiedExpressions)
+                            {
+                                ret += 3 * tab + tuple.Item1 + String.Format(@" -> ""{0}""", tuple.Item2) + Environment.NewLine;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception(@"Workflow item was marked P but there is no changes.");
                     }
                 }
             }
@@ -143,13 +197,26 @@ namespace XmlDocumentWrapper
             before.HistoryStates.Add(HistoryState.D);
             after.HistoryStates.Add(HistoryState.D);
 
-            if(!before.ArePropertiesEqual(after) || !before.Expressions.Equals(after.Expressions))
+            bool marked = false;
+            if(!before.ArePropertiesEqual(after))
             {
                 before.HistoryStates.Add(HistoryState.P);
                 after.HistoryStates.Add(HistoryState.P);
 
+                marked = true;
+
                 List<XmlPropertyHistory> l = CreatePropertyChangeHistory(before, after);
                 AddItems(before.ChangedProperties, l);
+            }
+            if(!before.Expressions.Equals(after.Expressions))
+            {
+                if(!marked)
+                {
+                    before.HistoryStates.Add(HistoryState.P);
+                    after.HistoryStates.Add(HistoryState.P);
+                }
+
+                CreateExpressionHistory(before, after);
             }
 
             List<XmlWorkflowItem> beforeClone = new List<XmlWorkflowItem>();
@@ -429,8 +496,8 @@ namespace XmlDocumentWrapper
                     foreach(XmlMatchImageItem item in rBefore.Children)
                     {
                         List<XmlMatchImageItem> matches = (from i in rAfter.Children
-                            where i.TypeName.Equals(item.TypeName)
-                            select i).ToList();
+                                                           where i.TypeName.Equals(item.TypeName)
+                                                           select i).ToList();
 
                         if(matches.Count == 1)
                         {
@@ -455,6 +522,53 @@ namespace XmlDocumentWrapper
             return ret;
         }
 
+        public static void CreateExpressionHistory(XmlWorkflowItem before, XmlWorkflowItem after)
+        {
+            if(!before.Expressions.Equals(after.Expressions))
+            {
+                // Look for removed expressions
+                foreach(XmlPropertyExpression expression in before.Expressions)
+                {
+                    List<XmlPropertyExpression> matches = (from e in after.Expressions
+                                                           where e.PropertyName.Equals(expression.PropertyName)
+                                                           select e).ToList();
+
+                    if(matches.Count == 0)
+                    {
+                        before.ExpressionsHistory.RemovedExpressions.Add(expression);
+                    }
+                    else if(matches.Count == 1) // Look for modified expressions
+                    {
+                        XmlPropertyExpression match = matches[0];
+                        if(!expression.Expression.Equals(match.Expression))
+                        {
+                            before.ExpressionsHistory.ModifiedExpressions.Add(new Tuple<XmlPropertyExpression, string>(expression, match.Expression));
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception(@"One property has more than 1 expression.");
+                    }
+                }
+                // Look for new expressions
+                foreach(XmlPropertyExpression expression in after.Expressions)
+                {
+                    List<XmlPropertyExpression> matches = (from e in before.Expressions
+                                                           where e.PropertyName.Equals(expression.PropertyName)
+                                                           select e).ToList();
+
+                    if(matches.Count == 0)
+                    {
+                        before.ExpressionsHistory.AddedExpressions.Add(expression);
+                    }
+                    else if(matches.Count > 1)
+                    {
+                        throw new Exception(@"One property has more than 1 expression.");
+                    }
+                }
+            }
+        }
+
         public static void CreateResourceHistory(XmlResources before, XmlResources after)
         {
             foreach(XmlResource item in before.Resources)
@@ -475,7 +589,7 @@ namespace XmlDocumentWrapper
                         XmlSampleMapResource smAfter = (XmlSampleMapResource)match;
                         if(!smBefore.Equals(smAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
                                smBefore.SampleMap, smAfter.SampleMap);
@@ -489,7 +603,7 @@ namespace XmlDocumentWrapper
 
                         if(!trBefore.Equals(trAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
                                 trBefore.Data, trAfter.Data);
@@ -503,7 +617,7 @@ namespace XmlDocumentWrapper
 
                         if(!prBefore.Equals(prAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
                                 prBefore.Data, prAfter.Data);
@@ -517,7 +631,7 @@ namespace XmlDocumentWrapper
 
                         if(!mrBefore.Equals(mrAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             List<XmlPropertyHistory> result = CreatePropertyChangeHistory(
                                 mrBefore.Data, mrAfter.Data);
@@ -531,7 +645,7 @@ namespace XmlDocumentWrapper
 
                         if(!slBefore.Equals(slAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             // Todo: handle this
                         }
@@ -543,7 +657,7 @@ namespace XmlDocumentWrapper
 
                         if(!wtBefore.Equals(wtAfter))
                         {
-                            before.ChangedResources.Add(item);
+                            before.ModifiedResources.Add(item);
 
                             CreateHistoryTrace(wtBefore.Template, wtAfter.Template);
                             wtBefore.ReferencedTemplate = wtAfter.Template;
@@ -658,6 +772,51 @@ namespace XmlDocumentWrapper
                 }
             }
             return false;
+        }
+    }
+
+    public class Tab
+    {
+        public string TabString { get; set; }
+
+        public Tab()
+        {
+            TabString = "    ";
+        }
+
+        public override string ToString()
+        {
+            return TabString;
+        }
+
+        public static string operator *(int times, Tab t)
+        {
+            if(times > 0)
+            {
+                string ret = String.Empty;
+                for(int i = 0; i < times; i++)
+                {
+                    ret += t.ToString();
+                }
+
+                return ret;
+            }
+            return "";
+        }
+
+        public static string operator *(Tab t, int times)
+        {
+            if(times > 0)
+            {
+                string ret = String.Empty;
+                for(int i = 0; i < times; i++)
+                {
+                    ret += t.ToString();
+                }
+
+                return ret;
+            }
+            return "";
         }
     }
 }

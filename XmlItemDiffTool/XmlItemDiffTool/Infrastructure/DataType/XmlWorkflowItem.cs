@@ -50,6 +50,7 @@ namespace Infrastructure.DataType
         /// Store Expressions property because it will be removed from the Properties set
         /// </summary>
         public XmlTypeProperty ExpressionArray { get; private set; }
+
         private ObservarableHashSet<XmlPropertyExpression> expressions = new ObservarableHashSet<XmlPropertyExpression>();
         [NotNullable]
         public ObservarableHashSet<XmlPropertyExpression> Expressions
@@ -60,6 +61,21 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(expressions))
                 {
                     expressions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ExpressionsHistory expressionsHistory = new ExpressionsHistory();
+        [NotNullable]
+        public ExpressionsHistory ExpressionsHistory
+        {
+            get { return expressionsHistory; }
+            set
+            {
+                if(value != null && !value.Equals(expressionsHistory))
+                {
+                    expressionsHistory = value;
                     NotifyPropertyChanged();
                 }
             }
@@ -303,6 +319,56 @@ namespace Infrastructure.DataType
                 ret += String.Format(@"[{0}]", item.Name);
             }
             return ret;
+        }
+    }
+
+    public class ExpressionsHistory : NotifyPropertyChangedBase
+    {
+        private ObservableList<XmlPropertyExpression> addedExpressions = new ObservableList<XmlPropertyExpression>();
+        public ObservableList<XmlPropertyExpression> AddedExpressions
+        {
+            get { return addedExpressions; }
+            set
+            {
+                if(value != null && !value.Equals(addedExpressions))
+                {
+                    addedExpressions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableList<XmlPropertyExpression> removedExpressions = new ObservableList<XmlPropertyExpression>();
+        public ObservableList<XmlPropertyExpression> RemovedExpressions
+        {
+            get { return removedExpressions; }
+            set
+            {
+                if(value != null && !value.Equals(removedExpressions))
+                {
+                    removedExpressions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        private ObservableList<Tuple<XmlPropertyExpression, string>> modifiedExpressions = new ObservableList<Tuple<XmlPropertyExpression, string>>();
+        public ObservableList<Tuple<XmlPropertyExpression, string>> ModifiedExpressions
+        {
+            get { return modifiedExpressions; }
+            set
+            {
+                if(value != null && !value.Equals(modifiedExpressions))
+                {
+                    modifiedExpressions = value;
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+
+        public bool HasChanges
+        {
+            get { return AddedExpressions.Count > 0 || RemovedExpressions.Count > 0 || ModifiedExpressions.Count > 0; }
         }
     }
 }

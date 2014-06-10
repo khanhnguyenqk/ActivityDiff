@@ -41,16 +41,16 @@ namespace Infrastructure.DataType
             }
         }
 
-        private ObservableList<XmlResource> changedResources = new ObservableList<XmlResource>();
+        private ObservableList<XmlResource> modifiedResources = new ObservableList<XmlResource>();
         [NotNullable]
-        public ObservableList<XmlResource> ChangedResources
+        public ObservableList<XmlResource> ModifiedResources
         {
-            get { return changedResources; }
+            get { return modifiedResources; }
             set
             {
-                if(value != null && !value.Equals(changedResources))
+                if(value != null && !value.Equals(modifiedResources))
                 {
-                    changedResources = value;
+                    modifiedResources = value;
                     NotifyPropertyChanged();
                 }
             }

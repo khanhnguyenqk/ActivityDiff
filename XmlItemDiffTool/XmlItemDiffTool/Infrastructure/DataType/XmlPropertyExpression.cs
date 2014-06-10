@@ -41,6 +41,11 @@ namespace Infrastructure.DataType
             }
         }
 
+        public override string ToString()
+        {
+            return String.Format(@"""{0}"": ""{1}""", PropertyName, Expression);
+        }
+
         public bool Equals(XmlPropertyExpression other)
         {
             if(ReferenceEquals(null, other)) return false;

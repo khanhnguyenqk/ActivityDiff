@@ -26,6 +26,7 @@ namespace UnitTest
         [TestCase(@"Semi A.xrml", @"Semi B.xrml")]
         [TestCase(@"Semi A.xrml", @"DS A.xrml")]
         [TestCase(@"Rex A.xrml", @"Rex B.xrml")]
+        [TestCase(@"Rex A Simple.xrml", @"Rex B Simple.xrml")]
         [TestCase(@"S.xrml", @"S A-R-L-M-P.xrml")]
         public void SimpleReading(string file1, string file2)
         {
