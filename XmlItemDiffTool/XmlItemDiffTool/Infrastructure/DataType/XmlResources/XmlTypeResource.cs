@@ -20,7 +20,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(data))
                 {
                     data = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Data");
                 }
             }
         }

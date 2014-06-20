@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using Infrastructure.ObjectModel;
 
@@ -25,7 +21,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(children))
                 {
                     children = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Children");
                 }
             }
         }

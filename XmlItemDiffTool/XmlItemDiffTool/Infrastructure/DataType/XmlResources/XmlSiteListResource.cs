@@ -21,7 +21,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(siteList))
                 {
                     siteList = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"SiteList");
                 }
             }
         }

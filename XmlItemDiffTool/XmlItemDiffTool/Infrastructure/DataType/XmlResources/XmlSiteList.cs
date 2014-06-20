@@ -21,7 +21,7 @@ namespace Infrastructure.DataType
                 if(value != null && value != sites)
                 {
                     sites = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Sites");
                 }
             }
         }

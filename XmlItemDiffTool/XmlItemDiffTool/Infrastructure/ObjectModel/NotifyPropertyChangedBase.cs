@@ -12,7 +12,7 @@ namespace Infrastructure.ObjectModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        protected void NotifyPropertyChanged(String propertyName)
         {
             if(PropertyChanged != null)
             {

@@ -19,7 +19,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(template))
                 {
                     template = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Template");
                 }
             }
         }

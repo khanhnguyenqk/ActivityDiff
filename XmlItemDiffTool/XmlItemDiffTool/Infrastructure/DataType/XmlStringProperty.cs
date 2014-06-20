@@ -17,7 +17,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(pValue))
                 {
                     pValue = value.ToString();
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Value");
                 }
             }
         }

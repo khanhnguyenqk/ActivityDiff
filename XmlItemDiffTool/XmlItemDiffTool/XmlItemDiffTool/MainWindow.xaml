@@ -1,8 +1,35 @@
 ﻿<Window x:Class="XmlDocumentWrapper.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:local="clr-namespace:XmlItemDiffTool"
+        Title="Recipe Diff Tool" Height="800" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Right" Margin="2">File #1</Label>
+            <Label Grid.Row="1" Grid.Column="0" HorizontalContentAlignment="Right" Margin="2">File #2</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Name="TextBox1" Text="{Binding FilePath1}" IsEnabled="{Binding NotRunning}"></TextBox>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Name="TextBox2" Text="{Binding FilePath2}" IsEnabled="{Binding NotRunning}"></TextBox>
+            <Button Grid.Row="0" Grid.Column="2" Width="24" Margin="2" Name="ButtonSearch1" Click="ButtonSearch1_OnClick" IsEnabled="{Binding NotRunning}">...</Button>
+            <Button Grid.Row="1" Grid.Column="2" Width="24" Margin="2" Name="ButtonSearch2" Click="ButtonSearch2_OnClick" IsEnabled="{Binding NotRunning}">...</Button>
+            <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="3"  Height="26" Margin="10" Command="{Binding CompareCommand}" IsEnabled="{Binding NotRunning}">Compare</Button>
+        </Grid>
+        <TextBox Grid.Row="1" Margin="5" Text="{Binding Result}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"></TextBox>
     </Grid>
 </Window>

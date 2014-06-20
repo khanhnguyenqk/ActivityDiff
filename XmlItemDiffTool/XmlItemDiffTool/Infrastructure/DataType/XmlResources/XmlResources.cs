@@ -21,7 +21,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(addedResources))
                 {
                     addedResources = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"AddedResources");
                 }
             }
         }
@@ -36,7 +36,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(removedResources))
                 {
                     removedResources = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"RemovedResources");
                 }
             }
         }
@@ -51,7 +51,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(modifiedResources))
                 {
                     modifiedResources = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"ModifiedResources");
                 }
             }
         } 
@@ -66,7 +66,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(resources))
                 {
                     resources = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Resources");
                 }
             }
         }

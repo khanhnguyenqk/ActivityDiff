@@ -116,7 +116,23 @@ namespace XmlDocumentWrapper
                 }
                 if(before.HistoryStates.Contains(HistoryState.P))
                 {
-                    if(before.ChangedProperties.Count > 0)
+                    if(before.NewProperties.Count > 0)
+                    {
+                        ret += tab + @"New Properties:" + Environment.NewLine;
+                        foreach(var item in before.NewProperties)
+                        {
+                            ret += 2 * tab + item + Environment.NewLine;
+                        }
+                    }
+                    else if(before.RemovedProperties.Count > 0)
+                    {
+                        ret += tab + @"Removed Properties:" + Environment.NewLine;
+                        foreach(var item in before.RemovedProperties)
+                        {
+                            ret += 2 * tab + item + Environment.NewLine;
+                        }
+                    }
+                    else if(before.ChangedProperties.Count > 0)
                     {
                         ret += tab + @"Properties changed:" + Environment.NewLine;
                         foreach(var item in before.ChangedProperties)
@@ -318,6 +334,18 @@ namespace XmlDocumentWrapper
 
             List<XmlPropertyHistory> ret = new List<XmlPropertyHistory>();
 
+            // Check for added/removed properties. Removed is checked down there so check added here.
+            foreach(var property in after.Properties)
+            {
+                XmlPropertyAbstract match = (from p in before.Properties
+                                             where p.Name.Equals(property.Name)
+                                             select p).FirstOrDefault();
+                if(match == null)
+                {
+                    before.NewProperties.Add(property);
+                }
+            }
+
             foreach(var property in before.Properties)  // Traverse through properties
             {
                 if(!after.Properties.Contains(property))
@@ -329,8 +357,8 @@ namespace XmlDocumentWrapper
                     // Todo: I don't want to deal with this now. So throw exception
                     if(match == null)
                     {
-                        // Todo:  NotImplementedException(@"Cannot deal with property disappeared yet.");
                         // Happens with namespace
+                        before.RemovedProperties.Add(property);
                     }
                     else
                     {
@@ -583,7 +611,22 @@ namespace XmlDocumentWrapper
                 }
                 else
                 {   // Look for changed resources
-                    if(item is XmlSampleMapResource)
+                    if(item.GetType() != match.GetType())
+                    {
+                        if(item.GetType() == typeof(XmlResource))
+                        {
+                            before.AddedResources.Add(item);
+                        }
+                        else if(match.GetType() == typeof(XmlResource))
+                        {
+                            before.RemovedResources.Add(item);
+                        }
+                        else
+                        {
+                            throw new NotImplementedException(@"Can't handle resource change type yet.");
+                        }
+                    }
+                    else if(item is XmlSampleMapResource)
                     {
                         XmlSampleMapResource smBefore = (XmlSampleMapResource)item;
                         XmlSampleMapResource smAfter = (XmlSampleMapResource)match;

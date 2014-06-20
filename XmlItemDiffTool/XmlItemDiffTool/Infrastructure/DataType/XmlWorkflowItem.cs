@@ -27,7 +27,7 @@ namespace Infrastructure.DataType
                 if(value != null && !changedProperties.Equals(value))
                 {
                     changedProperties = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"ChangedProperties");
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(expressions))
                 {
                     expressions = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Expressions");
                 }
             }
         }
@@ -76,7 +76,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(expressionsHistory))
                 {
                     expressionsHistory = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"ExpressionsHistory");
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(name))
                 {
                     name = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Name");
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(children))
                 {
                     children = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Children");
                 }
             }
         }
@@ -333,7 +333,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(addedExpressions))
                 {
                     addedExpressions = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"AddedExpressions");
                 }
             }
         }
@@ -347,7 +347,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(removedExpressions))
                 {
                     removedExpressions = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"RemovedExpressions");
                 }
             }
         }
@@ -361,7 +361,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(modifiedExpressions))
                 {
                     modifiedExpressions = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"ModifiedExpressions");
                 }
             }
         }

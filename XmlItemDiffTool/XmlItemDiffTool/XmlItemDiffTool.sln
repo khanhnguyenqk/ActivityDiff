@@ -5,6 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlItemDiffTool", "XmlItemDiffTool\XmlItemDiffTool.csproj", "{3F3C110B-4111-4729-A808-A700B72A54A1}"
 	ProjectSection(ProjectDependencies) = postProject
+		{4A718CA9-F69E-4FB1-AB59-203BA31DDA9D} = {4A718CA9-F69E-4FB1-AB59-203BA31DDA9D}
 		{CDCC49C8-F241-4A9D-8BB0-74227F959094} = {CDCC49C8-F241-4A9D-8BB0-74227F959094}
 	EndProjectSection
 EndProject

@@ -24,7 +24,7 @@ namespace Infrastructure.DataType
                 if(value != null && !changedProperties.Equals(value))
                 {
                     changedProperties = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"ChangedProperties");
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(name))
                 {
                     name = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Name");
                 }
             }
         }

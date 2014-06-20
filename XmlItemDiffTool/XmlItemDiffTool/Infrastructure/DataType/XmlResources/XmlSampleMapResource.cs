@@ -20,7 +20,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(sampleMap))
                 {
                     sampleMap = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"SampleMap");
                 }
             }
         }

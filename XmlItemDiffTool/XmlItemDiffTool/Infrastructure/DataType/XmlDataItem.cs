@@ -37,7 +37,7 @@ namespace Infrastructure.DataType
                 if(value != null && value != children)
                 {
                     children = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Children");
                 }
             }
         }

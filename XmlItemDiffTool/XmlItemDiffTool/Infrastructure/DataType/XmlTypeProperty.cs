@@ -19,7 +19,7 @@ namespace Infrastructure.DataType
                     if(pvalue != cValue)
                     {
                         pvalue = value as XmlDataItem;
-                        NotifyPropertyChanged();
+                        NotifyPropertyChanged(@"Value");
                     }
                 }
             }

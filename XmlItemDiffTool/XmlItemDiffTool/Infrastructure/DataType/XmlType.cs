@@ -11,6 +11,42 @@ namespace Infrastructure.DataType
 {
     public class XmlType : NotifyPropertyChangedBase, IEquatable<XmlType>
     {
+        /// <summary>
+        /// Meta data. Contains information of new properties.
+        /// </summary>
+        private ObservableList<XmlPropertyAbstract> newProperties = new ObservableList<XmlPropertyAbstract>();
+        [NotNullable]
+        public ObservableList<XmlPropertyAbstract> NewProperties
+        {
+            get { return newProperties; }
+            set
+            {
+                if(value != null && !newProperties.Equals(value))
+                {
+                    newProperties = value;
+                    NotifyPropertyChanged(@"NewProperties");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Meta data. Contains information of removed properties.
+        /// </summary>
+        private ObservableList<XmlPropertyAbstract> removedProperties = new ObservableList<XmlPropertyAbstract>();
+        [NotNullable]
+        public ObservableList<XmlPropertyAbstract> RemovedProperties
+        {
+            get { return removedProperties; }
+            set
+            {
+                if(value != null && !removedProperties.Equals(value))
+                {
+                    removedProperties = value;
+                    NotifyPropertyChanged(@"RemovedProperties");
+                }
+            }
+        }
+
         private XmlTypeName typeName = String.Empty;
         [NotNullable]
         public XmlTypeName TypeName
@@ -21,7 +57,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(typeName))
                 {
                     typeName = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"TypeName");
                 }
             }
         }
@@ -36,7 +72,7 @@ namespace Infrastructure.DataType
                 if(value != null && value != properties)
                 {
                     properties = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Properties");
                 }
             }
         }

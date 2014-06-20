@@ -19,7 +19,7 @@ namespace Infrastructure.DataType
                 if(value != root)
                 {
                     root = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Root");
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace Infrastructure.DataType
                 if(value != resources)
                 {
                     resources = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Resources");
                 }
             }
         }

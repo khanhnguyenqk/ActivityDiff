@@ -19,7 +19,7 @@ namespace Infrastructure.DataType
                 if(!ReferenceEquals(host, value))
                 {
                     host = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Host");
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(expression))
                 {
                     expression = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Expression");
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace Infrastructure.DataType
                 if(value != null && !value.Equals(name))
                 {
                     name = value;
-                    NotifyPropertyChanged();
+                    NotifyPropertyChanged(@"Name");
                 }
             }
         }
